@@ -59,9 +59,10 @@
 			    transition: 0.3s;
 			}
 
-			/* When you mouse over the navigation links, change their color */
-			.sidenav a:hover {
-			    color: #f1f1f1;
+			.sidenav h2 {
+			    font-size: 35px;
+			    padding: 8px 8px 8px 32px;
+				color: #818181;
 			}
 
 			/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
@@ -76,6 +77,46 @@
 			@media screen and (max-height: 450px) {
 			    .sidenav {padding-top: 15px;}
 			    .sidenav a {font-size: 18px;}
+			} 
+
+						/* The side navigation menu */
+			.poiInfo {
+			    height: 100%; /* 100% Full-height */
+			    width: 0; /* 0 width - change this with JavaScript */
+			    position: fixed; /* Stay in place */
+			    z-index: 1; /* Stay on top */
+			    top: 0; /* Stay at the top */
+			    right: 0;
+			    background-color: #111; /* Black*/
+			    overflow-x: hidden; /* Disable horizontal scroll */
+			    padding-top: 60px; /* Place content 60px from the top */
+			    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+			}
+
+			/* The navigation menu links */
+			.poiInfo a {
+			    padding: 8px 8px 8px 32px;
+			    text-decoration: none;
+			    font-size: 25px;
+			    color: #818181;
+			    display: block;
+			    transition: 0.3s;
+			}
+
+			.poiInfo h2 {
+			    font-size: 35px;
+			    padding: 8px 8px 8px 32px;
+				color: #818181;
+			}
+
+			.poiInfo img {
+			    padding: 8px 8px 8px 32px;
+			}
+
+			/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+			@media screen and (max-height: 450px) {
+			    .poiInfo {padding-top: 15px;}
+			    .poiInfo a {font-size: 18px;}
 			} 
 
 			.center {
@@ -110,6 +151,10 @@
 			  	<li>Hold control to open wiki</li>
 			</ul>
 		</div>
+
+		<div id="poiInfoPanel" class="poiInfo">
+		</div>
+
 		<div id="map" class="main"></div>
 
 		<script>
@@ -141,7 +186,8 @@
 							        		"type": "Feature",
 							        		"properties": {
 							        			"name": "Rushring",
-							        			"Description": "A partially submerged stone circle, the notorious site of a number of ritual killings in 365YE. It stands at the centre of one of the so-called dead meres of the Grey Fens, and both local Marchers and Feni alike give it a wide berth. Local legend claims that there are thirteen stones in the Rushring, but accounts differ wildly, in some cases claiming there are as many as thirty-nine. There are likewise many stories about what the circle represents. Some claim it is a band of Jotun orcs turned to stone by a canny landskeeper, while others claim the stones mark the site of some terrible crime or ancient magical accident, perhaps that associated with the formation of the dead meres themselves.",
+							        			"image": "rushring.jpg",
+							        			"description": "A partially submerged stone circle, the notorious site of a number of ritual killings in 365YE. It stands at the centre of one of the so-called dead meres of the Grey Fens, and both local Marchers and Feni alike give it a wide berth. Local legend claims that there are thirteen stones in the Rushring, but accounts differ wildly, in some cases claiming there are as many as thirty-nine. There are likewise many stories about what the circle represents. Some claim it is a band of Jotun orcs turned to stone by a canny landskeeper, while others claim the stones mark the site of some terrible crime or ancient magical accident, perhaps that associated with the formation of the dead meres themselves.",
 							        			"url": "https://www.profounddecisions.co.uk/empire-wiki/Bregasland#Rushring",
 							        		},
 							        		"geometry":{
@@ -349,6 +395,8 @@
 					} else {
 						var latlng = e.target.getLatLng(); 
 						map.flyTo(latlng, map.getZoom() + 1);
+						var innerHTML = "<button onclick='closePOIInfo()'>Close</button><h2>" + e.target.feature.properties.name + "</h2><a color='white'>" + e.target.feature.properties.description + "</a><img src='images/" + e.target.feature.properties.image + "'/>"
+						openPOIInfo(innerHTML);
 						setMinZoom = true;
 					}
 				}
@@ -359,12 +407,32 @@
 
 			var setMinZoom = false;
 
+			var currentZoom = -2;
 			function setZoomToCurrent(e) {
-				if(setMinZoom){
-					map.setMinZoom(map.getZoom());
-					map.setMaxBounds(map.getBounds());
-					setMinZoom = false;
+				var newZoom = map.getZoom();
+				if(newZoom == -2){
+					createMap(nationsData);
+				} else if((newZoom == -1 && currentZoom != 0) || (newZoom == 0 && currentZoom != 0)){
+					var regionsData = {"type": "FeatureCollection"};
+					regionsData.features = new Array();
+					for (var i in nationsData.features){
+						nation = nationsData.features[i];
+						nationFeatures = nation.properties.features;
+						if(nationFeatures){
+							Array.prototype.push.apply(regionsData.features, nationFeatures.features);
+						}
+					}
+					createMap(regionsData);
+				} else if(currentZoom == 0) {
+					var poiData;
+					for (var nation in nationsData){
+						for(var region in nation.feature.properties.features){
+							poiData += nationsData.nation.region.feature.properties.features;
+						}
+					}
+					createMap(poiData);
 				}
+				currentZoom = newZoom;
 			}
 
 			map.on({
@@ -393,7 +461,7 @@
 				if(props){
 					innerHTML += '<b>' + props.name + '</b>';
 					for (var key in props) {
-						if(key != "name" && key != "url" && key != "features"){
+						if(key != "name" && key != "url" && key != "features" && key != "image" && key != "description"){
 							innerHTML += '<br/>' + key + ': ' + props[key];
 						}
 			        }
@@ -443,6 +511,22 @@
 			    	isCtrlKeyPressed = false;
 			    }
 			});
+
+			function openPOIInfo(innerHTML){
+				var poiInfo = document.getElementById("poiInfoPanel");
+				poiInfo.innerHTML = innerHTML;
+				poiInfo.style.width = "40%";
+			    document.getElementById("map").style.marginRight = "40%";
+			    //document.getElementById("menuButton").onclick = closeNav;
+			}
+
+			function closePOIInfo(){
+				var poiInfo = document.getElementById("poiInfoPanel");
+				poiInfo.innerHTML = "";
+				poiInfo.style.width = "0";
+			    document.getElementById("map").style.marginRight = "0";
+			    //document.getElementById("menuButton").onclick = closeNav;
+			}
 
 			function openNav() {
 			    document.getElementById("mySidenav").style.width = "250px";
