@@ -136,6 +136,20 @@
 							    "properties": {
 							        "name": "Bregasland",
 							        "url": "https://www.profounddecisions.co.uk/empire-wiki/Bregasland",
+							        "features": {"type":"FeatureCollection","features":[
+							        	{
+							        		"type": "Feature",
+							        		"properties": {
+							        			"name": "Rushring",
+							        			"Description": "A partially submerged stone circle, the notorious site of a number of ritual killings in 365YE. It stands at the centre of one of the so-called dead meres of the Grey Fens, and both local Marchers and Feni alike give it a wide berth. Local legend claims that there are thirteen stones in the Rushring, but accounts differ wildly, in some cases claiming there are as many as thirty-nine. There are likewise many stories about what the circle represents. Some claim it is a band of Jotun orcs turned to stone by a canny landskeeper, while others claim the stones mark the site of some terrible crime or ancient magical accident, perhaps that associated with the formation of the dead meres themselves.",
+							        			"url": "https://www.profounddecisions.co.uk/empire-wiki/Bregasland#Rushring",
+							        		},
+							        		"geometry":{
+							        			"type":"Point",
+							        			"coordinates": [1654,4811-2788],
+							        		}
+							        	}
+							        ]}
 							    },
 							    "geometry":{"type":"Polygon","coordinates":[[
 							    	[1361,4811-2425],
@@ -305,17 +319,18 @@
 
 			function highlightFeature(e) {
 			    var layer = e.target;
+			    if(layer.feature.geometry.type == "Polygon"){
+				    layer.setStyle({
+				        weight: 5,
+				        color: '#666',
+				        dashArray: '',
+				        fillOpacity: 0.7
+				    });
 
-			    layer.setStyle({
-			        weight: 5,
-			        color: '#666',
-			        dashArray: '',
-			        fillOpacity: 0.7
-			    });
-
-			    if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
-			        layer.bringToFront();
-			    }
+				    if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+				        layer.bringToFront();
+				    }
+			}
 			    info.update(layer.feature.properties);
 			}
 
@@ -328,8 +343,14 @@
 				if(isCtrlKeyPressed){
 					window.open(e.target.feature.properties.url);
 				} else {
-					map.fitBounds(e.target.getBounds());
-					createMap(e.target.feature.properties.features);
+					if(e.target.feature.geometry.type == "Polygon"){
+						map.fitBounds(e.target.getBounds());
+						createMap(e.target.feature.properties.features);
+					} else {
+						var latlng = e.target.getLatLng(); 
+						map.flyTo(latlng, map.getZoom() + 1);
+						setMinZoom = true;
+					}
 				}
 				if(map.getMinZoom() != map.getZoom()){
 					setMinZoom = true;					
