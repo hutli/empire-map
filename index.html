@@ -8,7 +8,7 @@
 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-		<link rel="stylesheet" type="text/css" href="css/sidenav.css">
+		<!--link rel="stylesheet" type="text/css" href="css/sidenav.css"-->
 		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ==" crossorigin=""/>
 
 	   	<!-- Make sure this exists AFTER Leaflet's CSS -->
@@ -86,7 +86,16 @@
 			   height: 20px;
 			   margin-top: -10px; /* Half the height */
 			   margin-left: -10px; /* Half the width */
-			} 
+			}
+
+			.leaflet-container .leaflet-control-mouseposition {
+			  background-color: rgba(255, 255, 255, 0.7);
+			  box-shadow: 0 0 5px #bbb;
+			  padding: 0 5px;
+			  margin:0;
+			  color: #333;
+			  font: 11px/1.5 "Helvetica Neue", Arial, Helvetica, sans-serif;
+			}
 		</style>
 
 		
@@ -118,17 +127,15 @@
 				    "type": "Feature",
 				    "properties": {
 				        "name": "The Marches",
-				        "armies": 4,
-				        "territories": 4,
-				        "hyperlink": "https://www.profounddecisions.co.uk/empire-wiki/The_Marches",
+				        "Armies": 4,
+				        "Territories": 4,
+				        "url": "https://www.profounddecisions.co.uk/empire-wiki/The_Marches",
 				        "features": {"type":"FeatureCollection","features":[
 					        {
 							    "type": "Feature",
 							    "properties": {
 							        "name": "Bregasland",
-							        "armies": 4,
-							        "territories": 4,
-							        "hyperlink": "https://www.profounddecisions.co.uk/empire-wiki/Bregasland",
+							        "url": "https://www.profounddecisions.co.uk/empire-wiki/Bregasland",
 							    },
 							    "geometry":{"type":"Polygon","coordinates":[[
 							    	[1361,4811-2425],
@@ -136,13 +143,77 @@
 							    	[1848,4811-2545],
 							    	[1995,4811-2679],
 							    	[1957,4811-2791],
+							    	[2031,4811-2845],
 							    	[2280,4811-2922],
 							    	[2092,4811-3069],
 							    	[1760,4811-2963],
 							    	[1657,4811-2931],
 							    	[1408,4811-2750],
 							    ]]}
-							}
+							},
+							{
+							    "type": "Feature",
+							    "properties": {
+							        "name": "Mitwold",
+							        "url": "https://www.profounddecisions.co.uk/empire-wiki/Mitwold",
+							    },
+							    "geometry":{"type":"Polygon","coordinates":[[
+							    	[1957,4811-2791],
+							    	[1995,4811-2679],
+							    	[2374,4811-2661],
+							    	[2404,4811-2616],
+							    	[2454,4811-2586],
+							    	[2497,4811-2725],
+							    	[2611,4811-2775],
+							    	[2620,4811-2907],
+							    	[2413,4811-2992],
+							    	[2280,4811-2922],
+							    	[2031,4811-2845],
+							    ]]}
+							},
+							{
+							    "type": "Feature",
+							    "properties": {
+							        "name": "Upwold",
+							        "url": "https://www.profounddecisions.co.uk/empire-wiki/Upwold",
+							    },
+							    "geometry":{"type":"Polygon","coordinates":[[
+							    	[2454,4811-2586],
+							    	[2516,4811-2540],
+							    	[2982,4811-2502],
+				    				[3019,4811-2890],
+							    	[2952,4811-2916],
+							    	[2779,4811-2863],
+							    	[2620,4811-2907],
+							    	[2611,4811-2775],
+							    	[2497,4811-2725],
+							    ]]}
+							},
+							{
+							    "type": "Feature",
+							    "properties": {
+							        "name": "Mournwold",
+							        "url": "https://www.profounddecisions.co.uk/empire-wiki/Mournwold",
+							    },
+							    "geometry":{"type":"Polygon","coordinates":[[
+							    	[2092,4811-3069],
+							    	[2280,4811-2922],
+							    	[2413,4811-2992],
+							    	[2620,4811-2907],
+							    	[2779,4811-2863],
+							    	[2952,4811-2916],
+				    				[3019,4811-2890],
+				    				[2916,4811-3063],
+							    	[2806,4811-3100],
+							    	[2788,4811-3221],
+							    	[2755,4811-3242],
+							    	[2466,4811-3199],
+							    	[2416,4811-3210],
+							    	[2394,4811-3187],
+							    	[2248,4811-3170],
+							    	[2096,4811-3068],
+							    ]]}
+							},
 						]},
 				    },
 				    "geometry":{"type":"Polygon","coordinates":[[
@@ -152,6 +223,7 @@
 				    	[1995,4811-2679],
 				    	[2374,4811-2661],
 				    	[2404,4811-2616],
+				    	[2454,4811-2586],
 				    	[2516,4811-2540],
 				    	[2982,4811-2502],
 				    	[3019,4811-2890],
@@ -173,9 +245,9 @@
 					"type": "Feature",
 				    "properties": {
 				        "name": "Wintermark",
-				        "armies": 3,
-				        "territories": 3,
-				        "hyperlink": "https://www.profounddecisions.co.uk/empire-wiki/Wintermark"
+				        "Armies": 3,
+				        "Territories": 3,
+				        "url": "https://www.profounddecisions.co.uk/empire-wiki/Wintermark"
 				    },
 				    "geometry":{"type":"Polygon","coordinates":[[
 				    	[1763,4811-2413],
@@ -254,7 +326,7 @@
 
 			function zoomToFeature(e) {
 				if(isCtrlKeyPressed){
-					window.open(e.target.feature.properties.hyperlink);
+					window.open(e.target.feature.properties.url);
 				} else {
 					map.fitBounds(e.target.getBounds());
 					createMap(e.target.feature.properties.features);
@@ -296,11 +368,18 @@
 
 			// method that we will use to update the control based on feature properties passed
 			info.update = function (props) {
-			    this._div.innerHTML = '<h4>Empire Nation Data</h4>' +  (props ?
-			        '<b>' + props.name + '</b><br />' + 
-			        props.armies + ' armies' + '</b><br />' + 
-			        props.territories + ' territories'
-			        : 'Hover over a nation');
+				var innerHTML = '<h4>Empire Nation Data</h4>'
+				if(props){
+					innerHTML += '<b>' + props.name + '</b>';
+					for (var key in props) {
+						if(key != "name" && key != "url" && key != "features"){
+							innerHTML += '<br/>' + key + ': ' + props[key];
+						}
+			        }
+		    	} else {
+		    		innerHTML += 'Hover over a nation'
+		    	}
+			    this._div.innerHTML = innerHTML;
 			};
 			
 			/*var resetButton = L.DomUtil.create('input');
@@ -356,6 +435,57 @@
 			    document.getElementById("map").style.marginLeft = "0";
 			    document.getElementById("menuButton").onclick = openNav;
 			}
+
+			L.Control.MousePosition = L.Control.extend({
+			  options: {
+			    position: 'bottomleft',
+			    separator: ' : ',
+			    emptyString: 'Unavailable',
+			    lngFirst: false,
+			    numDigits: 5,
+			    lngFormatter: undefined,
+			    latFormatter: undefined,
+			    prefix: ""
+			  },
+
+			  onAdd: function (map) {
+			    this._container = L.DomUtil.create('div', 'leaflet-control-mouseposition');
+			    L.DomEvent.disableClickPropagation(this._container);
+			    map.on('mousemove', this._onMouseMove, this);
+			    this._container.innerHTML=this.options.emptyString;
+			    return this._container;
+			  },
+
+			  onRemove: function (map) {
+			    map.off('mousemove', this._onMouseMove)
+			  },
+
+			  _onMouseMove: function (e) {
+			    var lng = this.options.lngFormatter ? this.options.lngFormatter(e.latlng.lng) : L.Util.formatNum(e.latlng.lng, this.options.numDigits);
+			    var lat = this.options.latFormatter ? this.options.latFormatter(e.latlng.lat) : L.Util.formatNum(e.latlng.lat, this.options.numDigits);
+			    var value = this.options.lngFirst ? lng + this.options.separator + lat : lat + this.options.separator + lng;
+			    var prefixAndValue = this.options.prefix + ' ' + value;
+			    this._container.innerHTML = prefixAndValue;
+			  }
+
+			});
+
+			L.Map.mergeOptions({
+			    positionControl: false
+			});
+
+			L.Map.addInitHook(function () {
+			    if (this.options.positionControl) {
+			        this.positionControl = new L.Control.MousePosition();
+			        this.addControl(this.positionControl);
+			    }
+			});
+
+			L.control.mousePosition = function (options) {
+			    return new L.Control.MousePosition(options);
+			};
+
+			L.control.mousePosition().addTo(map);
 
 			createMap(nationsData);
 
