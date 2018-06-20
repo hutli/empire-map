@@ -499,13 +499,14 @@
 				}
 			}
 
-			var currentZoom = -2;
+			var currentLayer = 0;
 			function createLayerFromZoom(e) {
 				if(!isFeatureClicked){
 					var newZoom = map.getZoom();
-					if(newZoom == -2){
+					if(newZoom == -2 && currentLayer != 0){
 						createMap(nationsData);
-					} else if((newZoom == -1 && currentZoom != 0) || (newZoom == 0 && currentZoom != -1)){
+						currentLayer = 0;
+					} else if((newZoom == -1 || newZoom == 0) && currentLayer != 1){
 						var regionsData = {"type": "FeatureCollection"};
 						regionsData.features = new Array();
 						var nationFeatures = nationsData.features;
@@ -516,7 +517,8 @@
 							}
 						}
 						createMap(regionsData);
-					} else if(currentZoom == 0 && newZoom == 1) {
+						currentLayer = 1;
+					} else if(newZoom > 0 && currentLayer != 2) {
 						var poiData = {"type": "FeatureCollection"};
 						poiData.features = new Array();
 						var nationFeatures = nationsData.features;
@@ -532,10 +534,10 @@
 							}
 						}
 						createMap(poiData);
+						currentLayer = 2;
 					}
+					isFeatureClicked = false;
 				}
-				isFeatureClicked = false;
-				currentZoom = newZoom;
 			}
 
 			map.on({
