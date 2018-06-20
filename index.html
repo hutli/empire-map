@@ -56,7 +56,6 @@
 			    font-size: 25px;
 			    color: #818181;
 			    display: block;
-			    transition: 0.3s;
 			}
 
 			.sidenav h2 {
@@ -75,16 +74,29 @@
 
 						/* The side navigation menu */
 			.poiInfo {
+				display: block;
 			    height: 100%; /* 100% Full-height */
 			    width: 0; /* 0 width - change this with JavaScript */
 			    position: fixed; /* Stay in place */
-			    z-index: 1; /* Stay on top */
-			    top: 0; /* Stay at the top */
+			    z-index: 314159; /* Stay on top */
+			    top: 1; /* Stay at the top */
 			    right: 0;
-			    background-color: #000; /* Black*/
+			    background-color: white;
 			    overflow-x: hidden; /* Disable horizontal scroll */
 			    padding-top: 60px; /* Place content 60px from the top */
 			    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+			    box-shadow: -10px 0px 10px 1px #aaaaaa;
+			    /*border-style: outset;
+			    border-color: #c0a487;
+			    border-width: 5px;*/
+			}
+
+			.poiInfo .closebtn {
+			    position: absolute;
+			    top: 0;
+			    right: 25px;
+			    font-size: 36px;
+			    margin-left: 50px;
 			}
 
 			/* The navigation menu links */
@@ -94,7 +106,6 @@
 			    font-size: 25px;
 			    color: #818181;
 			    display: block;
-			    transition: 0.3s;
 			}
 
 			.poiInfo h2 {
@@ -260,7 +271,7 @@
 							        		"properties": {
 							        			"name": "The ruins of Overton",
 							        			"image": "overton.PNG",
-							        			"description": "Once a sheep-farming town and market set on a hill, Overton was ruined early on in the great Battle for the Greensward. The majority of the defenders were killed refusing to leave their posts. Pilgrims visit the ruins of Overton to lay tokens at the graves of the fallen. North of the ruins, the Jotun raised a massive grass-covered burial mound, beneath which lie both the bodies of countless Imperial soldiers and the Jotun who fell fighting them. Apple trees grow at the crest - it is not clear whether the orcs planted them in deference to Marcher burial customs, or whether they are the work of the surviving monks of Greensward Abbey. When the Empire liberated Greensward shortly before the Autumn Equinox 381YE there was some talk of disinterring the mound, but the Marcher soldiers were adamant they be left to rest undisturbed - the soil may have been soured, but it is still the soil they died fighting for, whether they were Marchers or not.<br/>Not far from the ruins stands Honour's Rest, a small shrine and orchard tended by friars who watch over the ruins and the barrow mounds.",
+							        			"description": "Once a sheep-farming town and market set on a hill, Overton was ruined early on in the great Battle for the Greensward. The majority of the defenders were killed refusing to leave their posts. Pilgrims visit the ruins of Overton to lay tokens at the graves of the fallen. North of the ruins, the Jotun raised a massive grass-covered burial mound, beneath which lie both the bodies of countless Imperial soldiers and the Jotun who fell fighting them. Apple trees grow at the crest - it is not clear whether the orcs planted them in deference to Marcher burial customs, or whether they are the work of the surviving monks of Greensward Abbey. When the Empire liberated Greensward shortly before the Autumn Equinox 381YE there was some talk of disinterring the mound, but the Marcher soldiers were adamant they be left to rest undisturbed - the soil may have been soured, but it is still the soil they died fighting for, whether they were Marchers or not.<br/><br/>Not far from the ruins stands Honour's Rest, a small shrine and orchard tended by friars who watch over the ruins and the barrow mounds.",
 							        			"url": "https://www.profounddecisions.co.uk/empire-wiki/Mournwold#The_ruins_of_Overton",
 							        		},
 							        		"geometry":{
@@ -414,7 +425,7 @@
 					} else {
 						var latlng = e.target.getLatLng(); 
 						map.flyTo(latlng, 1);
-						var innerHTML = "<button onclick='closePOIInfo()'>Close</button><h2>" + e.target.feature.properties.name + "</h2><a color='white'>" + e.target.feature.properties.description + "</a><img src='images/" + e.target.feature.properties.image + "'/>"
+						var innerHTML = "<a href='javascript:void(0)' class='closebtn' onclick='closePOIInfo()'>&times;</a><h2>" + e.target.feature.properties.name + "</h2><a color='white'>" + e.target.feature.properties.description + "</a><img src='images/" + e.target.feature.properties.image + "'/>"
 						openPOIInfo(innerHTML);
 					}
 					isFeatureClicked = true;
@@ -540,16 +551,18 @@
 			function openPOIInfo(innerHTML){
 				var poiInfo = document.getElementById("poiInfoPanel");
 				poiInfo.innerHTML = innerHTML;
-				poiInfo.style.width = "40%";
-			    document.getElementById("map").style.marginRight = "40%";
+				//poiInfo.style.display = "block";
+				poiInfo.style.width = "40%"
+			    //document.getElementById("map").style.marginRight = "40%";
 			    //document.getElementById("menuButton").onclick = closeNav;
 			}
 
 			function closePOIInfo(){
 				var poiInfo = document.getElementById("poiInfoPanel");
 				poiInfo.innerHTML = "";
-				poiInfo.style.width = "0";
-			    document.getElementById("map").style.marginRight = "0";
+				//poiInfo.style.display = "none";
+				poiInfo.style.width = "0"
+				//document.getElementById("map").style.marginRight = "0";
 			    //document.getElementById("menuButton").onclick = closeNav;
 			}
 
