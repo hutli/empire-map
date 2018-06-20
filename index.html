@@ -408,7 +408,7 @@
 			var setMinZoom = false;
 
 			var currentZoom = -2;
-			function setZoomToCurrent(e) {
+			function createLayerFromZoom(e) {
 				var newZoom = map.getZoom();
 				if(newZoom == -2){
 					createMap(nationsData);
@@ -416,18 +416,23 @@
 					var regionsData = {"type": "FeatureCollection"};
 					regionsData.features = new Array();
 					for (var i in nationsData.features){
-						nation = nationsData.features[i];
-						nationFeatures = nation.properties.features;
-						if(nationFeatures){
+						region = nationsData.features[i];
+						regionFeatures = nation.properties.features;
+						if(regionFeatures){
 							Array.prototype.push.apply(regionsData.features, nationFeatures.features);
 						}
 					}
 					createMap(regionsData);
 				} else if(currentZoom == 0) {
-					var poiData;
-					for (var nation in nationsData){
-						for(var region in nation.feature.properties.features){
-							poiData += nationsData.nation.region.feature.properties.features;
+					var poiData = {"type": "FeatureCollection"};
+					poiData.features = new Array();
+					var nationFeatures = nationsData.features;
+					for (var i in nationFeatures){
+						var regionFeatures = nationFeatures[i].properties.features;
+						if(regionFeatures){
+							for(var j in nationFeatures){
+								poiData += regionFeatures[j].properties.features;
+							}
 						}
 					}
 					createMap(poiData);
@@ -436,7 +441,7 @@
 			}
 
 			map.on({
-			    zoomend: setZoomToCurrent,
+			    zoomend: createLayerFromZoom,
 			});
 
 			function onEachFeature(feature, layer) {
