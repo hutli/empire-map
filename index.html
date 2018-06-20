@@ -73,12 +73,6 @@
 			    height: 100%;
 			}
 
-			/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
-			@media screen and (max-height: 450px) {
-			    .sidenav {padding-top: 15px;}
-			    .sidenav a {font-size: 18px;}
-			} 
-
 						/* The side navigation menu */
 			.poiInfo {
 			    height: 100%; /* 100% Full-height */
@@ -87,7 +81,7 @@
 			    z-index: 1; /* Stay on top */
 			    top: 0; /* Stay at the top */
 			    right: 0;
-			    background-color: #111; /* Black*/
+			    background-color: #000; /* Black*/
 			    overflow-x: hidden; /* Disable horizontal scroll */
 			    padding-top: 60px; /* Place content 60px from the top */
 			    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
@@ -110,11 +104,17 @@
 			}
 
 			.poiInfo img {
+			    display: block;
+			    margin-left: auto;
+			    margin-right: auto;
+			    width: 50%;
 			    padding: 8px 8px 8px 32px;
 			}
 
 			/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
 			@media screen and (max-height: 450px) {
+			    .sidenav {padding-top: 15px;}
+			    .sidenav a {font-size: 18px;}
 			    .poiInfo {padding-top: 15px;}
 			    .poiInfo a {font-size: 18px;}
 			} 
@@ -254,6 +254,21 @@
 							    "properties": {
 							        "name": "Mournwold",
 							        "url": "https://www.profounddecisions.co.uk/empire-wiki/Mournwold",
+							        "features": {"type":"FeatureCollection","features":[
+							        	{
+							        		"type": "Feature",
+							        		"properties": {
+							        			"name": "The ruins of Overton",
+							        			"image": "overton.jpg",
+							        			"description": "Once a sheep-farming town and market set on a hill, Overton was ruined early on in the great Battle for the Greensward. The majority of the defenders were killed refusing to leave their posts. Pilgrims visit the ruins of Overton to lay tokens at the graves of the fallen. North of the ruins, the Jotun raised a massive grass-covered burial mound, beneath which lie both the bodies of countless Imperial soldiers and the Jotun who fell fighting them. Apple trees grow at the crest - it is not clear whether the orcs planted them in deference to Marcher burial customs, or whether they are the work of the surviving monks of Greensward Abbey. When the Empire liberated Greensward shortly before the Autumn Equinox 381YE there was some talk of disinterring the mound, but the Marcher soldiers were adamant they be left to rest undisturbed - the soil may have been soured, but it is still the soil they died fighting for, whether they were Marchers or not.<br/>Not far from the ruins stands Honour's Rest, a small shrine and orchard tended by friars who watch over the ruins and the barrow mounds.",
+							        			"url": "https://www.profounddecisions.co.uk/empire-wiki/Mournwold#The_ruins_of_Overton",
+							        		},
+							        		"geometry":{
+							        			"type":"Point",
+							        			"coordinates": [2251,4811-2852],
+							        		}
+							        	}
+							        ]}
 							    },
 							    "geometry":{"type":"Polygon","coordinates":[[
 							    	[2092,4811-3069],
@@ -385,9 +400,13 @@
 			    info.update();
 			}
 
-			function zoomToFeature(e) {
+			var isFeatureClicked = false;
+			function featureClicked(e) {
 				if(isCtrlKeyPressed){
-					window.open(e.target.feature.properties.url);
+					var url = e.target.feature.properties.url;
+					if(url){
+						window.open();
+					}
 				} else {
 					if(e.target.feature.geometry.type == "Polygon"){
 						map.fitBounds(e.target.getBounds());
@@ -397,49 +416,47 @@
 						map.flyTo(latlng, 1);
 						var innerHTML = "<button onclick='closePOIInfo()'>Close</button><h2>" + e.target.feature.properties.name + "</h2><a color='white'>" + e.target.feature.properties.description + "</a><img src='images/" + e.target.feature.properties.image + "'/>"
 						openPOIInfo(innerHTML);
-						setMinZoom = true;
 					}
-				}
-				if(map.getMinZoom() != map.getZoom()){
-					setMinZoom = true;					
+					isFeatureClicked = true;
 				}
 			}
 
-			var setMinZoom = false;
-
 			var currentZoom = -2;
 			function createLayerFromZoom(e) {
-				var newZoom = map.getZoom();
-				if(newZoom == -2){
-					createMap(nationsData);
-				} else if((newZoom == -1 && currentZoom != 0) || (newZoom == 0 && currentZoom != -1)){
-					var regionsData = {"type": "FeatureCollection"};
-					regionsData.features = new Array();
-					var nationFeatures = nationsData.features;
-					for (var i in nationFeatures){
-						var regionFeatures = nationFeatures[i].properties.features;
-						if(regionFeatures){
-							Array.prototype.push.apply(regionsData.features, regionFeatures.features);
+				if(!isFeatureClicked){
+					var newZoom = map.getZoom();
+					if(newZoom == -2){
+						createMap(nationsData);
+					} else if((newZoom == -1 && currentZoom != 0) || (newZoom == 0 && currentZoom != -1)){
+						var regionsData = {"type": "FeatureCollection"};
+						regionsData.features = new Array();
+						var nationFeatures = nationsData.features;
+						for (var i in nationFeatures){
+							var regionFeatures = nationFeatures[i].properties.features;
+							if(regionFeatures){
+								Array.prototype.push.apply(regionsData.features, regionFeatures.features);
+							}
 						}
-					}
-					createMap(regionsData);
-				} else if(currentZoom == 0 && newZoom == 1) {
-					var poiData = {"type": "FeatureCollection"};
-					poiData.features = new Array();
-					var nationFeatures = nationsData.features;
-					for (var i in nationFeatures){
-						var regionFeatures = nationFeatures[i].properties.features;
-						if(regionFeatures){
-							for(var j in regionFeatures.features){
-								var poiFeatures = regionFeatures.features[j].properties.features;
-								if(poiFeatures){
-									Array.prototype.push.apply(poiData.features, poiFeatures.features);
+						createMap(regionsData);
+					} else if(currentZoom == 0 && newZoom == 1) {
+						var poiData = {"type": "FeatureCollection"};
+						poiData.features = new Array();
+						var nationFeatures = nationsData.features;
+						for (var i in nationFeatures){
+							var regionFeatures = nationFeatures[i].properties.features;
+							if(regionFeatures){
+								for(var j in regionFeatures.features){
+									var poiFeatures = regionFeatures.features[j].properties.features;
+									if(poiFeatures){
+										Array.prototype.push.apply(poiData.features, poiFeatures.features);
+									}
 								}
 							}
 						}
+						createMap(poiData);
 					}
-					createMap(poiData);
 				}
+				isFeatureClicked = false;
 				currentZoom = newZoom;
 			}
 
@@ -451,7 +468,7 @@
 			    layer.on({
 			        mouseover: highlightFeature,
 			        mouseout: resetHighlight,
-			        click: zoomToFeature,
+			        click: featureClicked,
 			    });
 			}
 
