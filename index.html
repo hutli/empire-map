@@ -255,7 +255,7 @@
 			var bounds = [[0,0], [4811,6428]];
 			var image = L.imageOverlay('images/main.png', bounds).addTo(map);
 
-			var nationsData = new L.GeoJSON.AJAX("data/geodata.json");
+			var nationsData = L.GeoJSON.AJAX("data/geodata.json");
 
 			var geojson = L.geoJson(nationsData, {
 			    style: style,
