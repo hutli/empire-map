@@ -256,7 +256,7 @@
 			var image = L.imageOverlay('images/main.png', bounds).addTo(map);
 
 			var geojson = new L.geoJson();
-			var nationsData = {};
+			var nationsData;
 
 			var xmlhttp = new XMLHttpRequest();
 			xmlhttp.onreadystatechange = function() {
