@@ -1,8 +1,0 @@
-{
-    "type": "Feature",
-    "properties": {
-        "name": "Marchers",
-        "density": 100
-    },
-    "geometry":{"type":"Polygon","coordinates":[[-87.359296,35.00118],[-85.606675,34.984749],[-85.431413,34.124869],[-85.184951,32.859696]]}
-}
