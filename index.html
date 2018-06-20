@@ -35,47 +35,97 @@
 			    color: #777;
 			}
 
+			
+			/*.sidenav {
+			    height: 100%;
+			    width: 0;
+			    position: fixed;
+			    z-index: 1;
+			    top: 0;
+			    left: 0;
+			    background-color: white;
+			    overflow-x: hidden;
+			    padding-top: 60px;
+			    transition: 0.5s;
+			    box-shadow: -10px -10px 10px 1px #aaaaaa inset;
+			}
+
+			.sidenav a {
+			    padding: 8px 32px 8px 32px;
+			    text-decoration: none;
+			    font-size: 25px;
+			    color: black;
+			    display: block;
+			}*/
+
 			/* The side navigation menu */
 			.sidenav {
 			    height: 100%; /* 100% Full-height */
-			    width: 0; /* 0 width - change this with JavaScript */
-			    position: fixed; /* Stay in place */
-			    z-index: 1; /* Stay on top */
-			    top: 0; /* Stay at the top */
+			    width: 250px;
+			    position: fixed;
 			    left: 0;
-			    background-color: #efe8e1; /* Black*/
-			    overflow-x: hidden; /* Disable horizontal scroll */
-			    padding-top: 60px; /* Place content 60px from the top */
+			    background-color: white;
+			    /*overflow-x: hidden; /* Disable horizontal scroll */
+			    padding-top: 40px; /* Place content 60px from the top */
 			    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
-			    box-shadow: -5px -5px 2.5px 1px #aaaaaa inset;
+			    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			    font-family: "Montserrat", arial, sans-serif;
+				min-height: 100%;
 			}
 
 			/* The navigation menu links */
 			.sidenav a {
-			    padding: 8px 32px 8px 32px;
-			    font-size: 25px;
-			    color: black;
+			    padding: 8px 8px 8px 32px;
+			    text-decoration: none;
+			    color: #818181;
+			    text-transform: capitalize;
 			    display: block;
+			    transition: 0.3s;
+			}
+
+			/* When you mouse over the navigation links, change their color */
+			.sidenav a:hover {
+			    color: #f1f1f1;
+			}
+
+			.sidenav a:active {
+			    color: #f1f1f1;
 			}
 
 			.sidenav h2 {
 			    font-size: 30px;
 			    text-align: center;
-				color: black;
+				color: #818181;
 			    display: block;
 			}
 
 			.sidenav ul {
-			    padding-left: 32;
-			    color: black;
+				padding-left: 32;
+			    color: #818181;
 			    display: block;
 			}
 
 			.sidenav hr {
 				height: 5px;
-				background-color: black;
-				/*padding-top: 8px;*/
+				background-color: #818181;
 				width: 90%;
+			}
+
+			.content {
+				min-height: 100%;
+				margin-bottom: -330px;
+				position: relative;
+			}
+
+			.footer {
+				height: 330px;
+				position: relative;
+			}
+
+			/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+			@media screen and (max-height: 450px) {
+			    .sidenav {padding-top: 15px;}
+			    .sidenav a {font-size: 18px;}
 			}
 
 			/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
@@ -84,24 +134,20 @@
 			    margin-left: 0;
 			    /*width: 100%;*/
 			    height: 100%;
+			    box-shadow: -10px 0px 10px 1px #aaaaaa;
 			}
 
 						/* The side navigation menu */
 			.poiInfo {
 			    height: 90%; /* 100% Full-height */
-			    width: 0; /* 0 width - change this with JavaScript */
-			    position: fixed; /* Stay in place */
+			    position: absolute; /* Stay in place */
 			    z-index: 314159; /* Stay on top */
 			    top: 1; /* Stay at the top */
-			    right: 0;
 			    background-color: white;
 			    overflow-x: hidden; /* Disable horizontal scroll */
 			    padding-top: 40px; /* Place content 60px from the top */
 			    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
 			    box-shadow: -10px 10px 10px 1px #aaaaaa;
-			    /*border-style: outset;
-			    border-color: #c0a487;
-			    border-width: 5px;*/
 			}
 
 			.poiInfo .closebtn {
@@ -160,19 +206,28 @@
 			  color: #333;
 			  font: 11px/1.5 "Helvetica Neue", Arial, Helvetica, sans-serif;
 			}
+
+			.noscrol {
+				overflow: hidden;
+			}
 		</style>
 
 		
 	</head>
-	<body data-gr-c-s-loaded="true">
+	<body data-gr-c-s-loaded="true" class="noscrol">
 		<div id="mySidenav" class="sidenav">
-		    <a href="#">The Marches</a>
-		    <a href="#">Wintermark</a>
+			<div class="content">
+				<h2>Nations</h2>
+			    <a>The Marches</a>
+			    <a>Wintermark</a>
+		    </div>
+		    <div class="footer">
 		    <hr>
-		    <h2 left="20px" style="color:#818181">Tips:</h2>
-			<ul>
-			  	<li>Hold control to open wiki</li>
-			</ul>
+			    <h2>Tips:</h2>
+				<ul>
+				  	<li>Hold control to open wiki</li>
+				</ul>
+			</div>
 		</div>
 
 		<div id="poiInfoPanel" class="poiInfo">
@@ -560,15 +615,19 @@
 			    }
 			});
 
+			var poiInfo = document.getElementById("poiInfoPanel");
+			if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+				poiInfo.style.right = "-110%";
+				poiInfo.style.width = "100%";
+			} else {
+				poiInfo.style.right = "-50%";
+				poiInfo.style.width = "40%";
+			}
+
 			function openPOIInfo(innerHTML){
-				var poiInfo = document.getElementById("poiInfoPanel");
 				poiInfo.innerHTML = innerHTML;
-				//poiInfo.style.display = "block";
-				if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-					poiInfo.style.width = "100%";
-				} else {
-					poiInfo.style.width = "40%";
-				}
+				poiInfo.style.right = 0;
+				//poiInfo.style.width = "40%";
 			    //document.getElementById("map").style.marginRight = "40%";
 			    //document.getElementById("menuButton").onclick = closeNav;
 			}
@@ -576,21 +635,24 @@
 			function closePOIInfo(){
 				var poiInfo = document.getElementById("poiInfoPanel");
 				poiInfo.innerHTML = "";
-				//poiInfo.style.display = "none";
-				poiInfo.style.width = "0";
+				if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+					poiInfo.style.right = "-110%";
+				} else {
+					poiInfo.style.right = "-50%";
+				}
 				//document.getElementById("map").style.marginRight = "0";
 			    //document.getElementById("menuButton").onclick = closeNav;
 			}
 
 			function openNav() {
-			    document.getElementById("mySidenav").style.width = "250px";
+			    //document.getElementById("mySidenav").style.width = "250px";
 			    document.getElementById("map").style.marginLeft = "250px";
 			    document.getElementById("menuButton").onclick = closeNav;
 			}
 
 			/* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
 			function closeNav() {
-			    document.getElementById("mySidenav").style.width = "0";
+			    //document.getElementById("mySidenav").style.width = "0";
 			    document.getElementById("map").style.marginLeft = "0";
 			    document.getElementById("menuButton").onclick = openNav;
 			}
