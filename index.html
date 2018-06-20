@@ -43,25 +43,39 @@
 			    z-index: 1; /* Stay on top */
 			    top: 0; /* Stay at the top */
 			    left: 0;
-			    background-color: #111; /* Black*/
+			    background-color: #efe8e1; /* Black*/
 			    overflow-x: hidden; /* Disable horizontal scroll */
 			    padding-top: 60px; /* Place content 60px from the top */
 			    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+			    box-shadow: -5px -5px 2.5px 1px #aaaaaa inset;
 			}
 
 			/* The navigation menu links */
 			.sidenav a {
-			    padding: 8px 8px 8px 32px;
-			    text-decoration: none;
+			    padding: 8px 32px 8px 32px;
 			    font-size: 25px;
-			    color: #818181;
+			    color: black;
 			    display: block;
 			}
 
 			.sidenav h2 {
-			    font-size: 35px;
-			    padding: 8px 8px 8px 32px;
-				color: #818181;
+			    font-size: 30px;
+			    text-align: center;
+				color: black;
+			    display: block;
+			}
+
+			.sidenav ul {
+			    padding-left: 32;
+			    color: black;
+			    display: block;
+			}
+
+			.sidenav hr {
+				height: 5px;
+				background-color: black;
+				/*padding-top: 8px;*/
+				width: 90%;
 			}
 
 			/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
@@ -156,7 +170,7 @@
 		    <a href="#">Wintermark</a>
 		    <hr>
 		    <h2 left="20px" style="color:#818181">Tips:</h2>
-			<ul style="color:#818181">
+			<ul>
 			  	<li>Hold control to open wiki</li>
 			</ul>
 		</div>
