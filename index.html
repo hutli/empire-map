@@ -256,17 +256,18 @@
 			var image = L.imageOverlay('images/main.png', bounds).addTo(map);
 
 			var geojson = new L.geoJson();
-			var nationsString = "";
+			var nationsData = {};
 
 			var xmlhttp = new XMLHttpRequest();
 			xmlhttp.onreadystatechange = function() {
 			    if (this.readyState == 4 && this.status == 200) {
-			        nationsString = this.responseText;
+			        nationsData = JSON.parse(this.responseText);
+			        createMap(nationsData);
+
 			    }
 			};
 			xmlhttp.open("GET", "data/geodata.json", true);
-			xmlhttp.send(); 
-			var nationsData = JSON.parse(nationsString);
+			xmlhttp.send();
 
 			/*var geojson = L.geoJson(nationsData, {
 			    style: style,
@@ -546,7 +547,7 @@
 
 			L.control.mousePosition().addTo(map);
 
-			createMap(nationsData);
+			//createMap(nationsData);
 
 			info.addTo(map);
 
