@@ -19,11 +19,11 @@
 				        			"name": "Rushring",
 				        			"image": "rushring.jpg",
 				        			"description": "A partially submerged stone circle, the notorious site of a number of ritual killings in 365YE. It stands at the centre of one of the so-called dead meres of the Grey Fens, and both local Marchers and Feni alike give it a wide berth. Local legend claims that there are thirteen stones in the Rushring, but accounts differ wildly, in some cases claiming there are as many as thirty-nine. There are likewise many stories about what the circle represents. Some claim it is a band of Jotun orcs turned to stone by a canny landskeeper, while others claim the stones mark the site of some terrible crime or ancient magical accident, perhaps that associated with the formation of the dead meres themselves.",
-				        			"url": "https://www.profounddecisions.co.uk/empire-wiki/Bregasland#Rushring",
+				        			"url": "https://www.profounddecisions.co.uk/empire-wiki/Bregasland#Rushring"
 				        		},
 				        		"geometry":{
 				        			"type":"Point",
-				        			"coordinates": [1654,4811-2788],
+				        			"coordinates": [1654,4811-2788]
 				        		}
 				        	}
 				        ]}
@@ -39,14 +39,14 @@
 				    	[2092,4811-3069],
 				    	[1760,4811-2963],
 				    	[1657,4811-2931],
-				    	[1408,4811-2750],
+				    	[1408,4811-2750]
 				    ]]}
 				},
 				{
 				    "type": "Feature",
 				    "properties": {
 				        "name": "Mitwold",
-				        "url": "https://www.profounddecisions.co.uk/empire-wiki/Mitwold",
+				        "url": "https://www.profounddecisions.co.uk/empire-wiki/Mitwold"
 				    },
 				    "geometry":{"type":"Polygon","coordinates":[[
 				    	[1957,4811-2791],
@@ -59,14 +59,14 @@
 				    	[2620,4811-2907],
 				    	[2413,4811-2992],
 				    	[2280,4811-2922],
-				    	[2031,4811-2845],
+				    	[2031,4811-2845]
 				    ]]}
 				},
 				{
 				    "type": "Feature",
 				    "properties": {
 				        "name": "Upwold",
-				        "url": "https://www.profounddecisions.co.uk/empire-wiki/Upwold",
+				        "url": "https://www.profounddecisions.co.uk/empire-wiki/Upwold"
 				    },
 				    "geometry":{"type":"Polygon","coordinates":[[
 				    	[2454,4811-2586],
@@ -77,7 +77,7 @@
 				    	[2779,4811-2863],
 				    	[2620,4811-2907],
 				    	[2611,4811-2775],
-				    	[2497,4811-2725],
+				    	[2497,4811-2725]
 				    ]]}
 				},
 				{
@@ -92,11 +92,11 @@
 				        			"name": "The ruins of Overton",
 				        			"image": "overton.PNG",
 				        			"description": "Once a sheep-farming town and market set on a hill, Overton was ruined early on in the great Battle for the Greensward. The majority of the defenders were killed refusing to leave their posts. Pilgrims visit the ruins of Overton to lay tokens at the graves of the fallen. North of the ruins, the Jotun raised a massive grass-covered burial mound, beneath which lie both the bodies of countless Imperial soldiers and the Jotun who fell fighting them. Apple trees grow at the crest - it is not clear whether the orcs planted them in deference to Marcher burial customs, or whether they are the work of the surviving monks of Greensward Abbey. When the Empire liberated Greensward shortly before the Autumn Equinox 381YE there was some talk of disinterring the mound, but the Marcher soldiers were adamant they be left to rest undisturbed - the soil may have been soured, but it is still the soil they died fighting for, whether they were Marchers or not.<br/><br/>Not far from the ruins stands Honour's Rest, a small shrine and orchard tended by friars who watch over the ruins and the barrow mounds.",
-				        			"url": "https://www.profounddecisions.co.uk/empire-wiki/Mournwold#The_ruins_of_Overton",
+				        			"url": "https://www.profounddecisions.co.uk/empire-wiki/Mournwold#The_ruins_of_Overton"
 				        		},
 				        		"geometry":{
 				        			"type":"Point",
-				        			"coordinates": [2723,4811-3179],
+				        			"coordinates": [2723,4811-3179]
 				        		}
 				        	}
 				        ]}
@@ -117,7 +117,7 @@
 				    	[2416,4811-3210],
 				    	[2394,4811-3187],
 				    	[2248,4811-3170],
-				    	[2096,4811-3068],
+				    	[2096,4811-3068]
 				    ]]}
 				},
 			]},
@@ -144,8 +144,8 @@
 	    	[2096,4811-3068],
 	    	[1760,4811-2963],
 	    	[1657,4811-2931],
-	    	[1408,4811-2750],
-	    ]]},
+	    	[1408,4811-2750]
+	    ]]}
 	},
 	{
 		"type": "Feature",
@@ -180,7 +180,7 @@
 	    	[1552,4811-1342],
 	    	[1443,4811-1665],
 	    	[1407,4811-2077],
-	    	[1573,4811-2224],
+	    	[1573,4811-2224]
 	    ]]}
 	}
 ]}
