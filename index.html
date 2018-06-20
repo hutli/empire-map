@@ -394,7 +394,7 @@
 						createMap(e.target.feature.properties.features);
 					} else {
 						var latlng = e.target.getLatLng(); 
-						map.flyTo(latlng, map.getZoom() + 1);
+						map.flyTo(latlng, 1);
 						var innerHTML = "<button onclick='closePOIInfo()'>Close</button><h2>" + e.target.feature.properties.name + "</h2><a color='white'>" + e.target.feature.properties.description + "</a><img src='images/" + e.target.feature.properties.image + "'/>"
 						openPOIInfo(innerHTML);
 						setMinZoom = true;
@@ -412,27 +412,29 @@
 				var newZoom = map.getZoom();
 				if(newZoom == -2){
 					createMap(nationsData);
-				} else if((newZoom == -1 && currentZoom != 0) || (newZoom == 0 && currentZoom != 0)){
+				} else if((newZoom == -1 && currentZoom != 0) || (newZoom == 0 && currentZoom != -1)){
 					var regionsData = {"type": "FeatureCollection"};
 					regionsData.features = new Array();
 					var nationFeatures = nationsData.features;
 					for (var i in nationFeatures){
 						var regionFeatures = nationFeatures[i].properties.features;
 						if(regionFeatures){
-							Array.prototype.push.apply(regionsData.features, regionFeatures);
+							Array.prototype.push.apply(regionsData.features, regionFeatures.features);
 						}
 					}
 					createMap(regionsData);
-				} else if(currentZoom == 0) {
+				} else if(currentZoom == 0 && newZoom == 1) {
 					var poiData = {"type": "FeatureCollection"};
 					poiData.features = new Array();
 					var nationFeatures = nationsData.features;
 					for (var i in nationFeatures){
 						var regionFeatures = nationFeatures[i].properties.features;
 						if(regionFeatures){
-							for(var j in regionFeatures){
-								var poiFeatures = regionFeatures[i].properties.features;
-								Array.prototype.push.apply(poiData.features, poiFeatures);
+							for(var j in regionFeatures.features){
+								var poiFeatures = regionFeatures.features[j].properties.features;
+								if(poiFeatures){
+									Array.prototype.push.apply(poiData.features, poiFeatures.features);
+								}
 							}
 						}
 					}
