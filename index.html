@@ -255,12 +255,25 @@
 			var bounds = [[0,0], [4811,6428]];
 			var image = L.imageOverlay('images/main.png', bounds).addTo(map);
 
-			var nationsData = L.GeoJSON.AJAX("data/geodata.json");
+			var geojson = new L.geoJson();
 
-			var geojson = L.geoJson(nationsData, {
+			$.ajax({
+				dataType: "json",
+				url: "data/data.json",
+				success: function(data) {
+				    $(data.features).each(function(key, data) {
+				        geoJson.addData(data);
+				    });
+				}
+			}).error(function() {});
+
+			geojson.style = style;
+			geojson.onEachFeature = onEachFeature;
+
+			/*var geojson = L.geoJson(nationsData, {
 			    style: style,
 			    onEachFeature: onEachFeature
-			});
+			});*/
 
 			function createMap(data){
 				map.removeLayer(geojson);
