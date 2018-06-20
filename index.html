@@ -550,7 +550,11 @@
 				var poiInfo = document.getElementById("poiInfoPanel");
 				poiInfo.innerHTML = innerHTML;
 				//poiInfo.style.display = "block";
-				poiInfo.style.width = "40%"
+				if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+					poiInfo.style.width = "100%";
+				} else {
+					poiInfo.style.width = "40%";
+				}
 			    //document.getElementById("map").style.marginRight = "40%";
 			    //document.getElementById("menuButton").onclick = closeNav;
 			}
@@ -559,7 +563,7 @@
 				var poiInfo = document.getElementById("poiInfoPanel");
 				poiInfo.innerHTML = "";
 				//poiInfo.style.display = "none";
-				poiInfo.style.width = "0"
+				poiInfo.style.width = "0";
 				//document.getElementById("map").style.marginRight = "0";
 			    //document.getElementById("menuButton").onclick = closeNav;
 			}
