@@ -157,7 +157,8 @@
 					if(img){
 						innerHTML += "<img src='images/" + img + "'/>"
 					}
-					openPOIInfo(innerHTML);
+					poiInfo.innerHTML = innerHTML;
+					poiInfo.style.right = 0;
 					isFeatureClicked = true;
 				}else {
 					map.fitBounds(e.target.getBounds());
@@ -298,12 +299,6 @@
 			} else {
 				poiInfo.style.right = "-50%";
 				poiInfo.style.width = "40%";
-			}
-
-			function openPOIInfo(innerHTML){
-				poiInfo.innerHTML = innerHTML;
-				poiInfo.style.right = 0;
-
 			}
 
 			function closePOIInfo(){
