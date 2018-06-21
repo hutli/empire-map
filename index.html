@@ -29,16 +29,16 @@
 		<div id="mySidenav" class="sidenav">
 			<div class="content">
 				<h2>Nations</h2>
-			    <a href="https://www.profounddecisions.co.uk/empire-wiki/The_Marches" onclick="sideNavClick(this)">The Marches</a><br/>
-			    <a href="https://www.profounddecisions.co.uk/empire-wiki/The_Brass_Coast" onclick="sideNavClick(this)">The Brass Coast</a><br/>
-			    <a href="https://www.profounddecisions.co.uk/empire-wiki/Dawn" onclick="sideNavClick(this)">Dawn</a><br/>
-			    <a href="https://www.profounddecisions.co.uk/empire-wiki/Highguard" onclick="sideNavClick(this)">Highguard</a>
-			    <a href="https://www.profounddecisions.co.uk/empire-wiki/Imperial_Orcs" onclick="sideNavClick(this)">Imperial Orcs</a>
-			    <a href="https://www.profounddecisions.co.uk/empire-wiki/The_League" onclick="sideNavClick(this)">The League</a>
-			    <a href="https://www.profounddecisions.co.uk/empire-wiki/Navarr" onclick="sideNavClick(this)">Navarr</a>
-			    <a href="https://www.profounddecisions.co.uk/empire-wiki/Urizen" onclick="sideNavClick(this)">Urizen</a>
-			    <a href="https://www.profounddecisions.co.uk/empire-wiki/Varushka" onclick="sideNavClick(this)">Varushka</a>
-			    <a href="https://www.profounddecisions.co.uk/empire-wiki/Wintermark" onclick="sideNavClick(this)">Wintermark</a>
+			    <a href="https://www.profounddecisions.co.uk/empire-wiki/The_Marches" onclick="sideNavClick">The Marches</a><br/>
+			    <a href="https://www.profounddecisions.co.uk/empire-wiki/The_Brass_Coast" onclick="sideNavClick">The Brass Coast</a><br/>
+			    <a href="https://www.profounddecisions.co.uk/empire-wiki/Dawn" onclick="sideNavClick">Dawn</a><br/>
+			    <a href="https://www.profounddecisions.co.uk/empire-wiki/Highguard" onclick="sideNavClick">Highguard</a>
+			    <a href="https://www.profounddecisions.co.uk/empire-wiki/Imperial_Orcs" onclick="sideNavClick">Imperial Orcs</a>
+			    <a href="https://www.profounddecisions.co.uk/empire-wiki/The_League" onclick="sideNavClick">The League</a>
+			    <a href="https://www.profounddecisions.co.uk/empire-wiki/Navarr" onclick="sideNavClick">Navarr</a>
+			    <a href="https://www.profounddecisions.co.uk/empire-wiki/Urizen" onclick="sideNavClick">Urizen</a>
+			    <a href="https://www.profounddecisions.co.uk/empire-wiki/Varushka" onclick="sideNavClick">Varushka</a>
+			    <a href="https://www.profounddecisions.co.uk/empire-wiki/Wintermark" onclick="sideNavClick">Wintermark</a>
 		    </div>
 		    <div class="footer">
 		    	<hr/>
@@ -56,12 +56,7 @@
 
 		<script>
 			function sideNavClick(e){
-				if(isCtrlKeyPressed){
-					var url = e.href;
-					if(url){
-						//window.open();
-					}
-				} else {
+				if(!isCtrlKeyPressed){
 					e.preventDefault()
 				}
 			}
