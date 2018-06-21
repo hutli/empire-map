@@ -150,7 +150,7 @@
 						var bounds = e.target.getBounds();
 						var southWest = bounds.getSouthWest();
 						var northEast = bounds.getNorthEast();
-						var newLng = (northEast.lng - southWest.lng) * 1.4;
+						var newLng = northEast.lng + (northEast.lng - southWest.lng) * 0.4;
 						bounds._northEast = {"lat": 2398, "lng": newLng};
 						map.fitBounds(bounds);
 					}
