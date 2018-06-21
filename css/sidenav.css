@@ -53,12 +53,12 @@
 
 .content {
 	min-height: 100%;
-	margin-bottom: -330px;
+	margin-bottom: -20%;
 	position: relative;
 }
 
 .footer {
-	height: 330px;
+	height: 20%;
 	position: relative;
 }
 
