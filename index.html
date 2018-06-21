@@ -69,6 +69,7 @@
 			});
 
 			var isCtrlKeyPressed = false;
+			var isAltKeyPressed = false;
 			var bounds = [[0,0], [4811,6428]];
 			var image = L.imageOverlay('images/main.png', bounds).addTo(map);
 
@@ -251,15 +252,21 @@
 				},
 			});
 			
-			$(document).on("mousedown", function (e) {
+			$(document).on("onkeydown", function (e) {
 			    if(e.ctrlKey){
 			    	isCtrlKeyPressed = true;
 			    }
+			    if(e.altKey){
+			    	isAltKeyPressed = true;
+			    }
 			});
 
-			$(document).on("mouseup", function (e) {
+			$(document).on("onkeyup", function (e) {
 			    if(!e.ctrlKey){
 			    	isCtrlKeyPressed = false;
+			    }
+			    if(!e.altKey){
+			    	isAltKeyPressed = false;
 			    }
 			});
 
