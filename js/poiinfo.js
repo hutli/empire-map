@@ -12,7 +12,7 @@ if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
 function openPOIInfo(map, e){
 	map = map.setActiveArea('poiOpenArea');
 	if(e.target.feature.geometry.type == "Point"){
-		var latlng = e.target.latlng;
+		var latlng = e.target.getLatlng();
 		map.flyTo(latlng, 1);
 	} else {
 		var bounds = e.target.getBounds();
