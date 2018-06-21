@@ -45,6 +45,7 @@
 			    <h2>Tips:</h2>
 				<ul>
 				  	<li>Hold control when clicking to open wiki</li>
+				  	<li>Hold alt when clicking to open POI Info</li>
 				</ul>
 			</div>
 		</div>
@@ -135,21 +136,25 @@
 
 			var isFeatureClicked = false;
 			function featureClicked(e) {
+				var geometryType = e.target.feature.geometry.type;
 				if(isCtrlKeyPressed){
 					var url = e.target.feature.properties.url;
 					if(url){
 						window.open(url);
 					}
-				} else {
-					if(e.target.feature.geometry.type == "Polygon"){
-						map.fitBounds(e.target.getBounds());
-						createMap(e.target.feature.properties.features);
-					} else {
-						var latlng = e.target.getLatLng(); 
+				} else if (isAltKeyPressed || geometryType == "Point"){
+					var latlng = e.target.getLatLng();
+					if(geometryType == "Point"){ 
 						map.flyTo(latlng, 1);
-						var innerHTML = "<a href='javascript:void(0)' class='closebtn' onclick='closePOIInfo()'>&times;</a><h2>" + e.target.feature.properties.name + "</h2><a color='white'>" + e.target.feature.properties.description + "</a><img src='images/" + e.target.feature.properties.image + "'/>"
-						openPOIInfo(innerHTML);
+					} else {
+						map.flyTo(latlng, map.getZoom());
 					}
+					var innerHTML = "<a href='javascript:void(0)' class='closebtn' onclick='closePOIInfo()'>&times;</a><h2>" + e.target.feature.properties.name + "</h2><a color='white'>" + e.target.feature.properties.description + "</a><img src='images/" + e.target.feature.properties.image + "'/>"
+					openPOIInfo(innerHTML);
+					isFeatureClicked = true;
+				}else {
+					map.fitBounds(e.target.getBounds());
+					createMap(e.target.feature.properties.features);
 					isFeatureClicked = true;
 				}
 			}
