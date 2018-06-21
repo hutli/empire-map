@@ -149,7 +149,15 @@
 					} else {
 						map.flyTo(latlng, map.getZoom());
 					}
-					var innerHTML = "<a href='javascript:void(0)' class='closebtn' onclick='closePOIInfo()'>&times;</a><h2>" + e.target.feature.properties.name + "</h2><a color='white'>" + e.target.feature.properties.description + "</a><img src='images/" + e.target.feature.properties.image + "'/>"
+					var innerHTML = "<a href='javascript:void(0)' class='closebtn' onclick='closePOIInfo()'>&times;</a><h2>" + e.target.feature.properties.name + "</h2>";
+					var description = e.target.feature.properties.description;
+					if(description){
+						innerHTML += "<a>" + e.target.feature.properties.description + "</a>"
+					}
+					var img = e.target.feature.properties.image;
+					if(img){
+						innerHTML += "<img src='images/" +  + "'/>"
+					}
 					openPOIInfo(innerHTML);
 					isFeatureClicked = true;
 				}else {
