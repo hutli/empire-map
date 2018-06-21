@@ -305,7 +305,9 @@
 			function openPOIInfo(innerHTML){
 				poiInfo.innerHTML = innerHTML;
 				poiInfo.style.right = 0;
-				//document.getElementById("map").style.marginRight = "35%";
+				if(! /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+					document.getElementById("map").style.marginRight = "35%";
+				}
 
 			}
 
@@ -315,6 +317,7 @@
 				if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
 					poiInfo.style.right = "-110%";
 				} else {
+					document.getElementById("map").style.marginRight = "0";
 					poiInfo.style.right = "-50%";
 				}
 			}
