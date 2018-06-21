@@ -9,9 +9,9 @@ if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
 	poiInfo.style.width = "40%";
 }
 
-function openPOIInfo(map, e, geometryType){
+function openPOIInfo(map, e){
 	map = map.setActiveArea('poiOpenArea');
-	if(geometryType == "Point"){
+	if(e.target.feature.geometry.type == "Point"){
 		var latlng = e.target.latlng;
 		map.flyTo(latlng, 1);
 	} else {

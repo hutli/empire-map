@@ -140,7 +140,7 @@
 						window.open(url);
 					}
 				} else if (isAltKeyPressed || geometryType == "Point"){
-					openPOIInfo(map, e, geometryType);
+					openPOIInfo(map, e);
 				}else {
 					map.fitBounds(e.target.getBounds());
 					createMap(e.target.feature.properties.features);
