@@ -13,7 +13,7 @@
 .sidenav h2 {
 	padding-left: 32px;
 	display: block;
-    font-size: 30px;
+    font-size: 32px;
 	color: #818181;
 }
 
@@ -21,8 +21,8 @@
 .sidenav a {
 	padding-left: 32px;
 	display: block;
-	/*text-align: center;*/
     text-decoration: none;
+    font-size: 26px;
     color: #818181;
 }
 
@@ -37,6 +37,7 @@
 
 .sidenav ul {
 	display: block;
+	font-size: 26px;
     color: #818181;
 }
 
@@ -62,8 +63,9 @@
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {
     .sidenav {padding-top: 5px;}
-    .sidenav a {font-size: 12px;}
     .sidenav h2 {font-size: 16px;}
+    .sidenav a {font-size: 12px;}
+    .sidenav ul {font-size: 12px;}
     .content {margin-bottom: 150px;}
     .footer {height: 150px;}
 }
