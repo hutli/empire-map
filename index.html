@@ -137,7 +137,7 @@
 				if(isCtrlKeyPressed){
 					var url = e.target.feature.properties.url;
 					if(url){
-						window.open();
+						window.open(url);
 					}
 				} else {
 					if(e.target.feature.geometry.type == "Polygon"){
