@@ -6,7 +6,6 @@
     left: 0;
     background-color: white;
     padding-top: 10px; /* Place content 10px from the top */
-    padding-right: -100px;
     font-family: "Montserrat", arial, sans-serif;
 	height: 100%;
 }
@@ -38,6 +37,7 @@
 }
 
 .sidenav ul {
+    padding-right: 32px;
 	display: block;
 	font-size: 16px;
     color: #818181;
