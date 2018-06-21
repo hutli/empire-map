@@ -56,7 +56,7 @@
 
 		<script>
 			function sideNavClick(e){
-				if(!isCtrlKeyPressed){
+				if(e.ctrlKey){
 					e.preventDefault()
 				}
 			}
