@@ -23,13 +23,13 @@
 .poiInfo a {
     padding: 8px 32px 8px 32px;
     text-decoration: none;
-    font-size: 25px;
+    font-size: 22px;
     color: #818181;
     display: block;
 }
 
 .poiInfo h2 {
-    font-size: 35px;
+    font-size: 30px;
     padding: 8px 32px 8px 32px;
 	color: #818181;
 }
@@ -43,8 +43,7 @@
 
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {
-    .sidenav {padding-top: 15px;}
-    .sidenav a {font-size: 18px;}
     .poiInfo {padding-top: 15px;}
-    .poiInfo a {font-size: 18px;}
+    .poiInfo a {font-size: 12px;}
+    .poiInfo h2 {font-size: 14px}
 }

@@ -20,7 +20,6 @@
     color: #818181;
     text-transform: capitalize;
     display: block;
-    transition: 0.3s;
 }
 
 /* When you mouse over the navigation links, change their color */
@@ -52,12 +51,13 @@
 }
 
 .content {
-	min-height: 100%;
-	margin-bottom: -20%;
+	top: 0;
+	height: 80%;
 	position: relative;
 }
 
 .footer {
+	bottom: 0;
 	height: 20%;
 	position: relative;
 }
@@ -65,7 +65,7 @@
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
-    .sidenav a {font-size: 18px;}
+    .sidenav a {font-size: 12px;}
 }
 
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
