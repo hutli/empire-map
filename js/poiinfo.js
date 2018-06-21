@@ -1,5 +1,5 @@
 var poiInfo = document.createElement("div");
-poiInfo.classList.add("poiInfo");
+poiInfo.className = "poiInfo";
 if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
 	poiInfo.style.right = "-110%";
 	poiInfo.style.width = "100%";
