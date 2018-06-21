@@ -152,11 +152,11 @@
 					var innerHTML = "<a href='javascript:void(0)' class='closebtn' onclick='closePOIInfo()'>&times;</a><h2>" + e.target.feature.properties.name + "</h2>";
 					var description = e.target.feature.properties.description;
 					if(description){
-						innerHTML += "<a>" + e.target.feature.properties.description + "</a>"
+						innerHTML += "<a>" + description + "</a>"
 					}
 					var img = e.target.feature.properties.image;
 					if(img){
-						innerHTML += "<img src='images/" +  + "'/>"
+						innerHTML += "<img src='images/" + img + "'/>"
 					}
 					openPOIInfo(innerHTML);
 					isFeatureClicked = true;
