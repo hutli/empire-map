@@ -6,7 +6,7 @@
     left: 0;
     background-color: white;
     /*overflow-x: hidden; /* Disable horizontal scroll */
-    padding-top: 40px; /* Place content 60px from the top */
+    padding-top: 10px; /* Place content 60px from the top */
     transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     font-family: "Montserrat", arial, sans-serif;
