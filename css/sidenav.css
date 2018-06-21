@@ -18,8 +18,6 @@
     padding: 8px 8px 8px 32px;
     text-decoration: none;
     color: #818181;
-    text-transform: capitalize;
-    display: block;
 }
 
 /* When you mouse over the navigation links, change their color */
@@ -35,13 +33,11 @@
     font-size: 30px;
     text-align: center;
 	color: #818181;
-    display: block;
 }
 
 .sidenav ul {
 	padding-left: 32;
     color: #818181;
-    display: block;
 }
 
 .sidenav hr {
