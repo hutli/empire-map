@@ -68,7 +68,7 @@
     .sidenav {padding-top: 5px;}
     .sidenav a {font-size: 12px;}
     .sidenav h2 {font-size: 16px;}
-    .content {padding-bottom: 150px;}
+    .content {margin-bottom: 150px;}
     .footer {height: 150px;}
 }
 
