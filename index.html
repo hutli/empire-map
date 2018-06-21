@@ -56,9 +56,8 @@
 
 		<script>
 			function sideNavClick(e){
-				if(e.ctrlKey){
-					e.preventDefault()
-				}
+				
+				return false;
 			}
 
 			var map = L.map('map', {
