@@ -138,6 +138,14 @@
 						window.open(url);
 					}
 				} else if (isAltKeyPressed || geometryType == "Point"){
+					map = map.setActiveArea('poiOpenArea');
+					if(geometryType == "Point"){
+						var latlng = e.target.latlng;
+						map.flyTo(latlng, 1);
+					} else {
+						var bounds = e.target.getBounds();
+						map.fitBounds(bounds);
+					}
 					openPOIInfo(map, e.target.feature.properties);
 					isFeatureClicked = true;
 				}else {

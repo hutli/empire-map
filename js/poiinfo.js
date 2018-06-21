@@ -8,23 +8,15 @@ if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
 }
 
 function openPOIInfo(map, properties){
-	map = map.setActiveArea('poiOpenArea');
-		if(geometryType == "Point"){
-			var latlng = e.target.latlng;
-			map.flyTo(latlng, 1);
-		} else {
-			var bounds = e.target.getBounds();
-			map.fitBounds(bounds);
-		}
-		var innerHTML = "<a href='javascript:void(0)' class='closebtn' onclick='closePOIInfo()'>&times;</a><h2>" + properties.name + "</h2>";
-		var description = properties.description;
-		if(description){
-			innerHTML += "<a>" + description + "</a>"
-		}
-		var img = properties.image;
-		if(img){
-			innerHTML += "<img src='images/" + img + "'/>"
-		}
+	var innerHTML = "<a href='javascript:void(0)' class='closebtn' onclick='closePOIInfo()'>&times;</a><h2>" + properties.name + "</h2>";
+	var description = properties.description;
+	if(description){
+		innerHTML += "<a>" + description + "</a>"
+	}
+	var img = properties.image;
+	if(img){
+		innerHTML += "<img src='images/" + img + "'/>"
+	}
 	poiInfo.innerHTML = innerHTML;
 	poiInfo.style.right = 0;
 }
