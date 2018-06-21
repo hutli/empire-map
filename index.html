@@ -147,12 +147,12 @@
 						var latlng = e.target.latlng;
 						map.flyTo(latlng, 1);
 					} else {
-						var tmpBounds = e.target.getBounds();
+						var bounds = Object.assign(new Object(), e.target.getBounds());
 						var southWest = e.target.getBounds().getSouthWest();
 						var northEast = e.target.getBounds().getNorthEast();
 						var newLng = northEast.lng + (northEast.lng - southWest.lng) * 0.4;
-						northEast.lng = newLng;
-						map.fitBounds({southWest, northEast});
+						bounds._northEast.lng = newLng;
+						map.fitBounds(bounds);
 					}
 					var innerHTML = "<a href='javascript:void(0)' class='closebtn' onclick='closePOIInfo()'>&times;</a><h2>" + e.target.feature.properties.name + "</h2>";
 					var description = e.target.feature.properties.description;
