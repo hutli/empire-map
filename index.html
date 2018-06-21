@@ -57,6 +57,7 @@
 
 		<div id="map" class="main"></div>
 
+		<script src="js/poiinfo.js"></script>
 		<script>
 			function sideNavClick(t, e){
 				if(e.ctrlKey){
@@ -140,26 +141,7 @@
 						window.open(url);
 					}
 				} else if (isAltKeyPressed || geometryType == "Point"){
-					map = map.setActiveArea('poiOpenArea');
-					if(geometryType == "Point"){
-						var latlng = e.target.latlng;
-						map.flyTo(latlng, 1);
-					} else {
-						var bounds = e.target.getBounds();
-						map.fitBounds(bounds);
-					}
-					var innerHTML = "<a href='javascript:void(0)' class='closebtn' onclick='closePOIInfo()'>&times;</a><h2>" + e.target.feature.properties.name + "</h2>";
-					var description = e.target.feature.properties.description;
-					if(description){
-						innerHTML += "<a>" + description + "</a>"
-					}
-					var img = e.target.feature.properties.image;
-					if(img){
-						innerHTML += "<img src='images/" + img + "'/>"
-					}
-					poiInfo.innerHTML = innerHTML;
-					poiInfo.style.right = 0;
-					isFeatureClicked = true;
+					openPOIInfo(map, e);
 				}else {
 					map.fitBounds(e.target.getBounds());
 					createMap(e.target.feature.properties.features);
