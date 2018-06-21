@@ -143,8 +143,8 @@
 						window.open(url);
 					}
 				} else if (isAltKeyPressed || geometryType == "Point"){
-					var latlng = e.target.getLatLng();
-					if(geometryType == "Point"){ 
+					var latlng = e.latlng;
+					if(geometryType == "Point"){
 						map.flyTo(latlng, 1);
 					} else {
 						map.flyTo(latlng, map.getZoom());
