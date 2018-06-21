@@ -38,3 +38,7 @@ html, body {
     margin: 0 0 5px;
     color: #777;
 }
+
+.poiOpenArea { position: absolute; top: 0; left: 0; width: 50%; height: 100%; }
+
+.poiCloseArea { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
