@@ -44,6 +44,6 @@ function closePOIInfo(map){
 	}
 }
 
-document.onload = function(){
+$(document).ready(function(){
 	document.body.appendChild(poiInfo);
 }
