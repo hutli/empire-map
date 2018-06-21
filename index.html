@@ -52,9 +52,10 @@
 			</div>
 		</div>
 
-		<div id="map" class="main"></div>
+		<div id="poiInfoPanel" class="poiInfo">
+		</div>
 
-		<div id="poiInfoPanel" class="poiInfo"></div>
+		<div id="map" class="main"></div>
 
 		<script src="js/poiinfo.js"></script>
 		<script>
@@ -272,6 +273,27 @@
 			    	isAltKeyPressed = false;
 			    }
 			});
+
+			var poiInfo = document.getElementById("poiInfoPanel");
+			if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+				poiInfo.style.right = "-110%";
+				poiInfo.style.width = "100%";
+			} else {
+				poiInfo.style.right = "-50%";
+				poiInfo.style.width = "40%";
+			}
+
+			function closePOIInfo(){
+				map = map.setActiveArea('poiCloseArea');
+				var poiInfo = document.getElementById("poiInfoPanel");
+				poiInfo.innerHTML = "";
+				if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+					poiInfo.style.right = "-110%";
+				} else {
+					document.getElementById("map").style.marginRight = "0";
+					poiInfo.style.right = "-50%";
+				}
+			}
 
 			function openNav() {
 				if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
