@@ -18,6 +18,7 @@
     padding: 8px 8px 8px 32px;
     text-decoration: none;
     color: #818181;
+    display: block;
 }
 
 /* When you mouse over the navigation links, change their color */
