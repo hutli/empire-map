@@ -41,6 +41,7 @@
 }
 
 .sidenav hr {
+	align-items: center;
 	height: 5px;
 	background-color: #818181;
 	width: 90%;
