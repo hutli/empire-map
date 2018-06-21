@@ -42,6 +42,10 @@
     color: #818181;
 }
 
+.sidenav li {
+	padding-bottom: 8px;
+}
+
 .sidenav hr {
 	align-items: center;
 	height: 5px;
