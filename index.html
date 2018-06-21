@@ -252,7 +252,7 @@
 				},
 			});
 			
-			$(document).on("onkeydown", function (e) {
+			$(document).on("keydown", function (e) {
 			    if(e.ctrlKey){
 			    	isCtrlKeyPressed = true;
 			    }
@@ -261,7 +261,7 @@
 			    }
 			});
 
-			$(document).on("onkeyup", function (e) {
+			$(document).on("keyup", function (e) {
 			    if(!e.ctrlKey){
 			    	isCtrlKeyPressed = false;
 			    }
