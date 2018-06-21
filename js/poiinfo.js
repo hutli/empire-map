@@ -7,7 +7,7 @@ if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
 	poiInfo.style.width = "40%";
 }
 
-function openPOIInfo(innerHTML, map){
+function openPOIInfo(map, properties){
 	map = map.setActiveArea('poiOpenArea');
 		if(geometryType == "Point"){
 			var latlng = e.target.latlng;
@@ -16,12 +16,12 @@ function openPOIInfo(innerHTML, map){
 			var bounds = e.target.getBounds();
 			map.fitBounds(bounds);
 		}
-		var innerHTML = "<a href='javascript:void(0)' class='closebtn' onclick='closePOIInfo()'>&times;</a><h2>" + e.target.feature.properties.name + "</h2>";
-		var description = e.target.feature.properties.description;
+		var innerHTML = "<a href='javascript:void(0)' class='closebtn' onclick='closePOIInfo()'>&times;</a><h2>" + properties.name + "</h2>";
+		var description = properties.description;
 		if(description){
 			innerHTML += "<a>" + description + "</a>"
 		}
-		var img = e.target.feature.properties.image;
+		var img = properties.image;
 		if(img){
 			innerHTML += "<img src='images/" + img + "'/>"
 		}
