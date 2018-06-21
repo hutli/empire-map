@@ -46,4 +46,5 @@ function closePOIInfo(map){
 $(document).ready(function(){
 	poiInfo = document.createElement("poiInfoPanel");
 	poiInfo.className = "poiInfo";
+	document.body.appendChild(poiInfo);
 });
