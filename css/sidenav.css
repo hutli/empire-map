@@ -12,7 +12,7 @@
 
 /* The navigation menu links */
 .sidenav a {
-	padding-left: 32;
+	margin-left: 32;
     text-decoration: none;
     color: #818181;
 }
@@ -33,7 +33,7 @@
 }
 
 .sidenav ul {
-	padding-left: 32;
+	margin-left: 32;
     color: #818181;
 }
 
