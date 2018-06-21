@@ -1,3 +1,6 @@
+var poiInfo = document.createElement("poiInfoPanel");
+poiInfo.className = "poiInfo";
+
 if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
 	poiInfo.style.right = "-110%";
 	poiInfo.style.width = "100%";
@@ -42,6 +45,5 @@ function closePOIInfo(map){
 }
 
 document.onload = function(){
-	var poiInfo = document.createElement("poiInfoPanel");
-	poiInfo.className = poiInfo;
+	document.body.appendChild(poiInfo);
 }
