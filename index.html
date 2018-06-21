@@ -138,7 +138,7 @@
 						window.open(url);
 					}
 				} else if (isAltKeyPressed || geometryType == "Point"){
-					openPOIInfo(map, e.target.feature);
+					openPOIInfo(map, e.target.feature.properties);
 					isFeatureClicked = true;
 				}else {
 					map.fitBounds(e.target.getBounds());
