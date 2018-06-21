@@ -151,7 +151,7 @@
 						var southWest = e.target.getBounds().getSouthWest();
 						var northEast = e.target.getBounds().getNorthEast();
 						var newLng = northEast.lng + (northEast.lng - southWest.lng) * 0.4;
-						northEast.lng newLng;
+						northEast.lng = newLng;
 						map.fitBounds({southWest, northEast});
 					}
 					var innerHTML = "<a href='javascript:void(0)' class='closebtn' onclick='closePOIInfo()'>&times;</a><h2>" + e.target.feature.properties.name + "</h2>";
