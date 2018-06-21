@@ -12,6 +12,7 @@
 
 /* The navigation menu links */
 .sidenav a {
+	padding-left: 32;
     text-decoration: none;
     color: #818181;
     display: block;
