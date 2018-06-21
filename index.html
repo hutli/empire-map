@@ -148,6 +148,10 @@
 						map.flyTo(latlng, 1);
 					} else {
 						var bounds = e.target.getBounds();
+						var southWest = bounds.getSouthWest();
+						var northEast = bounds.getNorthEast();
+						var newLng = (northEast.lng - southWest.lng) * 0.4;
+						bounds._northEast = {"lat": 2398, "lng": newLng};
 						map.fitBounds(bounds);
 					}
 					var innerHTML = "<a href='javascript:void(0)' class='closebtn' onclick='closePOIInfo()'>&times;</a><h2>" + e.target.feature.properties.name + "</h2>";
