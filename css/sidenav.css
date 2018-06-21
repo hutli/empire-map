@@ -10,9 +10,15 @@
 	height: 100%;
 }
 
+.sidenav h2 {
+    font-size: 30px;
+    text-align: center;
+	color: #818181;
+}
+
 /* The navigation menu links */
 .sidenav a {
-	margin-left: 32;
+	text-align: center;
     text-decoration: none;
     color: #818181;
 }
@@ -24,12 +30,6 @@
 
 .sidenav a:active {
     color: #f1f1f1;
-}
-
-.sidenav h2 {
-    font-size: 30px;
-    text-align: center;
-	color: #818181;
 }
 
 .sidenav ul {
