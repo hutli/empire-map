@@ -19,6 +19,7 @@
 
 /* The navigation menu links */
 .sidenav a {
+	padding-bottom: 8px;
 	padding-left: 32px;
 	display: block;
     text-decoration: none;
