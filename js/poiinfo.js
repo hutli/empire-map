@@ -7,13 +7,11 @@ if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
 	poiInfo.style.width = "40%";
 }
 
-function openPOIInfo(map, properties, geometryType){
+function openPOIInfo(map, properties, geometryType, latlng, bounds){
 	map = map.setActiveArea('poiOpenArea');
 	if(geometryType == "Point"){
-		var latlng = e.target.latlng;
 		map.flyTo(latlng, 1);
 	} else {
-		var bounds = e.target.getBounds();
 		map.fitBounds(bounds);
 	}
 	var innerHTML = "<a href='javascript:void(0)' class='closebtn' onclick='closePOIInfo()'>&times;</a><h2>" + properties.name + "</h2>";
@@ -30,9 +28,8 @@ function openPOIInfo(map, properties, geometryType){
 }
 
 
-function closePOIInfo(){
+function closePOIInfo(map){
 	map = map.setActiveArea('poiCloseArea');
-	var poiInfo = document.getElementById("poiInfoPanel");
 	poiInfo.innerHTML = "";
 	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
 		poiInfo.style.right = "-110%";
