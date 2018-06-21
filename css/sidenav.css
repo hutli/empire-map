@@ -11,6 +11,7 @@
 }
 
 .sidenav h2 {
+	display: block;
     font-size: 30px;
     text-align: center;
 	color: #818181;
@@ -18,7 +19,8 @@
 
 /* The navigation menu links */
 .sidenav a {
-	text-align: center;
+	display: block;
+	/*text-align: center;*/
     text-decoration: none;
     color: #818181;
 }
@@ -32,7 +34,8 @@
     color: #f1f1f1;
 }
 
-.sidenav ul {
+.sidenav li {
+	display: block;
 	margin-left: 32;
     color: #818181;
 }
