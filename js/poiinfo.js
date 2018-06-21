@@ -1,4 +1,13 @@
-var poiInfo;
+var poiInfo = document.createElement("poiInfoPanel");
+poiInfo.className = "poiInfo";
+document.body.appendChild(poiInfo);
+if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+	poiInfo.style.right = "-110%";
+	poiInfo.style.width = "100%";
+} else {
+	poiInfo.style.right = "-50%";
+	poiInfo.style.width = "40%";
+}
 
 function openPOIInfo(map, e, geometryType){
 	map = map.setActiveArea('poiOpenArea');
@@ -34,17 +43,3 @@ function closePOIInfo(map){
 		poiInfo.style.right = "-50%";
 	}
 }
-
-$(document).ready(function(){
-	poiInfo = document.createElement("poiInfoPanel");
-	poiInfo.className = "poiInfo";
-	document.body.appendChild(poiInfo);
-	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-		poiInfo.style.right = "-110%";
-		poiInfo.style.width = "100%";
-	} else {
-		poiInfo.style.right = "-50%";
-		poiInfo.style.width = "40%";
-	}
-
-});
