@@ -148,7 +148,7 @@
 						map.flyTo(latlng, 1);
 					} else {
 						var bounds = e.target.getBounds();
-						var southWest = bounds.getNouthWest();
+						var southWest = bounds.getSouthWest();
 						var northEast = bounds.getNorthEast();
 						var newLng = northEast.lng + (northEast.lng - southWest.lng) * 0.4;
 						map.fitBounds({"_northEast": northEast, "_southWest": southWest});
