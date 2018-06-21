@@ -6,6 +6,7 @@
     left: 0;
     background-color: white;
     padding-top: 10px; /* Place content 10px from the top */
+	padding-left: 32px;
     font-family: "Montserrat", arial, sans-serif;
 	height: 100%;
 }
@@ -13,14 +14,12 @@
 .sidenav h2 {
 	display: block;
     font-size: 30px;
-    text-align: center;
 	color: #818181;
 }
 
 /* The navigation menu links */
 .sidenav a {
 	display: block;
-	padding-left: 32px;
 	/*text-align: center;*/
     text-decoration: none;
     color: #818181;
@@ -37,7 +36,6 @@
 
 .sidenav ul {
 	display: block;
-	padding-left: 32px;
     color: #818181;
 }
 
