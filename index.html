@@ -151,7 +151,7 @@
 						var southWest = bounds.getSouthWest();
 						var northEast = bounds.getNorthEast();
 						var oldLng = northEast.lng;
-						northEast.lng = northEast.lng + (northEast.lng - southWest.lng) * 0.4;
+						northEast.lng = northEast.lng + (northEast.lng - southWest.lng);
 						map.fitBounds(bounds);
 						northEast.lng = oldLng;
 					}
@@ -304,8 +304,8 @@
 				poiInfo.style.right = "-110%";
 				poiInfo.style.width = "100%";
 			} else {
-				poiInfo.style.right = "-50%";
-				poiInfo.style.width = "40%";
+				poiInfo.style.right = "-60%";
+				poiInfo.style.width = "50%";
 			}
 
 			function openPOIInfo(innerHTML){
@@ -324,7 +324,7 @@
 					poiInfo.style.right = "-110%";
 				} else {
 					document.getElementById("map").style.marginRight = "0";
-					poiInfo.style.right = "-50%";
+					poiInfo.style.right = "-60%";
 				}
 			}
 
