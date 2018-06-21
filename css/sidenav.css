@@ -53,7 +53,7 @@
 .content {
 	top: 0;
 	height: 100%;
-	margin-bottom: 250px;
+	padding-bottom: 250px;
 	position: relative;
 }
 
@@ -65,13 +65,10 @@
 
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {
-    .sidenav {
-    	padding-top: 5px;
-    	width: 150px;
-    }
+    .sidenav {padding-top: 5px;}
     .sidenav a {font-size: 12px;}
     .sidenav h2 {font-size: 16px;}
-    .content {margin-bottom: 150px;}
+    .content {padding-bottom: 150px;}
     .footer {height: 150px;}
 }
 

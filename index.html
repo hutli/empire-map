@@ -262,9 +262,6 @@
 			function openPOIInfo(innerHTML){
 				poiInfo.innerHTML = innerHTML;
 				poiInfo.style.right = 0;
-				//poiInfo.style.width = "40%";
-			    //document.getElementById("map").style.marginRight = "40%";
-			    //document.getElementById("menuButton").onclick = closeNav;
 			}
 
 			function closePOIInfo(){
@@ -275,19 +272,19 @@
 				} else {
 					poiInfo.style.right = "-50%";
 				}
-				//document.getElementById("map").style.marginRight = "0";
-			    //document.getElementById("menuButton").onclick = closeNav;
 			}
 
 			function openNav() {
-			    //document.getElementById("mySidenav").style.width = "250px";
-			    document.getElementById("map").style.marginLeft = "250px";
+				if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+					document.getElementById("map").style.marginLeft = "150px";
+				} else {
+			    	document.getElementById("map").style.marginLeft = "250px";
+				}
 			    document.getElementById("menuButton").onclick = closeNav;
 			}
 
 			/* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
 			function closeNav() {
-			    //document.getElementById("mySidenav").style.width = "0";
 			    document.getElementById("map").style.marginLeft = "0";
 			    document.getElementById("menuButton").onclick = openNav;
 			}
