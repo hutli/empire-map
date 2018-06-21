@@ -147,7 +147,8 @@
 						var latlng = e.target.latlng;
 						map.flyTo(latlng, 1);
 					} else {
-						map.fitBounds(e.target.getBounds());
+						var bounds = e.target.getBounds();
+						map.fitBounds(bounds);
 					}
 					var innerHTML = "<a href='javascript:void(0)' class='closebtn' onclick='closePOIInfo()'>&times;</a><h2>" + e.target.feature.properties.name + "</h2>";
 					var description = e.target.feature.properties.description;
@@ -306,7 +307,7 @@
 				poiInfo.innerHTML = innerHTML;
 				poiInfo.style.right = 0;
 				if(! /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
-					document.getElementById("map").style.marginRight = "35%";
+					//document.getElementById("map").style.marginRight = "35%";
 				}
 
 			}
