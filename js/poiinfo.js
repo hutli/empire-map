@@ -18,7 +18,7 @@ function openPOIInfo(map, e, geometryType){
 		var bounds = e.target.getBounds();
 		map.fitBounds(bounds);
 	}
-	var innerHTML = "<a href='javascript:void(0)' class='closebtn' onclick='closePOIInfo()'>&times;</a><h2>" + e.target.feature.properties.name + "</h2>";
+	var innerHTML = "<a href='javascript:void(0)' class='closebtn' onclick='closePOIInfo(map)'>&times;</a><h2>" + e.target.feature.properties.name + "</h2>";
 	var description = e.target.feature.properties.description;
 	if(description){
 		innerHTML += "<a>" + description + "</a>"
