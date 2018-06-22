@@ -154,9 +154,9 @@
 				var curretZoom = map.getZoom();
 				if(curretZoom <= -2){
 					currentLayer = 0;
-				} else if (curretZoom > -2 && curretZoom < 0) {
+				} else if (curretZoom > -2 && curretZoom <= 0) {
 					currentLayer = 1;
-				} else if (curretZoom >= 0){
+				} else if (curretZoom > 0){
 					currentLayer = 2;
 				}
 			}
