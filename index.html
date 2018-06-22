@@ -91,11 +91,6 @@
 			xmlhttp.send();
 
 			function createMap(data){
-				for(var i in data.features){
-					var feature = data.features[i];
-					feature.bindToolTip(feature.properties.name);
-				}
-
 				map.removeLayer(geojson);
 
 				geojson = L.geoJson(data, {
