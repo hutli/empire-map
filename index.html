@@ -97,6 +97,10 @@
 				    style: style,
 				    onEachFeature: onEachFeature
 				}).addTo(map);
+
+				for(var layers in map.getLayers()){
+					layer.bindToolTip(feature.properties.name);
+				}
 			}
 
 			function style(feature) {
