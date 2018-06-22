@@ -92,7 +92,8 @@
 
 			function createMap(data, createLabels=true){
 				if(createLabels){
-					for(var feature in data.features){
+					for(var i in data.features){
+						var feature = data.features[i];
 						var center = feature.getBounds().getCenter();
 					    var label = L.marker(center, {
 						    icon: L.divIcon({
