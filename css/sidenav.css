@@ -56,13 +56,14 @@
 
 .content {
 	top: 0;
-	margin-bottom: -300px;
+	margin-bottom: -275px;
 	position: absolute;
 }
 
 .footer {
+	background: white;
 	bottom: 0;
-	height: 300px;
+	height: 275px;
 	position: absolute;
 }
 
@@ -73,7 +74,7 @@
     .sidenav a {font-size: 12px;}
     .sidenav ul {font-size: 12px;}
     .content {margin-bottom: 150px;}
-    .footer {height: 150px;}
+    .footer {height: 175px;}
 }
 
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
