@@ -97,12 +97,6 @@
 				    style: style,
 				    onEachFeature: onEachFeature
 				}).addTo(map);
-
-				map.eachLayer(function(layer){
-					if( layer instanceof L.TileLayer ){
-						layer.bindToolTip(feature.properties.name);
-					}
-				});
 			}
 
 			function style(feature) {
