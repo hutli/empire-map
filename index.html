@@ -209,6 +209,7 @@
 			        mouseout: resetHighlight,
 			        click: featureClicked,
 			    });
+			    layer.bindTooltip(feature.properties.name, {permanent: true, direction: 'right'}).openTooltip();
 			}
 
 			var info = L.control();
