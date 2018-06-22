@@ -204,12 +204,12 @@
 			});
 
 			function onEachFeature(feature, layer) {
+			    layer.bindTooltip(feature.properties.name, {permanent: true, direction: 'right'}).openTooltip();
 			    layer.on({
 			        mouseover: highlightFeature,
 			        mouseout: resetHighlight,
 			        click: featureClicked,
 			    });
-			    layer.bindTooltip(feature.properties.name, {permanent: true, direction: 'right'}).openTooltip();
 			}
 
 			var info = L.control();
