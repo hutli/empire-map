@@ -99,7 +99,9 @@
 				}).addTo(map);
 
 				map.eachLayer(function(layer){
-					layer.bindToolTip(feature.properties.name);
+					if( layer instanceof L.TileLayer ){
+						layer.bindToolTip(feature.properties.name);
+					}
 				});
 			}
 
