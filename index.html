@@ -94,7 +94,7 @@
 				if(createLabels){
 					for(var feature in data.features){
 						var center = feature.getBounds().getCenter();
-					    feature label = L.marker(center, {
+					    var label = L.marker(center, {
 						    icon: L.divIcon({
 						        iconSize: null,
 						        className: 'label',
