@@ -204,6 +204,7 @@
 			});
 
 			function onEachFeature(feature, layer) {
+        		layer.bindPopup("Name: " + feature.properties.name);
 			    layer.bindTooltip(feature.properties.name, {permanent: true, direction: 'right'}).openTooltip();
 			    layer.on({
 			        mouseover: highlightFeature,
