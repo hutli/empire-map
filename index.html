@@ -206,13 +206,7 @@
 
 			function onEachFeature(feature, layer) {
 				var center = layer.getBounds().getCenter();
-			    layer.bindLabel(L.marker(center, {
-				    icon: L.divIcon({
-				        iconSize: null,
-				        className: 'label',
-				        html: '<div>' + feature.properties.NAME + '</div>'
-				    })
-			  	}));
+			    layer.bindToolTip(feature.properties.name);
 			    //layer.showLabel();
 
 			    layer.on({
