@@ -206,13 +206,14 @@
 
 			function onEachFeature(feature, layer) {
 				var center = layer.getBounds().getCenter();
-			    var label = L.marker(center, {
+			    layer.label = L.marker(center, {
 				    icon: L.divIcon({
 				        iconSize: null,
 				        className: 'label',
 				        html: '<div>' + feature.properties.NAME + '</div>'
 				    })
 			  	});
+			    layer.showLabel();
 
 			    layer.on({
 			        mouseover: highlightFeature,
