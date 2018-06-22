@@ -91,6 +91,10 @@
 			xmlhttp.send();
 
 			function createMap(data){
+				for(var i in data.features){
+					var feature = data.features[i];
+					feature.bindToolTip(feature.properties.name);
+				}
 
 				map.removeLayer(geojson);
 
@@ -205,10 +209,6 @@
 			});
 
 			function onEachFeature(feature, layer) {
-				var center = layer.getBounds().getCenter();
-			    layer.bindToolTip(feature.properties.name);
-			    //layer.showLabel();
-
 			    layer.on({
 			        mouseover: highlightFeature,
 			        mouseout: resetHighlight,
