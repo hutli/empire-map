@@ -68,7 +68,7 @@
 }
 
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
-@media screen and (max-height: 450px) {
+@media screen and (max-height: 800px) {
     .sidenav {padding-top: 5px;}
     .sidenav h2 {font-size: 16px;}
     .sidenav a {font-size: 12px;}
