@@ -90,20 +90,7 @@
 			xmlhttp.open("GET", "data/geodata.json", true);
 			xmlhttp.send();
 
-			function createMap(data, createLabels=true){
-				if(createLabels){
-					for(var i in data.features){
-						var feature = data.features[i];
-						/*var center = feature.getBounds().getCenter();
-					    var label = L.marker(center, {
-						    icon: L.divIcon({
-						        iconSize: null,
-						        className: 'label',
-						        html: '<div>' + e.feature.properties.NAME + '</div>'
-						    })
-					  	});*/
-					}
-				}
+			function createMap(data){
 
 				map.removeLayer(geojson);
 
@@ -218,6 +205,15 @@
 			});
 
 			function onEachFeature(feature, layer) {
+				var center = layer.getBounds().getCenter();
+			    var label = L.marker(center, {
+				    icon: L.divIcon({
+				        iconSize: null,
+				        className: 'label',
+				        html: '<div>' + e.feature.properties.NAME + '</div>'
+				    })
+			  	});
+
 			    layer.on({
 			        mouseover: highlightFeature,
 			        mouseout: resetHighlight,
