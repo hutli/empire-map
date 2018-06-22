@@ -47,7 +47,7 @@
 				<ul>
 				  	<li>Hold control when clicking to open wiki</li>
 				  	<li>Hold alt when clicking to open POI Info</li>
-				  	<li>When zooming by clicking you only see the content of what you have clicked on!</li>
+				  	<li>When zooming by clicking, you will only see things in that area</li>
 				</ul>
 			</div>
 		</div>
@@ -152,11 +152,11 @@
 
 			function setCurrentLayer(){
 				var curretZoom = map.getZoom();
-				if(curretZoom >= 2){
+				if(curretZoom <= -2){
 					currentLayer = 0;
-				} else if (curretZoom < 2 && curretZoom > 0) {
+				} else if (curretZoom > -2 && curretZoom < 0) {
 					currentLayer = 1;
-				} else if (curretZoom <= 0){
+				} else if (curretZoom >= 0){
 					currentLayer = 2;
 				}
 			}
