@@ -95,7 +95,15 @@
 
 				geojson = L.geoJson(data, {
 				    style: style,
-				    onEachFeature: onEachFeature
+				    onEachFeature: function(feature, layer){
+		        		layer.bindPopup("Name: " + feature.properties.name);
+					    layer.bindTooltip(feature.properties.name, {permanent: true, direction: 'right'}).openTooltip();
+					    layer.on({
+					        mouseover: highlightFeature,
+					        mouseout: resetHighlight,
+					        click: featureClicked,
+			    		});
+					}
 				}).addTo(map);
 			}
 
@@ -202,16 +210,6 @@
 			map.on({
 			    zoomend: createLayerFromZoom,
 			});
-
-			function onEachFeature(feature, layer) {
-        		layer.bindPopup("Name: " + feature.properties.name);
-			    layer.bindTooltip(feature.properties.name, {permanent: true, direction: 'right'}).openTooltip();
-			    layer.on({
-			        mouseover: highlightFeature,
-			        mouseout: resetHighlight,
-			        click: featureClicked,
-			    });
-			}
 
 			var info = L.control();
 
