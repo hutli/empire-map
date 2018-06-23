@@ -191,8 +191,7 @@
 	    "properties": {
 	        "name": "The Brass Coast",
 	        "url": "https://www.profounddecisions.co.uk/empire-wiki/Wintermark",
-	        "image": "the_brass_coast.jpg",
-
+	        "image": "the_brass_coast.jpg"
 	    },
 	    "geometry":{"type":"Polygon","coordinates":[[
 	    	[1572, 498],
