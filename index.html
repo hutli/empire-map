@@ -201,11 +201,13 @@
 					if(toSave(data.properties.type)){
 						Array.prototype.push.apply(returnArray, data);
 					}
-					var dataFeatures = data.properties.features.features;
-					if(dataFeatures){
-						for (var i in dataFeatures){
-							var dataFeature = dataFeatures[i];
-							Array.prototype.push.apply(returnArray, createLayerFromZoomRec(dataFeature, toSave));
+					if(data.properties.features && data.properties.features.features){
+						var dataFeatures = data.properties.features.features;
+						if(dataFeatures){
+							for (var i in dataFeatures){
+								var dataFeature = dataFeatures[i];
+								Array.prototype.push.apply(returnArray, createLayerFromZoomRec(dataFeature, toSave));
+							}
 						}
 					}
 				}
