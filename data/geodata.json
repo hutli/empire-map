@@ -14,6 +14,7 @@
 				    "type": "Feature",
 				    "properties": {
 				        "name": "Bregasland",
+	        			"colour": "#228B22",
 				        "url": "https://www.profounddecisions.co.uk/empire-wiki/Bregasland",
 				        "features": {"type":"FeatureCollection","features":[
 				        	{
@@ -49,6 +50,7 @@
 				    "type": "Feature",
 				    "properties": {
 				        "name": "Mitwold",
+	        			"colour": "#228B22",
 				        "url": "https://www.profounddecisions.co.uk/empire-wiki/Mitwold"
 				    },
 				    "geometry":{"type":"Polygon","coordinates":[[
@@ -69,6 +71,7 @@
 				    "type": "Feature",
 				    "properties": {
 				        "name": "Upwold",
+	        			"colour": "#228B22",
 				        "url": "https://www.profounddecisions.co.uk/empire-wiki/Upwold"
 				    },
 				    "geometry":{"type":"Polygon","coordinates":[[
@@ -87,6 +90,7 @@
 				    "type": "Feature",
 				    "properties": {
 				        "name": "Mournwold",
+	        			"colour": "#228B22",
 				        "url": "https://www.profounddecisions.co.uk/empire-wiki/Mournwold",
 				        "features": {"type":"FeatureCollection","features":[
 				        	{
