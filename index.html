@@ -152,7 +152,7 @@
 			    info.update();
 			}
 
-			var isFeatureClicked = false;
+			var featureBuffer = new Array();
 			function featureClicked(e) {
 				var geometryType = e.target.feature.geometry.type;
 				if(isCtrlKeyPressed){
@@ -164,7 +164,7 @@
 					openPOIInfo(map, e);
 				}else {
 					map.fitBounds(e.target.getBounds());
-					createLayerFromZoom(nationsData, e.target.feature.properties.features.features);
+					featureBuffer = e.target.feature.properties.features.features;
 				}
 			}
 
@@ -173,7 +173,7 @@
 				saveZoom = map.getZoom();
 			}
 
-			function createLayerFromZoom(data, extraFeatures) {
+			function createLayerFromZoom(data) {
 				var newZoom = map.getZoom();
 				var mapData = {"type": "FeatureCollection"};
 				var toSave = function(type){
@@ -193,11 +193,10 @@
 					};
 				}
 				mapData.features = createLayerFromZoomRec(data, toSave);
-				if(extraFeatures){
-					for(var i in extraFeatures){
-						mapData.features.push(extraFeatures[i]);
-					}
+				for(var i in featureBuffer){
+					mapData.features.push(featureBuffer[i]);
 				}
+				featureBuffer = new Array();
 				createMap(mapData);
 			}
 
