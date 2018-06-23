@@ -178,40 +178,22 @@
 				if(!isFeatureClicked){
 					var newZoom = map.getZoom();
 					var mapData = {"type": "FeatureCollection"};
+					var toSave = null;
 					if(newZoom == nationZoom && savedZoom != nationZoom){
-						var toSave = function(type){
+						toSave = function(type){
 							return type == "nation" ? true : false;
 						}
-						mapData.features = createLayerFromZoomRec(nationsData, toSave);
-						createMap(mapData);
 					} else if(newZoom >= regionMinZoom && savedZoom < regionMinZoom){
-						var regionsData = {"type": "FeatureCollection"};
-						regionsData.features = new Array();
-						var nationFeatures = nationsData.features;
-						for (var i in nationFeatures){
-							var regionFeatures = nationFeatures[i].properties.features;
-							if(regionFeatures){
-								Array.prototype.push.apply(regionsData.features, regionFeatures.features);
-							}
+						toSave = function(type){
+							return type == "region" ? true : false;
 						}
-						createMap(regionsData);
 					} else if(newZoom > 0 && currentLayer != 2) {
-						var poiData = {"type": "FeatureCollection"};
-						poiData.features = new Array();
-						var nationFeatures = nationsData.features;
-						for (var i in nationFeatures){
-							var regionFeatures = nationFeatures[i].properties.features;
-							if(regionFeatures){
-								for(var j in regionFeatures.features){
-									var poiFeatures = regionFeatures.features[j].properties.features;
-									if(poiFeatures){
-										Array.prototype.push.apply(poiData.features, poiFeatures.features);
-									}
-								}
-							}
+						toSave = function(type){
+							return type == "region" ? true : type == "poi" ? true : false
 						}
-						createMap(poiData);
 					}
+					mapData.features = createLayerFromZoomRec(nationsData, toSave);
+					createMap(mapData);
 				}
 				isFeatureClicked = false;
 			}
