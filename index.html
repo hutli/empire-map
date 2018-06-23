@@ -199,7 +199,7 @@
 				var returnArray = new Array();
 				if(data.properties){
 					if(toSave(data.properties.type)){
-						Array.prototype.push.apply(returnArray, data);
+						returnArray.push(data);
 					}
 					if(data.properties.features && data.properties.features.features){
 						var dataFeatures = data.properties.features.features;
