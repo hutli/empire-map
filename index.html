@@ -184,7 +184,7 @@
 						}
 						mapData.features = createLayerFromZoomRec(nationsData, toSave);
 						createMap(mapData);
-					} else if((newZoom == regionMinZoom && savedZoom > regionMinZoom){
+					} else if(newZoom >= regionMinZoom && savedZoom < regionMinZoom){
 						var regionsData = {"type": "FeatureCollection"};
 						regionsData.features = new Array();
 						var nationFeatures = nationsData.features;
