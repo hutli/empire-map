@@ -164,7 +164,7 @@
 					openPOIInfo(map, e);
 				}else {
 					map.fitBounds(e.target.getBounds());
-					createLayerFromZoom(nationsData, e.target.feature.properties.features);
+					createLayerFromZoom(nationsData, e.target.feature.properties.features.features);
 				}
 			}
 
@@ -194,7 +194,7 @@
 				}
 				mapData.features = createLayerFromZoomRec(data, toSave);
 				if(extraFeatures){
-					mapData.features.push(extraFeatures);
+					mapData.push(extraFeatures);
 				}
 				createMap(mapData);
 			}
