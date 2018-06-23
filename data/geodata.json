@@ -156,6 +156,7 @@
 	        "name": "Wintermark",
 	        "Armies": 3,
 	        "Territories": 3,
+	        "colour": "#BC8F8F",
 	        "url": "https://www.profounddecisions.co.uk/empire-wiki/Wintermark",
 	        "image": "wintermark.jpg"
 	    },
