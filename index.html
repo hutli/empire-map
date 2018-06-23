@@ -203,12 +203,13 @@
 				if(toSave(data.type)){
 					Array.prototype.push.apply(returnArray, data);
 				}
-
-				var dataFeatures = data.properties.features;
-				if(dataFeatures){
-					for (var i in dataFeatures){
-						var dataFeature = dataFeatures[i];
-						Array.prototype.push.apply(returnArray, createLayerFromZoomRec(dataFeature));
+				if(data.properties){
+					var dataFeatures = data.properties.features;
+					if(dataFeatures){
+						for (var i in dataFeatures){
+							var dataFeature = dataFeatures[i];
+							Array.prototype.push.apply(returnArray, createLayerFromZoomRec(dataFeature));
+						}
 					}
 				}
 
