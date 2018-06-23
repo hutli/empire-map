@@ -58,7 +58,17 @@
 
 		<script src="js/poiinfo.js"></script>
 		<script>
-			var ignoreList = new Array("name", "url", "features", "image", "description", "colour", "data");
+			var ignoreList = function(key){
+				return
+				key == "name" ? true :
+				key == "url" ? true :
+				key == "features" ? true :
+				key == "image" ? true :
+				key == "description" ? true :
+				key == "colour" ? true :
+				key == "data" ? true :
+				false;
+			};
 
 			function sideNavClick(t, e){
 				if(e.ctrlKey){
