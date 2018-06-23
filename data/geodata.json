@@ -197,7 +197,7 @@
 	    "properties": {
 	        "name": "The Brass Coast",
 	        "colour": "#FFA500",
-	        "url": "https://www.profounddecisions.co.uk/empire-wiki/Wintermark",
+	        "url": "https://www.profounddecisions.co.uk/empire-wiki/The_Brass_Coast",
 	        "image": "the_brass_coast.jpg",
 	        "features": {"type":"FeatureCollection","features":[
 		        {
@@ -205,7 +205,7 @@
 				    "properties": {
 				        "name": "Kahraman",
 	        			"colour": "#FFA500",
-				        "url": "https://www.profounddecisions.co.uk/empire-wiki/Bregasland"
+				        "url": "https://www.profounddecisions.co.uk/empire-wiki/Kahraman"
 				    },
 				    "geometry":{"type":"Polygon","coordinates":[[
 				    	[1592,1317],
@@ -217,6 +217,28 @@
 						[2720,1417],
 						[2698,1341],
 						[2464,1044],
+						[2100,847],
+						[1573,1123]
+				    ]]}
+				},
+				{
+				    "type": "Feature",
+				    "properties": {
+				        "name": "Madruga",
+	        			"colour": "#FFA500",
+				        "url": "https://www.profounddecisions.co.uk/empire-wiki/Madruga"
+				    },
+				    "geometry":{"type":"Polygon","coordinates":[[
+						[2698,1341],
+						[3096,1195],
+						[3336,781],
+						[2948,545],
+						[2853,652],
+						[2672,562],
+						[2456,589],
+						[2385,654],
+						[2349,689],
+						[2161,752],
 						[2100,847],
 						[1573,1123]
 				    ]]}
