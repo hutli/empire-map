@@ -182,7 +182,7 @@
 					        weight: 5,
 					        color: '#666',
 					        dashArray: '',
-					        fillOpacity: 0
+					        fillOpacity: 0.7
 					    });
 
 					    if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
@@ -190,7 +190,7 @@
 					    }
 					}
 				    info.update(layer.feature.properties);
-					featureBuffer = e.target.feature;
+					ignoreZoom = true;
 				}else {
 					map.fitBounds(e.target.getBounds());
 					featureBuffer = e.target.feature.properties.features.features;
@@ -202,31 +202,34 @@
 				saveZoom = map.getZoom();
 			}
 
+			var ignoreZoom = false;
 			function createLayerFromZoom(data, forceUpdate) {
-				var newZoom = map.getZoom();
-				var mapData = {"type": "FeatureCollection"};
-				var toSave = function(type){
-					return false;
-				};
-				if(newZoom >= poiMinZoom && (savedZoom < poiMinZoom || forceUpdate)) {
-					toSave = function(type){
-						return type == "region" ? true : type == "poi" ? true : false
+				if(!ignoreZoom){
+					var newZoom = map.getZoom();
+					var mapData = {"type": "FeatureCollection"};
+					var toSave = function(type){
+						return false;
 					};
-				} else if(newZoom >= regionMinZoom && (savedZoom < regionMinZoom || forceUpdate)){
-					toSave = function(type){
-						return type == "region" ? true : false;
-					};
-				} else if(newZoom == nationZoom && (savedZoom != nationZoom || forceUpdate)){
-					toSave = function(type){
-						return type == "nation" ? true : false;
-					};
+					if(newZoom >= poiMinZoom && (savedZoom < poiMinZoom || forceUpdate)) {
+						toSave = function(type){
+							return type == "region" ? true : type == "poi" ? true : false
+						};
+					} else if(newZoom >= regionMinZoom && (savedZoom < regionMinZoom || forceUpdate)){
+						toSave = function(type){
+							return type == "region" ? true : false;
+						};
+					} else if(newZoom == nationZoom && (savedZoom < nationZoom || forceUpdate)){
+						toSave = function(type){
+							return type == "nation" ? true : false;
+						};
+					}
+					mapData.features = createLayerFromZoomRec(data, toSave, featureBuffer);
+					for(var i in featureBuffer){
+						mapData.features.push(featureBuffer[i]);
+					}
+					featureBuffer = new Array();
+					createMap(mapData);
 				}
-				mapData.features = createLayerFromZoomRec(data, toSave, featureBuffer);
-				for(var i in featureBuffer){
-					mapData.features.push(featureBuffer[i]);
-				}
-				featureBuffer = new Array();
-				createMap(mapData);
 			}
 
 			function createLayerFromZoomRec(data, toSave, ignoreArray){
