@@ -232,7 +232,7 @@
 				if(props){
 					innerHTML += '<b>' + props.name + '</b>';
 					for (var key in props) {
-						if($.inArray(key, ignoreList)){
+						if(!$.inArray(key, ignoreList)){
 							innerHTML += '<br/>' + key + ': ' + props[key];
 						}
 			        }
