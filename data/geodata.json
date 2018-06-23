@@ -158,6 +158,7 @@
 		"type": "Feature",
 	    "properties": {
 	        "name": "Wintermark",
+	        "type": "nation",
 	        "Armies": 3,
 	        "Territories": 3,
 	        "colour": "#BC8F8F",
@@ -196,6 +197,7 @@
 		"type": "Feature",
 	    "properties": {
 	        "name": "The Brass Coast",
+	        "type": "nation",
 	        "colour": "#FFA500",
 	        "url": "https://www.profounddecisions.co.uk/empire-wiki/The_Brass_Coast",
 	        "data": "data/the_brass_coast.html",

@@ -70,6 +70,11 @@
 				return retValue;
 			};
 
+			var minZoom = -2;
+			var nationZoom = -2;
+			var regionMinZoom = -1;
+			var poiMinZoom = 1;
+
 			function sideNavClick(t, e){
 				if(e.ctrlKey){
 					return true;
@@ -79,7 +84,7 @@
 			}
 
 			var map = L.map('map', {
-				minZoom: -2,
+				minZoom: minZoom,
 				crs: L.CRS.Simple
 			});
 
@@ -164,8 +169,12 @@
 				}
 			}
 
-			var currentLayer = 0;
+			var savedZoom = minZoom;
+			function saveZoom(){
+				saveZoom = map.getZoom();
+			}
 
+			var curretZoom = minZoom;
 			function setCurrentLayer(){
 				var curretZoom = map.getZoom();
 				if(curretZoom <= -2){
@@ -216,6 +225,7 @@
 			}
 
 			map.on({
+				zoomstart: saveZoom,
 			    zoomend: createLayerFromZoom,
 			});
 
