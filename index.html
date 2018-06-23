@@ -59,8 +59,7 @@
 		<script src="js/poiinfo.js"></script>
 		<script>
 			var ignoreList = function(key){
-				return
-				key == "name" ? true :
+				retValue = key == "name" ? true :
 				key == "url" ? true :
 				key == "features" ? true :
 				key == "image" ? true :
@@ -68,6 +67,7 @@
 				key == "colour" ? true :
 				key == "data" ? true :
 				false;
+				return retValue;
 			};
 
 			function sideNavClick(t, e){
