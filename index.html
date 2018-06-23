@@ -139,11 +139,11 @@
 				return false;
 			}
 
-			var ignoreMouseOut = false;
-			var highlightedFeature = undefined;
+			//var ignoreMouseOut = false;
+			//var highlightedFeature = undefined;
 			function highlightFeature(e) {
-				if(!ignoreMouseOut){
-					highlightedFeature = e;
+				//if(!ignoreMouseOut){
+					//highlightedFeature = e;
 				    var layer = e.target;
 				    if(layer.feature.geometry.type == "Polygon"){
 					    layer.setStyle({
@@ -158,14 +158,14 @@
 					    }
 					}
 				    info.update(layer.feature.properties);
-				}
+				//}
 			}
 
 			function resetHighlight(e) {
-				if(!ignoreMouseOut){
+				//if(!ignoreMouseOut){
 				    geojson.resetStyle(e.target);
 				    info.update();
-				}
+				//}
 			}
 
 			var featureBuffer = new Array();
