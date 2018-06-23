@@ -178,7 +178,7 @@
 				if(!isFeatureClicked){
 					var newZoom = map.getZoom();
 					var mapData = {"type": "FeatureCollection"};
-					var toSave = null;
+					var toSave = function(){};
 					if(newZoom == nationZoom && savedZoom != nationZoom){
 						toSave = function(type){
 							return type == "nation" ? true : false;
