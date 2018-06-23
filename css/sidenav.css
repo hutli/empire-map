@@ -13,7 +13,7 @@
 .sidenav h2 {
 	padding-left: 32px;
 	display: block;
-    font-size: 32px;
+    font-size: 26px;
 	color: #818181;
 }
 
@@ -23,7 +23,7 @@
 	padding-left: 32px;
 	display: block;
     text-decoration: none;
-    font-size: 20px;
+    font-size: 16px;
     color: #818181;
 }
 
@@ -56,24 +56,23 @@
 
 .content {
 	top: 0;
-	bottom: -250px;
-	position: absolute;
+	height: 100%;
 }
 
 .footer {
+	background: white;
 	bottom: 0;
-	height: 250px;
+	height: 275px;
 	position: absolute;
 }
 
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
-@media screen and (max-height: 450px) {
+@media screen and (max-height: 600px) {
     .sidenav {padding-top: 5px;}
     .sidenav h2 {font-size: 16px;}
     .sidenav a {font-size: 12px;}
     .sidenav ul {font-size: 12px;}
-    .content {margin-bottom: 150px;}
-    .footer {height: 150px;}
+    .footer {height: 175px;}
 }
 
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
