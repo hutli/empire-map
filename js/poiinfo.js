@@ -23,7 +23,7 @@ function openPOIInfo(map, e){
 		innerHTML += "<a id='poiInfoDescription'></a>";
 		$.get(data,
 		    function (response) {
-		    	poiInfo.getElementById("poiInfoDescription").innerHTML(response);
+		    	poiInfo.poiInfoDescription.innerHTML(response);
 		});
 	} else if(description){
 		innerHTML += "<a id='poiInfoDescription'>" + description + "</a>";
