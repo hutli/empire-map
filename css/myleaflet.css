@@ -14,7 +14,6 @@ html, body {
 }
 
 .leaflet-container .leaflet-control-mouseposition {
-  opacity: 50%;
   background-color: white;
   box-shadow: 0 0 5px #bbb;
   padding: 0 5px;
