@@ -20,13 +20,13 @@ function openPOIInfo(map, e){
 	var description = e.target.feature.properties.description;
 	var data = e.target.feature.properties.data;
 	if(data){
-		innerHTML += "<a id='poiInfo'></a>";
+		innerHTML += "<a id='poiInfoDescription'></a>";
 		$.get(data,
 		    function (response) {
-		        document.getElementById("poiInfo").innerHTML(response);
+		    	poiInfo.getElementById("poiInfoDescription").innerHTML(response);
 		});
 	} else if(description){
-		innerHTML += "<a id='poiInfo'>" + description + "</a>";
+		innerHTML += "<a id='poiInfoDescription'>" + description + "</a>";
 		var img = e.target.feature.properties.image;
 		if(img){
 			innerHTML += "<img src='images/" + img + "'/>";
