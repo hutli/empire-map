@@ -23,7 +23,7 @@ function openPOIInfo(map, e){
 		var xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = function() {
 		    if (this.readyState == 4 && this.status == 200) {
-				poiInfo.innerHTML = innerHTML + xhttp.responseText;
+				poiInfo.innerHTML += xhttp.responseText;
 		    }
 		};
 		xhttp.open("GET", data, true);
@@ -34,10 +34,8 @@ function openPOIInfo(map, e){
 		if(img){
 			innerHTML += "<img src='images/" + img + "'/>";
 		}
-		poiInfo.innerHTML = innerHTML;
-	} else {
-		poiInfo.innerHTML = innerHTML;
 	}
+	poiInfo.innerHTML = innerHTML;
 	poiInfo.style.right = 0;
 	isFeatureClicked = true;
 }
