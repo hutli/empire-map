@@ -192,7 +192,7 @@
 						return type == "nation" ? true : false;
 					};
 				}
-				mapData.features = createLayerFromZoomRec(data, toSave);
+				mapData.features = createLayerFromZoomRec(data, toSave, featureBuffer);
 				for(var i in featureBuffer){
 					mapData.features.push(featureBuffer[i]);
 				}
@@ -200,10 +200,10 @@
 				createMap(mapData);
 			}
 
-			function createLayerFromZoomRec(data, toSave){
+			function createLayerFromZoomRec(data, toSave, ignoreArray){
 				var returnArray = new Array();
 				if(data.properties){
-					if(toSave(data.properties.type)){
+					if(toSave(data.properties.type) && !ignoreArray.includes(data)){
 						returnArray.push(data);
 					}
 					if(data.properties.features && data.properties.features.features){
