@@ -194,7 +194,7 @@
 				}
 				mapData.features = createLayerFromZoomRec(data, toSave);
 				if(extraFeatures){
-					mapData += extraFeatures;
+					mapData.features += extraFeatures;
 				}
 				createMap(mapData);
 			}
