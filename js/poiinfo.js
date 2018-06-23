@@ -44,8 +44,8 @@ function openPOIInfo(map, e){
 
 function closePOIInfo(map){
 	ignoreMouseOut = false;
-	resetHighlight(highlightedFeature);
 	map = map.setActiveArea('poiCloseArea');
+	createLayerFromZoom(nationsData, true);
 	poiInfo.innerHTML = "";
 	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
 		poiInfo.style.right = "-110%";

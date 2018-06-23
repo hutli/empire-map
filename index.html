@@ -100,7 +100,7 @@
 			xmlhttp.onreadystatechange = function() {
 			    if (this.readyState == 4 && this.status == 200) {
 			        nationsData = JSON.parse(this.responseText);
-			        createLayerFromZoom(nationsData);
+			        createLayerFromZoom(nationsData, true);
 			    }
 			};
 			xmlhttp.open("GET", "data/geodata.json", true);
@@ -140,10 +140,8 @@
 			}
 
 			var ignoreMouseOut = false;
-			var highlightedFeature = undefined;
 			function highlightFeature(e) {
 				if(!ignoreMouseOut){
-					highlightedFeature = e;
 				    var layer = e.target;
 				    if(layer.feature.geometry.type == "Polygon"){
 					    layer.setStyle({
@@ -204,21 +202,21 @@
 				saveZoom = map.getZoom();
 			}
 
-			function createLayerFromZoom(data) {
+			function createLayerFromZoom(data, forceUpdate) {
 				var newZoom = map.getZoom();
 				var mapData = {"type": "FeatureCollection"};
 				var toSave = function(type){
 					return false;
 				};
-				if(newZoom >= poiMinZoom && savedZoom < poiMinZoom) {
+				if(newZoom >= poiMinZoom && (savedZoom < poiMinZoom || forceUpdate)) {
 					toSave = function(type){
 						return type == "region" ? true : type == "poi" ? true : false
 					};
-				} else if(newZoom >= regionMinZoom && savedZoom < regionMinZoom){
+				} else if(newZoom >= regionMinZoom && (savedZoom < regionMinZoom || forceUpdate)){
 					toSave = function(type){
 						return type == "region" ? true : false;
 					};
-				} else if(newZoom == nationZoom){
+				} else if(newZoom == nationZoom && (savedZoom != nationZoom || forceUpdate)){
 					toSave = function(type){
 						return type == "nation" ? true : false;
 					};
