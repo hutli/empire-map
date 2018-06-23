@@ -212,7 +212,7 @@
 						toSave = function(type){
 							return type == "region" ? true : type == "poi" ? true : false
 						};
-					} else if(newZoom >= regionMinZoom && (savedZoom < regionMinZoom || forceUpdate)){
+					} else if(newZoom >= regionMinZoom && (savedZoom < regionMinZoom || savedZoom > poiMinZoom || forceUpdate)){
 						toSave = function(type){
 							return type == "region" ? true : false;
 						};
