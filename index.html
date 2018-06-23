@@ -220,7 +220,7 @@
 						toSave = function(type){
 							return type == "nation" ? true : false;
 						};
-					} else if(featureBuffer.lenght == 0){
+					} else if(featureBuffer.length == 0){
 						return;
 					}
 					mapData.features = createLayerFromZoomRec(data, toSave, featureBuffer);
