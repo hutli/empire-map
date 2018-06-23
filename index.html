@@ -210,7 +210,7 @@
 
 			var skipUpdate = false;
 			function createLayerFromZoom(data, forceUpdate) {
-				if(!ignoreMouseOut && skipUpdate){
+				if(!ignoreMouseOut && !skipUpdate){
 					var newZoom = map.getZoom();
 					var mapData = {"type": "FeatureCollection"};
 
