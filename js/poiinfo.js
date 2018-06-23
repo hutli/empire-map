@@ -18,12 +18,22 @@ function openPOIInfo(map, e){
 	}
 	var innerHTML = "<a href='javascript:void(0)' class='closebtn' onclick='closePOIInfo(map)'>&times;</a><h2>" + e.target.feature.properties.name + "</h2>";
 	var description = e.target.feature.properties.description;
-	if(description){
-		innerHTML += "<a>" + description + "</a>"
-	}
-	var img = e.target.feature.properties.image;
-	if(img){
-		innerHTML += "<img src='images/" + img + "'/>"
+	var data = e.target.feature.properties.data;
+	if(data){
+		var xmlhttp = new XMLHttpRequest();
+		xmlhttp.onreadystatechange = function() {
+		    if (this.readyState == 4 && this.status == 200) {
+		        document.getElementById("poiInfo").innerHTML(this.responseText);
+		    };
+		};
+		xmlhttp.open("GET", data, true);
+		xmlhttp.send();
+	} else if(description){
+		innerHTML += "<a id='poiInfo'>" + description + "</a>"
+		var img = e.target.feature.properties.image;
+		if(img){
+			innerHTML += "<img src='images/" + img + "'/>"
+		}
 	}
 	poiInfo.innerHTML = innerHTML;
 	poiInfo.style.right = 0;

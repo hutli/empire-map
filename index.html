@@ -84,7 +84,6 @@
 			    if (this.readyState == 4 && this.status == 200) {
 			        nationsData = JSON.parse(this.responseText);
 			        createMap(nationsData);
-
 			    }
 			};
 			xmlhttp.open("GET", "data/geodata.json", true);
