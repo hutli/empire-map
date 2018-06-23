@@ -8,6 +8,7 @@ if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
 }
 
 function openPOIInfo(map, e){
+	ignoreMouseOut = true;
 	map = map.setActiveArea('poiOpenArea');
 	if(e.target.feature.geometry.type == "Point"){
 		var latlng = e.target.getLatLng();
@@ -42,6 +43,8 @@ function openPOIInfo(map, e){
 
 
 function closePOIInfo(map){
+	ignoreMouseOut = false;
+	resetHighlight(highligtedFeature);
 	map = map.setActiveArea('poiCloseArea');
 	poiInfo.innerHTML = "";
 	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
