@@ -1,279 +1,285 @@
-{"type":"FeatureCollection","features":[
-	{
-	    "type": "Feature",
-	    "properties": {
-	        "name": "The Marches",
-	        "Armies": 4,
-	        "Territories": 4,
-	        "colour": "#228B22",
-	        "url": "https://www.profounddecisions.co.uk/empire-wiki/The_Marches",
-	        "image": "the_marches.jpg",
-	        "description": "For centuries, the Marcher Households have followed the beat of the Empire's drums. Aided by the Landskeepers' magic and inspired by the faithful of the monasteries, the Marcher armies have been built from the strength of the yeomen's arms, the courage of their hearts, and the knowledge that they fight for the green fields of home. Stubborn as stone, they give ground grudgingly, and even if they are forced to retreat they are not defeated: they will return.<br/><br/>The Marches are the guts of the Empire. They may not be pretty, but they are vital. They fought a war of independence long ago and they will die, one and all, before they give up their freedoms. None stands above another but that their neighbours put them there. Everything they have they have taken with blood and sweat, every season, their prosperity dragged from the soft earth with every harvest. Nature is their servant, bound and shackled with looming menhirs and iron ploughshares, a hound tamed and set to lie before their doors.<br/><br/>They understand sacrifice - not the easy sacrifice of blood for the harvest, but the hard sacrifice of lives spent day after day working for the future.<br/><br/>The Marches is the sleeping giant of Empire. Enemy boots churn up the rich soil, as the dog days of summer give way to the cold dawn of autumn – and to war.",
-	        "features": {"type":"FeatureCollection","features":[
-		        {
-				    "type": "Feature",
-				    "properties": {
-				        "name": "Bregasland",
-	        			"colour": "#228B22",
-				        "url": "https://www.profounddecisions.co.uk/empire-wiki/Bregasland",
-				        "features": {"type":"FeatureCollection","features":[
-				        	{
-				        		"type": "Feature",
-				        		"properties": {
-				        			"name": "Rushring",
-	        						"type": "poi",
-				        			"image": "rushring.jpg",
-				        			"description": "A partially submerged stone circle, the notorious site of a number of ritual killings in 365YE. It stands at the centre of one of the so-called dead meres of the Grey Fens, and both local Marchers and Feni alike give it a wide berth. Local legend claims that there are thirteen stones in the Rushring, but accounts differ wildly, in some cases claiming there are as many as thirty-nine. There are likewise many stories about what the circle represents. Some claim it is a band of Jotun orcs turned to stone by a canny landskeeper, while others claim the stones mark the site of some terrible crime or ancient magical accident, perhaps that associated with the formation of the dead meres themselves.",
-				        			"url": "https://www.profounddecisions.co.uk/empire-wiki/Bregasland#Rushring"
-				        		},
-				        		"geometry":{
-				        			"type":"Point",
-				        			"coordinates": [1654,2023]
-				        		}
-				        	}
-				        ]}
-				    },
-				    "geometry":{"type":"Polygon","coordinates":[[
-				    	[1361,2386],
-				    	[1763,2398],
-						[1848,2266],
-						[1995,2123],
-						[1957,2020],
-						[2031,1966],
-						[2280,1889],
-						[2092,1742],
-						[1760,1848],
-						[1657,1880],
-						[1408,2061]
-				    ]]}
-				},
-				{
-				    "type": "Feature",
-				    "properties": {
-				        "name": "Mitwold",
-	        			"type": "region",
-	        			"colour": "#228B22",
-				        "url": "https://www.profounddecisions.co.uk/empire-wiki/Mitwold"
-				    },
-				    "geometry":{"type":"Polygon","coordinates":[[
-				    	[1957,2020],
-				    	[1995,2123],
-				    	[2374,2150],
-				    	[2404,2195],
-				    	[2454,2225],
-				    	[2497,2086],
-				    	[2611,2036],
-				    	[2620,1904],
-				    	[2413,1819],
-				    	[2280,1889],
-				    	[2031,1966]
-				    ]]}
-				},
-				{
-				    "type": "Feature",
-				    "properties": {
-				        "name": "Upwold",
-	        			"type": "region",
-	        			"colour": "#228B22",
-				        "url": "https://www.profounddecisions.co.uk/empire-wiki/Upwold"
-				    },
-				    "geometry":{"type":"Polygon","coordinates":[[
-				    	[2454,2225],
-				    	[2516,2271],
-				    	[2982,2309],
-	    				[3019,1921],
-				    	[2952,1895],
-				    	[2779,1948],
-				    	[2620,1904],
-				    	[2611,2036],
-				    	[2497,2086]
-				    ]]}
-				},
-				{
-				    "type": "Feature",
-				    "properties": {
-				        "name": "Mournwold",
-	        			"type": "region",
-	        			"colour": "#228B22",
-				        "url": "https://www.profounddecisions.co.uk/empire-wiki/Mournwold",
-				        "features": {"type":"FeatureCollection","features":[
-				        	{
-				        		"type": "Feature",
-				        		"properties": {
-				        			"name": "The ruins of Overton",
-	        						"type": "poi",
-				        			"image": "overton.PNG",
-				        			"description": "Once a sheep-farming town and market set on a hill, Overton was ruined early on in the great Battle for the Greensward. The majority of the defenders were killed refusing to leave their posts. Pilgrims visit the ruins of Overton to lay tokens at the graves of the fallen. North of the ruins, the Jotun raised a massive grass-covered burial mound, beneath which lie both the bodies of countless Imperial soldiers and the Jotun who fell fighting them. Apple trees grow at the crest - it is not clear whether the orcs planted them in deference to Marcher burial customs, or whether they are the work of the surviving monks of Greensward Abbey. When the Empire liberated Greensward shortly before the Autumn Equinox 381YE there was some talk of disinterring the mound, but the Marcher soldiers were adamant they be left to rest undisturbed - the soil may have been soured, but it is still the soil they died fighting for, whether they were Marchers or not.<br/><br/>Not far from the ruins stands Honour's Rest, a small shrine and orchard tended by friars who watch over the ruins and the barrow mounds.",
-				        			"url": "https://www.profounddecisions.co.uk/empire-wiki/Mournwold#The_ruins_of_Overton"
-				        		},
-				        		"geometry":{
-				        			"type":"Point",
-				        			"coordinates": [2723,1632]
-				        		}
-				        	}
-				        ]}
-				    },
-				    "geometry":{"type":"Polygon","coordinates":[[
-				    	[2092,1742],
-				    	[2280,1889],
-				    	[2413,1819],
-				    	[2620,1904],
-				    	[2779,1948],
-				    	[2952,1895],
-	    				[3019,1921],
-	    				[2916,1748],
-				    	[2806,1711],
-				    	[2788,1590],
-				    	[2755,1569],
-				    	[2689,1508],
-				    	[2494,1521],
-				    	[2394,1624],
-				    	[2248,1641],
-				    	[2096,1743]
-				    ]]}
-				}
-			]}
-	    },
-	    "geometry":{"type":"Polygon","coordinates":[[
-	    	[1361,2386],
-	    	[1763,2398],
-	    	[1848,2266],
-	    	[1995,2132],
-	    	[2374,2150],
-	    	[2404,2195],
-	    	[2454,2225],
-	    	[2516,2271],
-	    	[2982,2309],
-	    	[3019,1921],
-	    	[2916,1748],
-	    	[2806,1711],
-	    	[2788,1590],
-	    	[2755,1569],
-	    	[2689,1508],
-			[2494,1521],
-	    	[2394,1624],
-	    	[2248,1641],
-	    	[2096,1743],
-	    	[1760,1848],
-	    	[1657,1880],
-	    	[1408,2061]
-	    ]]}
-	},
-	{
-		"type": "Feature",
-	    "properties": {
-	        "name": "Wintermark",
-	        "type": "nation",
-	        "Armies": 3,
-	        "Territories": 3,
-	        "colour": "#BC8F8F",
-	        "url": "https://www.profounddecisions.co.uk/empire-wiki/Wintermark",
-	        "image": "wintermark.jpg"
-	    },
-	    "geometry":{"type":"Polygon","coordinates":[[
-	    	[1763,2398],
-	    	[1848,2266],
-	    	[1995,2132],
-	    	[2374,2150],
-	    	[2404,2195],
-	    	[2516,2271],
-	    	[2982,2309],
-	    	[2990,2365],
-	    	[2892,2483],
-	    	[2903,2652],
-	    	[2692,2740],
-	    	[2678,2801],
-	    	[2775,2859],
-	    	[2764,2990],
-	    	[2660,3032],
-	    	[2676,3095],
-	    	[2576,3139],
-	    	[2628,3223],
-	    	[2557,3416],
-	    	[2757,3584],
-	    	[1981,3650],
-	    	[1552,3469],
-	    	[1443,3146],
-	    	[1407,2734],
-	    	[1573,2587]
-	    ]]}
-	},
-	{
-		"type": "Feature",
-	    "properties": {
-	        "name": "The Brass Coast",
-	        "type": "nation",
-	        "colour": "#FFA500",
-	        "url": "https://www.profounddecisions.co.uk/empire-wiki/The_Brass_Coast",
-	        "data": "data/the_brass_coast.html",
-	        "features": {"type":"FeatureCollection","features":[
-		        {
-				    "type": "Feature",
-				    "properties": {
-				        "name": "Kahraman",
-	        			"type": "region",
-	        			"colour": "#FFA500",
-				        "url": "https://www.profounddecisions.co.uk/empire-wiki/Kahraman"
-				    },
-				    "geometry":{"type":"Polygon","coordinates":[[
-				    	[1592,1317],
-				    	[1801,1489],
-				    	[2161,1513],
-				    	[2380,1501],
-						[2494,1521],
-						[2689,1508],
-						[2720,1417],
-						[2698,1341],
-						[2464,1044],
-						[2100,847],
-						[1573,1123]
-				    ]]}
-				},
-				{
-				    "type": "Feature",
-				    "properties": {
-				        "name": "Madruga",
-	        			"type": "region",
-	        			"colour": "#FFA500",
-				        "url": "https://www.profounddecisions.co.uk/empire-wiki/Madruga"
-				    },
-				    "geometry":{"type":"Polygon","coordinates":[[
-						[2100,847],
-						[2464,1044],
-						[2698,1341],
-						[3096,1195],
-						[3336,781],
-						[2948,545],
-						[2853,652],
-						[2672,562],
-						[2456,589],
-						[2385,654],
-						[2349,689],
-						[2161,752]
-				    ]]}
-				}
-			]}
-	    },
-	    "geometry":{"type":"Polygon","coordinates":[[
-	    	[1592,1317],
-	    	[1801,1489],
-	    	[2161,1513],
-	    	[2380,1501],
-			[2494,1521],
-			[2689,1508],
-			[2720,1417],
-			[2698,1341],
-			[3096,1195],
-			[3336,781],
-			[2948,545],
-			[2853,652],
-			[2672,562],
-			[2456,589],
-			[2385,654],
-			[2349,689],
-			[2161,752],			
-			[2100,847],
-			[1573,1123]
-	    ]]}
+{
+	"type":"feature",
+	"properties": {
+		"name":"The Empire",
+		"features": {"type":"FeatureCollection","features":[
+			{
+			    "type": "Feature",
+			    "properties": {
+			        "name": "The Marches",
+			        "Armies": 4,
+			        "Territories": 4,
+			        "colour": "#228B22",
+			        "url": "https://www.profounddecisions.co.uk/empire-wiki/The_Marches",
+			        "image": "the_marches.jpg",
+			        "description": "For centuries, the Marcher Households have followed the beat of the Empire's drums. Aided by the Landskeepers' magic and inspired by the faithful of the monasteries, the Marcher armies have been built from the strength of the yeomen's arms, the courage of their hearts, and the knowledge that they fight for the green fields of home. Stubborn as stone, they give ground grudgingly, and even if they are forced to retreat they are not defeated: they will return.<br/><br/>The Marches are the guts of the Empire. They may not be pretty, but they are vital. They fought a war of independence long ago and they will die, one and all, before they give up their freedoms. None stands above another but that their neighbours put them there. Everything they have they have taken with blood and sweat, every season, their prosperity dragged from the soft earth with every harvest. Nature is their servant, bound and shackled with looming menhirs and iron ploughshares, a hound tamed and set to lie before their doors.<br/><br/>They understand sacrifice - not the easy sacrifice of blood for the harvest, but the hard sacrifice of lives spent day after day working for the future.<br/><br/>The Marches is the sleeping giant of Empire. Enemy boots churn up the rich soil, as the dog days of summer give way to the cold dawn of autumn – and to war.",
+			        "features": {"type":"FeatureCollection","features":[
+				        {
+						    "type": "Feature",
+						    "properties": {
+						        "name": "Bregasland",
+			        			"colour": "#228B22",
+						        "url": "https://www.profounddecisions.co.uk/empire-wiki/Bregasland",
+						        "features": {"type":"FeatureCollection","features":[
+						        	{
+						        		"type": "Feature",
+						        		"properties": {
+						        			"name": "Rushring",
+			        						"type": "poi",
+						        			"image": "rushring.jpg",
+						        			"description": "A partially submerged stone circle, the notorious site of a number of ritual killings in 365YE. It stands at the centre of one of the so-called dead meres of the Grey Fens, and both local Marchers and Feni alike give it a wide berth. Local legend claims that there are thirteen stones in the Rushring, but accounts differ wildly, in some cases claiming there are as many as thirty-nine. There are likewise many stories about what the circle represents. Some claim it is a band of Jotun orcs turned to stone by a canny landskeeper, while others claim the stones mark the site of some terrible crime or ancient magical accident, perhaps that associated with the formation of the dead meres themselves.",
+						        			"url": "https://www.profounddecisions.co.uk/empire-wiki/Bregasland#Rushring"
+						        		},
+						        		"geometry":{
+						        			"type":"Point",
+						        			"coordinates": [1654,2023]
+						        		}
+						        	}
+						        ]}
+						    },
+						    "geometry":{"type":"Polygon","coordinates":[[
+						    	[1361,2386],
+						    	[1763,2398],
+								[1848,2266],
+								[1995,2123],
+								[1957,2020],
+								[2031,1966],
+								[2280,1889],
+								[2092,1742],
+								[1760,1848],
+								[1657,1880],
+								[1408,2061]
+						    ]]}
+						},
+						{
+						    "type": "Feature",
+						    "properties": {
+						        "name": "Mitwold",
+			        			"type": "region",
+			        			"colour": "#228B22",
+						        "url": "https://www.profounddecisions.co.uk/empire-wiki/Mitwold"
+						    },
+						    "geometry":{"type":"Polygon","coordinates":[[
+						    	[1957,2020],
+						    	[1995,2123],
+						    	[2374,2150],
+						    	[2404,2195],
+						    	[2454,2225],
+						    	[2497,2086],
+						    	[2611,2036],
+						    	[2620,1904],
+						    	[2413,1819],
+						    	[2280,1889],
+						    	[2031,1966]
+						    ]]}
+						},
+						{
+						    "type": "Feature",
+						    "properties": {
+						        "name": "Upwold",
+			        			"type": "region",
+			        			"colour": "#228B22",
+						        "url": "https://www.profounddecisions.co.uk/empire-wiki/Upwold"
+						    },
+						    "geometry":{"type":"Polygon","coordinates":[[
+						    	[2454,2225],
+						    	[2516,2271],
+						    	[2982,2309],
+			    				[3019,1921],
+						    	[2952,1895],
+						    	[2779,1948],
+						    	[2620,1904],
+						    	[2611,2036],
+						    	[2497,2086]
+						    ]]}
+						},
+						{
+						    "type": "Feature",
+						    "properties": {
+						        "name": "Mournwold",
+			        			"type": "region",
+			        			"colour": "#228B22",
+						        "url": "https://www.profounddecisions.co.uk/empire-wiki/Mournwold",
+						        "features": {"type":"FeatureCollection","features":[
+						        	{
+						        		"type": "Feature",
+						        		"properties": {
+						        			"name": "The ruins of Overton",
+			        						"type": "poi",
+						        			"image": "overton.PNG",
+						        			"description": "Once a sheep-farming town and market set on a hill, Overton was ruined early on in the great Battle for the Greensward. The majority of the defenders were killed refusing to leave their posts. Pilgrims visit the ruins of Overton to lay tokens at the graves of the fallen. North of the ruins, the Jotun raised a massive grass-covered burial mound, beneath which lie both the bodies of countless Imperial soldiers and the Jotun who fell fighting them. Apple trees grow at the crest - it is not clear whether the orcs planted them in deference to Marcher burial customs, or whether they are the work of the surviving monks of Greensward Abbey. When the Empire liberated Greensward shortly before the Autumn Equinox 381YE there was some talk of disinterring the mound, but the Marcher soldiers were adamant they be left to rest undisturbed - the soil may have been soured, but it is still the soil they died fighting for, whether they were Marchers or not.<br/><br/>Not far from the ruins stands Honour's Rest, a small shrine and orchard tended by friars who watch over the ruins and the barrow mounds.",
+						        			"url": "https://www.profounddecisions.co.uk/empire-wiki/Mournwold#The_ruins_of_Overton"
+						        		},
+						        		"geometry":{
+						        			"type":"Point",
+						        			"coordinates": [2723,1632]
+						        		}
+						        	}
+						        ]}
+						    },
+						    "geometry":{"type":"Polygon","coordinates":[[
+						    	[2092,1742],
+						    	[2280,1889],
+						    	[2413,1819],
+						    	[2620,1904],
+						    	[2779,1948],
+						    	[2952,1895],
+			    				[3019,1921],
+			    				[2916,1748],
+						    	[2806,1711],
+						    	[2788,1590],
+						    	[2755,1569],
+						    	[2689,1508],
+						    	[2494,1521],
+						    	[2394,1624],
+						    	[2248,1641],
+						    	[2096,1743]
+						    ]]}
+						}
+					]}
+			    },
+			    "geometry":{"type":"Polygon","coordinates":[[
+			    	[1361,2386],
+			    	[1763,2398],
+			    	[1848,2266],
+			    	[1995,2132],
+			    	[2374,2150],
+			    	[2404,2195],
+			    	[2454,2225],
+			    	[2516,2271],
+			    	[2982,2309],
+			    	[3019,1921],
+			    	[2916,1748],
+			    	[2806,1711],
+			    	[2788,1590],
+			    	[2755,1569],
+			    	[2689,1508],
+					[2494,1521],
+			    	[2394,1624],
+			    	[2248,1641],
+			    	[2096,1743],
+			    	[1760,1848],
+			    	[1657,1880],
+			    	[1408,2061]
+			    ]]}
+			},
+			{
+				"type": "Feature",
+			    "properties": {
+			        "name": "Wintermark",
+			        "type": "nation",
+			        "Armies": 3,
+			        "Territories": 3,
+			        "colour": "#BC8F8F",
+			        "url": "https://www.profounddecisions.co.uk/empire-wiki/Wintermark",
+			        "image": "wintermark.jpg"
+			    },
+			    "geometry":{"type":"Polygon","coordinates":[[
+			    	[1763,2398],
+			    	[1848,2266],
+			    	[1995,2132],
+			    	[2374,2150],
+			    	[2404,2195],
+			    	[2516,2271],
+			    	[2982,2309],
+			    	[2990,2365],
+			    	[2892,2483],
+			    	[2903,2652],
+			    	[2692,2740],
+			    	[2678,2801],
+			    	[2775,2859],
+			    	[2764,2990],
+			    	[2660,3032],
+			    	[2676,3095],
+			    	[2576,3139],
+			    	[2628,3223],
+			    	[2557,3416],
+			    	[2757,3584],
+			    	[1981,3650],
+			    	[1552,3469],
+			    	[1443,3146],
+			    	[1407,2734],
+			    	[1573,2587]
+			    ]]}
+			},
+			{
+				"type": "Feature",
+			    "properties": {
+			        "name": "The Brass Coast",
+			        "type": "nation",
+			        "colour": "#FFA500",
+			        "url": "https://www.profounddecisions.co.uk/empire-wiki/The_Brass_Coast",
+			        "data": "data/the_brass_coast.html",
+			        "features": {"type":"FeatureCollection","features":[
+				        {
+						    "type": "Feature",
+						    "properties": {
+						        "name": "Kahraman",
+			        			"type": "region",
+			        			"colour": "#FFA500",
+						        "url": "https://www.profounddecisions.co.uk/empire-wiki/Kahraman"
+						    },
+						    "geometry":{"type":"Polygon","coordinates":[[
+						    	[1592,1317],
+						    	[1801,1489],
+						    	[2161,1513],
+						    	[2380,1501],
+								[2494,1521],
+								[2689,1508],
+								[2720,1417],
+								[2698,1341],
+								[2464,1044],
+								[2100,847],
+								[1573,1123]
+						    ]]}
+						},
+						{
+						    "type": "Feature",
+						    "properties": {
+						        "name": "Madruga",
+			        			"type": "region",
+			        			"colour": "#FFA500",
+						        "url": "https://www.profounddecisions.co.uk/empire-wiki/Madruga"
+						    },
+						    "geometry":{"type":"Polygon","coordinates":[[
+								[2100,847],
+								[2464,1044],
+								[2698,1341],
+								[3096,1195],
+								[3336,781],
+								[2948,545],
+								[2853,652],
+								[2672,562],
+								[2456,589],
+								[2385,654],
+								[2349,689],
+								[2161,752]
+						    ]]}
+						}
+					]}
+			    },
+			    "geometry":{"type":"Polygon","coordinates":[[
+			    	[1592,1317],
+			    	[1801,1489],
+			    	[2161,1513],
+			    	[2380,1501],
+					[2494,1521],
+					[2689,1508],
+					[2720,1417],
+					[2698,1341],
+					[3096,1195],
+					[3336,781],
+					[2948,545],
+					[2853,652],
+					[2672,562],
+					[2456,589],
+					[2385,654],
+					[2349,689],
+					[2161,752],			
+					[2100,847],
+					[1573,1123]
+			    ]]}
+			}
+		]}
 	}
-]}
+}
