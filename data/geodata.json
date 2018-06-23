@@ -116,7 +116,8 @@
 				    	[2788,1590],
 				    	[2755,1569],
 				    	[2466,1612],
-				    	[2416,1601],
+				    	[2689,1508],
+				    	[2494,1521],
 				    	[2394,1624],
 				    	[2248,1641],
 				    	[2096,1743]
@@ -157,6 +158,43 @@
 	        "Territories": 3,
 	        "url": "https://www.profounddecisions.co.uk/empire-wiki/Wintermark",
 	        "image": "wintermark.jpg"
+	    },
+	    "geometry":{"type":"Polygon","coordinates":[[
+	    	[1763,2398],
+	    	[1848,2266],
+	    	[1995,2132],
+	    	[2374,2150],
+	    	[2404,2195],
+	    	[2516,2271],
+	    	[2982,2309],
+	    	[2990,2365],
+	    	[2892,2483],
+	    	[2903,2652],
+	    	[2692,2740],
+	    	[2678,2801],
+	    	[2775,2859],
+	    	[2764,2990],
+	    	[2660,3032],
+	    	[2676,3095],
+	    	[2576,3139],
+	    	[2628,3223],
+	    	[2557,3416],
+	    	[2757,3584],
+	    	[1981,3650],
+	    	[1552,3469],
+	    	[1443,3146],
+	    	[1407,2734],
+	    	[1573,2587]
+	    ]]}
+	},
+	{
+		"type": "Feature",
+	    "properties": {
+	        "name": "Wintermark",
+	        "Armies": 3,
+	        "Territories": 3,
+	        "url": "https://www.profounddecisions.co.uk/empire-wiki/Wintermark",
+	        "image": "the_league.jpg"
 	    },
 	    "geometry":{"type":"Polygon","coordinates":[[
 	    	[1763,2398],
