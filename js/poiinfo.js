@@ -18,22 +18,24 @@ function openPOIInfo(map, e){
 	}
 	var description = e.target.feature.properties.description;
 	var data = e.target.feature.properties.data;
+	var innerHTML = "<a href='javascript:void(0)' class='closebtn' onclick='closePOIInfo(map)'>&times;</a><h2>" + e.target.feature.properties.name + "</h2>";
 	if(data){
 		var xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = function() {
 		    if (this.readyState == 4 && this.status == 200) {
-				poiInfo.innerHTML = "<a href='javascript:void(0)' class='closebtn' onclick='closePOIInfo(map)'>&times;</a>" + xhttp.responseText;
+				poiInfo.innerHTML = xhttp.responseText;
 		    }
 		};
 		xhttp.open("GET", data, true);
 		xhttp.send(); 
 	} else if(description){
-		var innerHTML = "<a href='javascript:void(0)' class='closebtn' onclick='closePOIInfo(map)'>&times;</a><h2>" + e.target.feature.properties.name + "</h2>";
 		innerHTML += "<a id='poiInfoDescription'>" + description + "</a>";
 		var img = e.target.feature.properties.image;
 		if(img){
 			innerHTML += "<img src='images/" + img + "'/>";
 		}
+		poiInfo.innerHTML = innerHTML;
+	} else {
 		poiInfo.innerHTML = innerHTML;
 	}
 	poiInfo.style.right = 0;
