@@ -197,10 +197,10 @@
 
 			function createLayerFromZoomRec(data, toSave){
 				var returnArray = new Array();
-				if(toSave(data.type)){
-					Array.prototype.push.apply(returnArray, data);
-				}
 				if(data.properties){
+					if(toSave(data.properties.type)){
+						Array.prototype.push.apply(returnArray, data);
+					}
 					var dataFeatures = data.properties.features;
 					if(dataFeatures){
 						for (var i in dataFeatures){
