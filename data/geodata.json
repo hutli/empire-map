@@ -7,7 +7,7 @@
 			    "type": "Feature",
 			    "properties": {
 			        "name": "The Marches",
-			        "type": "region",
+			        "type": "nation",
 			        "Armies": 4,
 			        "Territories": 4,
 			        "colour": "#228B22",
