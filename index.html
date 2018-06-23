@@ -216,7 +216,7 @@
 						toSave = function(type){
 							return type == "region" ? true : false;
 						};
-					} else if(newZoom == nationZoom && (savedZoom < nationZoom || forceUpdate)){
+					} else if(newZoom == nationZoom && (savedZoom > nationZoom || forceUpdate)){
 						toSave = function(type){
 							return type == "nation" ? true : false;
 						};
