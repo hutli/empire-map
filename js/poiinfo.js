@@ -21,7 +21,7 @@ function openPOIInfo(map, e){
 	var data = e.target.feature.properties.data;
 	if(data){
 		var xmlhttp = new XMLHttpRequest();
-		$.get(data,
+		$.post(data,
 		    function (response) {
 		        document.getElementById("poiInfo").innerHTML(response);
 		});
