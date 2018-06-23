@@ -240,7 +240,7 @@
 				if(props){
 					innerHTML += '<b>' + props.name + '</b>';
 					for (var key in props) {
-						if(ignoreList(key)){
+						if(!ignoreList(key)){
 							innerHTML += '<br/>' + key + ': ' + props[key];
 						}
 			        }
