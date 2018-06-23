@@ -224,7 +224,7 @@
 
 			map.on({
 				zoomstart: saveZoom,
-			    zoomend: createLayerFromZoom(nationsData),
+			    zoomend: function(e){createLayerFromZoom(nationsData);},
 			});
 
 			function onEachFeature(feature, layer) {
