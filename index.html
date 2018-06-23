@@ -100,7 +100,9 @@
 			}
 
 			function style(feature) {
-			    return {
+				var colour = feature.properties.colour;
+				return {
+			    	fillColor: colour,
 			        weight: 1,
 			        opacity: 1,
 			        color: 'black',
