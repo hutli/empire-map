@@ -178,6 +178,7 @@
 					}
 				} else if (isAltKeyPressed || geometryType == "Point"){
 					openPOIInfo(map, e);
+					featureBuffer = e.target.feature;
 				}else {
 					map.fitBounds(e.target.getBounds());
 					featureBuffer = e.target.feature.properties.features.features;
