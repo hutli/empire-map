@@ -198,7 +198,30 @@
 	        "name": "The Brass Coast",
 	        "colour": "#FFA500",
 	        "url": "https://www.profounddecisions.co.uk/empire-wiki/Wintermark",
-	        "image": "the_brass_coast.jpg"
+	        "image": "the_brass_coast.jpg",
+	        "features": {"type":"FeatureCollection","features":[
+		        {
+				    "type": "Feature",
+				    "properties": {
+				        "name": "Kahraman",
+	        			"colour": "#FFA500",
+				        "url": "https://www.profounddecisions.co.uk/empire-wiki/Bregasland"
+				    },
+				    "geometry":{"type":"Polygon","coordinates":[[
+				    	[1361,2386],
+				    	[1763,2398],
+						[1848,2266],
+						[1995,2123],
+						[1957,2020],
+						[2031,1966],
+						[2280,1889],
+						[2092,1742],
+						[1760,1848],
+						[1657,1880],
+						[1408,2061]
+				    ]]}
+				}
+			]}
 	    },
 	    "geometry":{"type":"Polygon","coordinates":[[
 	    	[1592,1317],
@@ -210,7 +233,8 @@
 			[2720,1417],
 			[2698,1341],
 			[2464,1044],
-			[1573,1123]
+			[1573,1123],
+			[2100,847]
 	    ]]}
 	}
 ]}
