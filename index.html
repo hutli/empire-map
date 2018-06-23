@@ -174,24 +174,17 @@
 				saveZoom = map.getZoom();
 			}
 
-			var currentLayer = minZoom;
-			function setCurrentLayer(){
-				var curretZoom = map.getZoom();
-				if(curretZoom <= -2){
-					currentLayer = 0;
-				} else if (curretZoom > -2 && curretZoom <= 0) {
-					currentLayer = 1;
-				} else if (curretZoom > 0){
-					currentLayer = 2;
-				}
-			}
-
 			function createLayerFromZoom(e) {
 				if(!isFeatureClicked){
 					var newZoom = map.getZoom();
-					if(newZoom == -2 && currentLayer != 0){
-						createMap(nationsData);
-					} else if((newZoom == -1 || newZoom == 0) && currentLayer != 1){
+					var mapData = {"type": "FeatureCollection"};
+					if(newZoom == nationZoom && savedZoom != nationZoom){
+						var toSave = function(type){
+							return type == "nation" ? true : false;
+						}
+						mapData.features = createLayerFromZoomRec(nationsData, toSave);
+						createMap(mapData);
+					} else if((newZoom == regionMinZoom && savedZoom > regionMinZoom){
 						var regionsData = {"type": "FeatureCollection"};
 						regionsData.features = new Array();
 						var nationFeatures = nationsData.features;
@@ -222,6 +215,23 @@
 				}
 				isFeatureClicked = false;
 				setCurrentLayer();
+			}
+
+			function createLayerFromZoomRec(data, toSave){
+				var returnArray = new Array();
+				if(toSave(data.type)){
+					Array.prototype.push.apply(returnArray, data);
+				}
+
+				var dataFeatures = data.properties.features;
+				if(dataFeatures){
+					for (var i in dataFeatures){
+						var dataFeature = dataFeatures[i];
+						Array.prototype.push.apply(returnArray, createLayerFromZoomRec(dataFeature));
+					}
+				}
+
+				return returnArray;
 			}
 
 			map.on({
