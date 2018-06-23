@@ -187,7 +187,7 @@
 						toSave = function(type){
 							return type == "region" ? true : false;
 						}
-					} else if(newZoom > 0 && currentLayer != 2) {
+					} else if(newZoom >= poiMinZoom && savedZoom < poiMinZoom) {
 						toSave = function(type){
 							return type == "region" ? true : type == "poi" ? true : false
 						}
