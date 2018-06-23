@@ -192,7 +192,10 @@
 				    info.update(layer.feature.properties);
 				}else {
 					map.fitBounds(e.target.getBounds());
-					featureBuffer = e.target.feature.properties.features.features;
+					var features = e.target.feature.properties.features.features;
+					for(var i in features){
+						featureBuffer.push(features[i]);
+					}
 				}
 			}
 
