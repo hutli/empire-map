@@ -206,7 +206,10 @@
 						if(dataFeatures){
 							for (var i in dataFeatures){
 								var dataFeature = dataFeatures[i];
-								returnArray.push(createLayerFromZoomRec(dataFeature, toSave));
+								var dataFeatureArr = createLayerFromZoomRec(dataFeature, toSave);
+								for(var j in dataFeatureArr){
+									returnArray.push(dataFeatureArr[j]);
+								}
 							}
 						}
 					}
