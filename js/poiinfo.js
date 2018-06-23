@@ -20,16 +20,16 @@ function openPOIInfo(map, e){
 	var description = e.target.feature.properties.description;
 	var data = e.target.feature.properties.data;
 	if(data){
-		var xmlhttp = new XMLHttpRequest();
+		innerHTML += "<a id='poiInfo'></a>";
 		$.get(data,
 		    function (response) {
 		        document.getElementById("poiInfo").innerHTML(response);
 		});
 	} else if(description){
-		innerHTML += "<a id='poiInfo'>" + description + "</a>"
+		innerHTML += "<a id='poiInfo'>" + description + "</a>";
 		var img = e.target.feature.properties.image;
 		if(img){
-			innerHTML += "<img src='images/" + img + "'/>"
+			innerHTML += "<img src='images/" + img + "'/>";
 		}
 	}
 	poiInfo.innerHTML = innerHTML;
