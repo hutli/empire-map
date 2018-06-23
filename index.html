@@ -203,7 +203,7 @@
 			function createLayerFromZoomRec(data, toSave, ignoreArray){
 				var returnArray = new Array();
 				if(data.properties){
-					if(toSave(data.properties.type) && !ignoreArray.includes(data)){
+					if(toSave(data.properties.type) && (!ignoreArray || !ignoreArray.includes(data))){
 						returnArray.push(data);
 					}
 					if(data.properties.features && data.properties.features.features){
