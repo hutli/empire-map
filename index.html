@@ -190,7 +190,6 @@
 					    }
 					}
 				    info.update(layer.feature.properties);
-					ignoreZoom = true;
 				}else {
 					map.fitBounds(e.target.getBounds());
 					featureBuffer = e.target.feature.properties.features.features;
@@ -202,9 +201,8 @@
 				saveZoom = map.getZoom();
 			}
 
-			var ignoreZoom = false;
 			function createLayerFromZoom(data, forceUpdate) {
-				if(!ignoreZoom){
+				if(!ignoreMouseOut){
 					var newZoom = map.getZoom();
 					var mapData = {"type": "FeatureCollection"};
 					var toSave = function(type){
