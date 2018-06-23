@@ -44,7 +44,7 @@ function openPOIInfo(map, e){
 
 function closePOIInfo(map){
 	ignoreMouseOut = false;
-	resetHighlight(highligtedFeature);
+	resetHighlight(highlightedFeature);
 	map = map.setActiveArea('poiCloseArea');
 	poiInfo.innerHTML = "";
 	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
