@@ -101,13 +101,16 @@
 
 			function style(feature) {
 				var colour = feature.properties.colour;
+				if(!colour){
+					//colour = "#ffffff"
+				}
 				return {
 			    	fillColor: colour,
 			        weight: 1,
 			        opacity: 1,
 			        color: 'black',
 			        dashArray: '3',
-			        fillOpacity: 0
+			        fillOpacity: 0.3
 			    };
 			}
 
