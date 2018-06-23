@@ -201,7 +201,7 @@
 					if(toSave(data.properties.type)){
 						Array.prototype.push.apply(returnArray, data);
 					}
-					var dataFeatures = data.properties.features;
+					var dataFeatures = data.properties.features.features;
 					if(dataFeatures){
 						for (var i in dataFeatures){
 							var dataFeature = dataFeatures[i];
