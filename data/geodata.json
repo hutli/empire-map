@@ -192,6 +192,7 @@
 		"type": "Feature",
 	    "properties": {
 	        "name": "The Brass Coast",
+	        "colour": "#FFA500",
 	        "url": "https://www.profounddecisions.co.uk/empire-wiki/Wintermark",
 	        "image": "the_brass_coast.jpg"
 	    },
