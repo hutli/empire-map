@@ -221,7 +221,7 @@
 							return type == "nation" ? true : false;
 						};
 					} else if(featureBuffer.length == 0){
-						return;
+						return undefined;
 					}
 					mapData.features = createLayerFromZoomRec(data, toSave, featureBuffer);
 					for(var i in featureBuffer){
