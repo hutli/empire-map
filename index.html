@@ -58,6 +58,10 @@
 
 		<script src="js/poiinfo.js"></script>
 		<script>
+			var ignoreList = [
+				"name", "url", "features", "image", "description", "colour", "data" 
+			]
+
 			function sideNavClick(t, e){
 				if(e.ctrlKey){
 					return true;
@@ -228,7 +232,7 @@
 				if(props){
 					innerHTML += '<b>' + props.name + '</b>';
 					for (var key in props) {
-						if(key != "name" && key != "url" && key != "features" && key != "image" && key != "description"){
+						if($.inArray(key, ignoreList)){
 							innerHTML += '<br/>' + key + ': ' + props[key];
 						}
 			        }
