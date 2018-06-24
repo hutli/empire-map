@@ -338,6 +338,25 @@
 						{
 						    "type": "Feature",
 						    "properties": {
+						        "name": "Feroz",
+			        			"type": "region",
+			        			"colour": "#FFA500",
+						        "url": "https://www.profounddecisions.co.uk/empire-wiki/Feroz"
+						    },
+						    "geometry":{"type":"Polygon","coordinates":[[
+								[1835,323],
+								[1958,543],
+								[2284,543],
+								[2385,654],
+								[2456,589],
+								[2672,562],
+								[2853,652],
+								[2948,545]
+						    ]]}
+						},
+						{
+						    "type": "Feature",
+						    "properties": {
 						        "name": "Madruga",
 			        			"type": "region",
 			        			"colour": "#FFA500",
