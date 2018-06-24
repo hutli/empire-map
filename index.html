@@ -190,51 +190,39 @@
 					    }
 					}
 				    info.update(layer.feature.properties);
-				    createLayerFromZoom(nationsData, true);
-				    skipUpdate = true;
 				}else {
 					map.fitBounds(e.target.getBounds());
 					var features = e.target.feature.properties.features.features;
 					for(var i in features){
 						featureBuffer.push(features[i]);
 					}
-				    createLayerFromZoom(nationsData, true);
-				    skipUpdate = true;
 				}
 			}
 
-			var savedZoom = minZoom;
+			/*var savedZoom = minZoom;
 			function saveZoom(){
 				savedZoom = map.getZoom();
-			}
+			}*/
 
-			var skipUpdate = false;
-			function createLayerFromZoom(data, forceUpdate) {
-				if(!ignoreMouseOut && !skipUpdate){
+			function createLayerFromZoom(data) {
+				if(!ignoreMouseOut){
 					var newZoom = map.getZoom();
 					var mapData = {"type": "FeatureCollection"};
-
-					if(featureBuffer.length > 0){
-						forceUpdate = true;
-					}
-
 					var toSave = function(type){
 						return false;
 					};
-					if(newZoom >= poiMinZoom && (savedZoom < poiMinZoom || forceUpdate)) {
+					if(newZoom >= poiMinZoom) {
 						toSave = function(type){
 							return type == "region" ? true : type == "poi" ? true : false
 						};
-					} else if(newZoom >= regionMinZoom && (savedZoom < regionMinZoom || savedZoom >= poiMinZoom || forceUpdate)){
+					} else if(newZoom >= regionMinZoom){
 						toSave = function(type){
 							return type == "region" ? true : false;
 						};
-					} else if(newZoom == nationZoom && (savedZoom > nationZoom || forceUpdate)){
+					} else if(newZoom >= nationZoom){
 						toSave = function(type){
 							return type == "nation" ? true : false;
 						};
-					} else {
-						return undefined;
 					}
 					mapData.features = createLayerFromZoomRec(data, toSave, featureBuffer);
 					for(var i in featureBuffer){
@@ -243,7 +231,6 @@
 					featureBuffer = new Array();
 					createMap(mapData);
 				}
-				skipUpdate = false;
 			}
 
 			function createLayerFromZoomRec(data, toSave, ignoreArray){
@@ -270,7 +257,7 @@
 			}
 
 			map.on({
-				zoomstart: saveZoom,
+				//zoomstart: saveZoom,
 			    zoomend: function(e){createLayerFromZoom(nationsData);},
 			});
 
