@@ -317,6 +317,23 @@
 						{
 						    "type": "Feature",
 						    "properties": {
+						        "name": "Segura",
+			        			"type": "region",
+			        			"colour": "#FFA500",
+						        "url": "https://www.profounddecisions.co.uk/empire-wiki/Segura"
+						    },
+						    "geometry":{"type":"Polygon","coordinates":[[
+						    	[1592,1317],
+								[1573,1123],
+								[2100,847],
+								[2161,752],
+								[2349,689],
+								[2385,654]
+						    ]]}
+						},
+						{
+						    "type": "Feature",
+						    "properties": {
 						        "name": "Madruga",
 			        			"type": "region",
 			        			"colour": "#FFA500",
