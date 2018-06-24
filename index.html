@@ -191,13 +191,14 @@
 					}
 				    info.update(layer.feature.properties);
 				} else {
-					map.fitBounds(e.target.getBounds());
+					var newBounds = map.fitBounds(e.target.getBounds());
 
 					featureBuffer = new Array();
 					var features = e.target.feature.properties.features.features;
 					for(var i in features){
 						featureBuffer.push(features[i]);
 					}
+
 					createLayerFromZoom(nationsData);
 				}
 			}
@@ -207,7 +208,7 @@
 				savedZoom = map.getZoom();
 			}
 
-			function createLayerFromZoom(data, isScroll) {
+			function createLayerFromZoom(data) {
 				if(!ignoreMouseOut){
 					var newZoom = map.getZoom();
 					var mapData = {"type": "FeatureCollection"};
@@ -232,9 +233,6 @@
 						mapData.features.push(featureBuffer[i]);
 					}
 					createMap(mapData);
-				}
-				if(isScroll){
-					featureBuffer = new Array();
 				}
 			}
 
@@ -263,7 +261,7 @@
 
 			map.on({
 				zoomstart: saveZoom,
-			    zoomeend: function(e){createLayerFromZoom(nationsData, e);},
+			    zoomeend: function(e){createLayerFromZoom(nationsData);},
 			});
 
 			function onEachFeature(feature, layer) {
