@@ -446,6 +446,21 @@
 						    	[2800,1368],
 								[2720,1417]
 						    ]]}
+						},
+						{
+						    "type": "Feature",
+						    "properties": {
+						        "name": "Sarvos",
+			        			"type": "region",
+			        			"colour": "#FFD700",
+						        "url": "https://www.profounddecisions.co.uk/empire-wiki/Sarvos"
+						    },
+						    "geometry":{"type":"Polygon","coordinates":[[
+						    	[3243,1616],
+						    	[3096,1559],
+						    	[3065,1403],
+						    	[2800,1368]
+						    ]]}
 						}
 					]}
 			    },
