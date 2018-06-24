@@ -118,17 +118,23 @@
 
 			function style(feature) {
 				var colour = feature.properties.colour;
-				if(!colour){
-					//colour = "#ffffff"
-				}
-				return {
-			    	fillColor: colour,
+				var background = feature.properties.background;
+
+				var returnObj = {
 			        weight: 1,
 			        opacity: 1,
 			        color: 'black',
 			        dashArray: '3',
 			        fillOpacity: 0.5
 			    };
+
+				if(background){
+					returnObj.image = "images/" + background;
+				} else if(colour){
+					returnObj.color = colour;
+				}
+
+				return returnObj; 
 			}
 
 			function arrayIncludes(array, element){
