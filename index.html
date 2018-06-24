@@ -192,6 +192,8 @@
 				    info.update(layer.feature.properties);
 				} else {
 					map.fitBounds(e.target.getBounds());
+
+					featureBuffer = new Array();
 					var features = e.target.feature.properties.features.features;
 					for(var i in features){
 						featureBuffer.push(features[i]);
@@ -206,9 +208,10 @@
 			}
 
 			var forceNextUpdate = false;
-			function createLayerFromZoom(data) {
-				var newZoom = map.getZoom();
-				if((savedZoom != newZoom || forceNextUpdate) && !ignoreMouseOut){
+			function createLayerFromZoom(e, data) {
+				if(!ignoreMouseOut){
+					e.target.getZoomType();
+					var newZoom = map.getZoom();
 					var mapData = {"type": "FeatureCollection"};
 					var toSave = function(type){
 						return false;
@@ -230,7 +233,6 @@
 					for(var i in featureBuffer){
 						mapData.features.push(featureBuffer[i]);
 					}
-					featureBuffer = new Array();
 					createMap(mapData);
 				}
 				forceNextUpdate = false;
@@ -261,7 +263,7 @@
 
 			map.on({
 				movestart: saveZoom,
-			    moveend: function(e){createLayerFromZoom(nationsData);},
+			    moveend: function(e){createLayerFromZoom(e, nationsData);},
 			});
 
 			function onEachFeature(feature, layer) {
