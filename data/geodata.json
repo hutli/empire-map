@@ -485,6 +485,50 @@
 			    	[2800,1368],
 					[2720,1417]
 			    ]]}
+			},
+			{
+				"type": "Feature",
+			    "properties": {
+			        "name": "Highguard",
+			        "type": "nation",
+			        "Armies": 3,
+			        "Territories": 3,
+			        "colour": "#696969",
+			        "url": "https://www.profounddecisions.co.uk/empire-wiki/Highguard",
+			        "data": "data/the_brass_coast.html",
+			        "background": "the_league_background.jpg",
+			        "features": {"type":"FeatureCollection","features":[
+				        {
+						    "type": "Feature",
+						    "properties": {
+						        "name": "Casinea",
+			        			"type": "region",
+			        			"colour": "#696969",
+						        "url": "https://www.profounddecisions.co.uk/empire-wiki/Casinea"
+						    },
+						    "geometry":{"type":"Polygon","coordinates":[[
+						    	[2800,1368],
+						    	[3138,1876],
+						    	[3456,4811-3045],
+						    	[3547,4811-2930],
+						    	[3693,4811-2894],
+						    	[3974,4811-2956],
+						    	[4078,4811-3092],
+						    	[3973,4811-3252]
+						    ]]}
+						}
+					]}
+			    },
+			    "geometry":{"type":"Polygon","coordinates":[[
+			    	[2800,1368],
+			    	[3138,1876],
+			    	[3456,4811-3045],
+			    	[3547,4811-2930],
+			    	[3693,4811-2894],
+			    	[3974,4811-2956],
+			    	[4078,4811-3092],
+			    	[3973,4811-3252]
+			    ]]}
 			}
 		]}
 	}
