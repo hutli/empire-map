@@ -190,12 +190,16 @@
 					    }
 					}
 				    info.update(layer.feature.properties);
+					createLayerFromZoom(nationsData);
+					skipNextUpdate = true;
 				}else {
 					map.fitBounds(e.target.getBounds());
 					var features = e.target.feature.properties.features.features;
 					for(var i in features){
 						featureBuffer.push(features[i]);
 					}
+					createLayerFromZoom(nationsData);
+					skipNextUpdate = true;
 				}
 			}
 
@@ -204,8 +208,9 @@
 				savedZoom = map.getZoom();
 			}*/
 
+			var skipNextUpdate = false;
 			function createLayerFromZoom(data) {
-				if(!ignoreMouseOut){
+				if(!ignoreMouseOut || !skipNextUpdate){
 					var newZoom = map.getZoom();
 					var mapData = {"type": "FeatureCollection"};
 					var toSave = function(type){
@@ -231,6 +236,7 @@
 					featureBuffer = new Array();
 					createMap(mapData);
 				}
+				skipNextUpdate = false;
 			}
 
 			function createLayerFromZoomRec(data, toSave, ignoreArray){
