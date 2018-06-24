@@ -409,7 +409,7 @@
 			        "type": "nation",
 			        "Armies": 3,
 			        "Territories": 3,
-			        "colour": "#BC8F8F",
+			        "colour": "#FFD700",
 			        "url": "https://www.profounddecisions.co.uk/empire-wiki/The_League",
 			        "image": "the_league.jpg",
 			        "background": "the_league_background.jpg",
@@ -419,10 +419,11 @@
 						    "properties": {
 						        "name": "Tassato",
 			        			"type": "region",
-			        			"colour": "#BC8F8F",
+			        			"colour": "#FFD700",
 						        "url": "https://www.profounddecisions.co.uk/empire-wiki/Kallavesa"
 						    },
 						    "geometry":{"type":"Polygon","coordinates":[[
+								[2689,1508],
 						    	[2755,1569],
 						    	[2788,1590],
 						    	[2806,1711],
