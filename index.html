@@ -100,7 +100,7 @@
 			xmlhttp.onreadystatechange = function() {
 			    if (this.readyState == 4 && this.status == 200) {
 			        nationsData = JSON.parse(this.responseText);
-			        createLayerFromZoom(nationsData, true);
+			        createLayerFromZoom(nationsData);
 			    }
 			};
 			xmlhttp.open("GET", "data/geodata.json", true);
@@ -208,9 +208,11 @@
 			}
 
 			var forceNextUpdate = false;
-			function createLayerFromZoom(e, data) {
+			function createLayerFromZoom(data, e) {
 				if(!ignoreMouseOut){
-					e.target.getZoomType();
+					if(e){
+						e.target.getZoomType();
+					}
 					var newZoom = map.getZoom();
 					var mapData = {"type": "FeatureCollection"};
 					var toSave = function(type){
@@ -263,7 +265,7 @@
 
 			map.on({
 				movestart: saveZoom,
-			    moveend: function(e){createLayerFromZoom(e, nationsData);},
+			    moveend: function(e){createLayerFromZoom(nationsData, e);},
 			});
 
 			function onEachFeature(feature, layer) {
