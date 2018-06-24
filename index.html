@@ -193,11 +193,11 @@
 				} else {
 					var newBounds = map.fitBounds(e.target.getBounds());
 
-					featureBuffer = new Array();
+					/*featureBuffer = new Array();
 					var features = e.target.feature.properties.features.features;
 					for(var i in features){
 						featureBuffer.push(features[i]);
-					}
+					}*/
 					//createLayerFromZoom(nationsData);
 				}
 			}
@@ -231,6 +231,7 @@
 					for(var i in featureBuffer){
 						mapData.features.push(featureBuffer[i]);
 					}
+					featureBuffer = new Array();
 					createMap(mapData);
 				}
 			}
