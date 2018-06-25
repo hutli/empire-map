@@ -202,7 +202,7 @@
 				} else {
 					var newBounds = map.fitBounds(e.target.getBounds());
 					var astolatBounds = e.target.getBounds();
-					var regionImage = L.imageOverlay("images" + e.target.feature.properties.background, astolatBounds).addTo(map);
+					var regionImage = L.imageOverlay("images/" + e.target.feature.properties.background, astolatBounds).addTo(map);
 					/*featureBuffer = new Array();
 					var features = e.target.feature.properties.features.features;
 					for(var i in features){
