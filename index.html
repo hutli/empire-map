@@ -286,10 +286,10 @@
 				var maxLng = topLeft[0];
 
 				for (var i = 0; i < coordinates.length; i++)  {
-					minLat = coordinates[i][1] < minLat ? coordinates[i][1] : minLat;
-					maxLat = coordinates[i][1] > maxLat ? coordinates[i][1] : maxLat;
-					minLng = coordinates[i][0] < minLng ? coordinates[i][0] : minLng;
-					maxLng = coordinates[i][0] > maxLng ? coordinates[i][0] : maxLng;
+					minLat = coordinates[i][1] < minLat ? minLat = coordinates[i][1];
+					maxLat = coordinates[i][1] > maxLat ? maxLat = coordinates[i][1];
+					minLng = coordinates[i][0] < minLng ? minLng = coordinates[i][0];
+					maxLng = coordinates[i][0] > maxLng ? maxLng = coordinates[i][0];
 				}
 
 				return [[minLat,minLng],[maxLat,maxLng]];
