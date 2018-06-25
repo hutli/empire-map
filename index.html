@@ -148,6 +148,7 @@
 				return false;
 			}
 
+			var highlightImage = undefined;
 			var ignoreMouseOut = false;
 			function highlightFeature(e) {
 				if(!ignoreMouseOut){
@@ -155,7 +156,7 @@
 				    if(layer.feature.geometry.type == "Polygon" || layer.feature.geometry.type == "MultiPolygon"){
 				    	if(layer.feature.properties.background){
 							var regionBounds = layer.getBounds();
-							var regionImage = L.imageOverlay("images/" + layer.feature.properties.background, regionBounds).addTo(map);
+							highlightImage = L.imageOverlay("images/" + layer.feature.properties.background, regionBounds).addTo(map);
 							layer.setStyle({
 								fillOpacity: 0
 							})
@@ -178,7 +179,11 @@
 
 			function resetHighlight(e) {
 				if(!ignoreMouseOut){
-				    geojson.resetStyle(e.target);
+					if(e.target.feature.properties.background){
+						map.removeLayer(highlightImage);
+					} else {
+						geojson.resetStyle(e.target);	
+					}
 				    info.update();
 				}
 			}
