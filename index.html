@@ -301,7 +301,7 @@
 				if(data.properties){
 					if(toSave(data.properties.type) && (!ignoreArray || !arrayIncludes(ignoreArray, data))){
 						if(data.properties.background){
-							var regionBounds = getBounds(data.geometry.coordinates);
+							var regionBounds = getBounds(data.geometry.coordinates[0]);
 							imageLayerArray.push(L.imageOverlay("images/" + data.properties.background, regionBounds));
 						} else {
 							geoJsonLayerArray.push(data);
