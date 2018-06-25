@@ -280,10 +280,10 @@
 			}
 
 			function getBounds(coordinates){
-				var minLat = topLeft[1];
-				var maxLat = bottomRight[1];
-				var minLng = topLeft[0];
-				var maxLng = bottomRight[1];
+				var minLat = bottomRight[1];
+				var maxLat = topLeft[1];
+				var minLng = bottomRight[0];
+				var maxLng = topLeft[0];
 
 				for (var i = 0; i < coordinates.length; i++)  {
 					minLat = coordinates[i][1] < minLat ? coordinates[i][1] : minLat;
