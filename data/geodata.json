@@ -18,6 +18,7 @@
 						    "properties": {
 						        "name": "Bregasland",
 			        			"type": "region",
+			        			"background": "bregasland.png",
 			        			"colour": "#228B22",
 						        "url": "https://www.profounddecisions.co.uk/empire-wiki/Bregasland",
 						        "features": {"type":"FeatureCollection","features":[

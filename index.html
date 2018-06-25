@@ -102,8 +102,6 @@
 			xmlhttp.onreadystatechange = function() {
 			    if (this.readyState == 4 && this.status == 200) {
 			        nationsData = JSON.parse(this.responseText);
-			        var astolatBounds = [[2000,2000], [2000,2000]];
-					var astolatImage = L.imageOverlay('images/astolat.png', astolatBounds).addTo(map);
 			        createLayerFromZoom(nationsData);
 			    }
 			};
@@ -203,7 +201,8 @@
 				    info.update(layer.feature.properties);
 				} else {
 					var newBounds = map.fitBounds(e.target.getBounds());
-
+					var astolatBounds = e.target.getBounds();
+					var regionImage = L.imageOverlay("images" + e.target.feature.properties.background, astolatBounds).addTo(map);
 					/*featureBuffer = new Array();
 					var features = e.target.feature.properties.features.features;
 					for(var i in features){
