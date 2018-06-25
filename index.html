@@ -284,10 +284,10 @@
 								var dataFeature = dataFeatures[i];
 								var dataFeatureArr = createLayerFromZoomRec(dataFeature, toSave, ignoreArray);
 								for(var j in dataFeatureArr[0]){
-									imageLayerArray.push(dataFeatureArr[j]);
+									imageLayerArray.push(dataFeatureArr[0][j]);
 								}
 								for(var j in dataFeatureArr[1]){
-									geoJsonLayerArray.push(dataFeatureArr[j]);
+									geoJsonLayerArray.push(dataFeatureArr[1][j]);
 								}
 							}
 						}
