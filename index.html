@@ -260,19 +260,20 @@
 					}
 
 					var returnData = createLayerFromZoomRec(data, toSave, featureBuffer);
-					imageLayerData = returnData[0];
+					imageLayersData = returnData[0];
 					geoJsonLayerData.features = returnData[1];
 					for(var i in featureBuffer){
 						if(featureBuffer[i].properties.background){
-							imageLayerData.push(featureBuffer[i]);
+							imageLayersData.push(featureBuffer[i]);
 						} else {
-							geoJsonLayerData.features.push(featureBuffer[i]);
+							geoJsonLayersData.features.push(featureBuffer[i]);
 						}
 					}
 
 
 					featureBuffer = new Array();
 					createGeoJsonLayer(geoJsonLayerData);
+					createImageLayers(imageLayerData);
 				}
 			}
 
