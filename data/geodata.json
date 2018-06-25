@@ -416,7 +416,6 @@
 			        "colour": "#FFD700",
 			        "url": "https://www.profounddecisions.co.uk/empire-wiki/The_League",
 			        "image": "the_league.jpg",
-			        "background": "the_league_background.jpg",
 			        "features": {"type":"FeatureCollection","features":[
 				        {
 						    "type": "Feature",
@@ -523,7 +522,6 @@
 			        "colour": "#696969",
 			        "url": "https://www.profounddecisions.co.uk/empire-wiki/Highguard",
 			        "data": "data/the_brass_coast.html",
-			        "background": "the_league_background.jpg",
 			        "features": {"type":"FeatureCollection","features":[
 				        {
 						    "type": "Feature",

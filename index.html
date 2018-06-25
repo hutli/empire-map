@@ -155,7 +155,7 @@
 				    if(layer.feature.geometry.type == "Polygon" || layer.feature.geometry.type == "MultiPolygon"){
 				    	if(layer.feature.properties.background){
 							var regionBounds = layer.getBounds();
-							var regionImage = L.imageOverlay("images/" + layer.feature.properties.background, astolatBounds).addTo(map);
+							var regionImage = L.imageOverlay("images/" + layer.feature.properties.background, regionBounds).addTo(map);
 							layer.setStyle({
 								fillOpacity: 0
 							})
