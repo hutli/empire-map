@@ -645,6 +645,35 @@
 			    	[3446,1185],
 			    	[3512,1396]
 			    ]]}
+			},
+			{
+				"type": "Feature",
+			    "properties": {
+			        "name": "Dawn",
+			        "type": "nation",
+			        "colour": "",
+			        "url": "https://www.profounddecisions.co.uk/empire-wiki/Dawn",
+			        "features": {"type":"FeatureCollection","features":[
+				        {
+						    "type": "Feature",
+						    "properties": {
+						        "name": "Astolat",
+			        			"type": "region",
+			        			"colour": "#696969",
+						        "url": "https://www.profounddecisions.co.uk/empire-wiki/Astolat"
+						    },
+						    "geometry":{"type":"Polygon","coordinates":[[
+						    	[3485,2266],
+						    	[3627,2373],
+						    	[3625,2483],
+
+						    ]]}
+						}
+					]}
+			    },
+			    "geometry":{"type":"Polygon","coordinates":[[
+			    	
+			    ]]}
 			}
 		]}
 	}
