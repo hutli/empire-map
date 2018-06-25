@@ -469,8 +469,8 @@
 						        "url": "https://www.profounddecisions.co.uk/empire-wiki/Temeschwar"
 						    },
 						    "geometry":{"type":"Polygon","coordinates":[[
-						    	[3112,2546],
 						    	[3058,2313],
+						    	[3112,2546],
 						    	[3427,2523],
 						    	[3539,2608],
 						    	[3625,2483],
@@ -485,8 +485,8 @@
 			    "geometry":{"type":"MultiPolygon","coordinates":[
 			    [
 			    	[
-				    	[3112,2546],
 				    	[3058,2313],
+				    	[3112,2546],
 				    	[3427,2523],
 				    	[3539,2608],
 				    	[3625,2483],
