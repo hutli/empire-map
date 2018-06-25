@@ -155,8 +155,6 @@
 				    var layer = e.target;
 				    if(layer.feature.geometry.type == "Polygon" || layer.feature.geometry.type == "MultiPolygon"){
 				    	if(layer.feature.properties.background){
-							var regionBounds = layer.getBounds();
-							highlightImage = L.imageOverlay("images/" + layer.feature.properties.background, regionBounds).addTo(map);
 							layer.setStyle({
 								fillOpacity: 0
 							})
@@ -179,11 +177,7 @@
 
 			function resetHighlight(e) {
 				if(!ignoreMouseOut){
-					if(e.target.feature.properties.background){
-						map.removeLayer(highlightImage);
-					} else {
-						geojson.resetStyle(e.target);	
-					}
+					geojson.resetStyle(e.target);
 				    info.update();
 				}
 			}
@@ -200,12 +194,16 @@
 					openPOIInfo(map, e);
 					var layer = e.target;
 					if(layer.feature.geometry.type == "Polygon"){
-					    layer.setStyle({
-					        weight: 5,
-					        color: '#666',
-					        dashArray: '',
-					        fillOpacity: 0.7
-					    });
+						var style = {
+							weight: 5,
+						    color: '#666',
+						    dashArray: ''
+						}
+						if(!layer.feature.properties.background){
+							style.fillOpacity = 0.7;
+						}
+					    
+					    layer.setStyle(style);
 
 					    if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
 					        layer.bringToFront();
@@ -248,6 +246,7 @@
 							return type == "nation" ? true : false;
 						};
 					}
+
 					mapData.features = createLayerFromZoomRec(data, toSave, featureBuffer);
 					for(var i in featureBuffer){
 						mapData.features.push(featureBuffer[i]);
@@ -258,10 +257,16 @@
 			}
 
 			function createLayerFromZoomRec(data, toSave, ignoreArray){
-				var returnArray = new Array();
+				var imageLayerArray = new Array();
+				var geoJsonLayerArray = new Array();
 				if(data.properties){
 					if(toSave(data.properties.type) && (!ignoreArray || !arrayIncludes(ignoreArray, data))){
-						returnArray.push(data);
+						if(data.properties.background){
+							var regionBounds = data.getBounds();
+							imageLayerArray.push(L.imageOverlay("images/" + data.properties.background, regionBounds));
+						} else {
+							geoJsonLayerArray.push(data);
+						}
 					}
 					if(data.properties.features && data.properties.features.features){
 						var dataFeatures = data.properties.features.features;
@@ -269,15 +274,18 @@
 							for (var i in dataFeatures){
 								var dataFeature = dataFeatures[i];
 								var dataFeatureArr = createLayerFromZoomRec(dataFeature, toSave, ignoreArray);
-								for(var j in dataFeatureArr){
-									returnArray.push(dataFeatureArr[j]);
+								for(var j in dataFeatureArr[0]){
+									imageLayerArray.push(dataFeatureArr[j]);
+								}
+								for(var j in dataFeatureArr[1]){
+									geoJsonLayerArray.push(dataFeatureArr[j]);
 								}
 							}
 						}
 					}
 				}
 
-				return returnArray;
+				return [imageLayerArray, geoJsonLayerArray];
 			}
 
 			map.on({
