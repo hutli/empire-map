@@ -94,8 +94,8 @@
 			var isAltKeyPressed = false;
 			var bounds = [[0,0], [4811,6428]];
 			var astolatBounds = [[2000,2000], [2000,2000]];
+			var astolatImage = L.imageOverlay('images/astolat.png', astolatBounds).addTo(map);
 			var image = L.imageOverlay('images/main.png', bounds).addTo(map);
-			var images = L.imageOverlay('images/astolat.png', astolatBounds).addTo(map);
 
 			var geojson = new L.geoJson();
 			var nationsData = {};
