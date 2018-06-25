@@ -229,7 +229,8 @@
 			function createLayerFromZoom(data) {
 				if(!ignoreMouseOut){
 					var newZoom = map.getZoom();
-					var mapData = {"type": "FeatureCollection"};
+					var geoJsonLayerData = {"type": "FeatureCollection"};
+
 					var toSave = function(type){
 						return false;
 					};
@@ -247,10 +248,18 @@
 						};
 					}
 
-					mapData.features = createLayerFromZoomRec(data, toSave, featureBuffer);
+					var returnData = createLayerFromZoomRec(data, toSave, featureBuffer);
+					imageLayerData = returnData[0];
+					geoJsonLayerData.features = returnData[1];
 					for(var i in featureBuffer){
-						mapData.features.push(featureBuffer[i]);
+						if(featureBuffer[i].properties.background){
+							imageLayerData.push(featureBuffer[i]);
+						} else {
+							geoJsonLayerData.features.push(featureBuffer[i]);
+						}
 					}
+
+
 					featureBuffer = new Array();
 					createMap(mapData);
 				}
