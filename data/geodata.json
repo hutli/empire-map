@@ -8,8 +8,6 @@
 			    "properties": {
 			        "name": "The Marches",
 			        "type": "nation",
-			        "Armies": 4,
-			        "Territories": 4,
 			        "colour": "#228B22",
 			        "url": "https://www.profounddecisions.co.uk/empire-wiki/The_Marches",
 			        "image": "the_marches.jpg",
@@ -174,8 +172,6 @@
 			    "properties": {
 			        "name": "Wintermark",
 			        "type": "nation",
-			        "Armies": 3,
-			        "Territories": 3,
 			        "colour": "#BC8F8F",
 			        "url": "https://www.profounddecisions.co.uk/empire-wiki/Wintermark",
 			        "image": "wintermark.jpg",
@@ -416,8 +412,6 @@
 			    "properties": {
 			        "name": "The League",
 			        "type": "nation",
-			        "Armies": 3,
-			        "Territories": 3,
 			        "colour": "#FFD700",
 			        "url": "https://www.profounddecisions.co.uk/empire-wiki/The_League",
 			        "image": "the_league.jpg",
@@ -491,8 +485,6 @@
 			    "properties": {
 			        "name": "Highguard",
 			        "type": "nation",
-			        "Armies": 3,
-			        "Territories": 3,
 			        "colour": "#696969",
 			        "url": "https://www.profounddecisions.co.uk/empire-wiki/Highguard",
 			        "data": "data/the_brass_coast.html",
