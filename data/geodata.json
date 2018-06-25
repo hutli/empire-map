@@ -80,7 +80,7 @@
 						        "name": "Upwold",
 			        			"type": "region",
 			        			"colour": "#228B22",
-			        			"background": "Upwold.png",
+			        			"background": "upwold.png",
 						        "url": "https://www.profounddecisions.co.uk/empire-wiki/Upwold"
 						    },
 						    "geometry":{"type":"Polygon","coordinates":[[
