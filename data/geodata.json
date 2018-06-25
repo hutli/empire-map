@@ -462,7 +462,13 @@
 						}
 					]}
 			    },
-			    "geometry":{"type":"Polygon","coordinates":[[
+			    "geometry":{"type":"MultiPolygon","coordinates":[
+			    [
+			    	[3112,2546],
+			    	[3058,2313],
+			    	[3427,2523]
+				],
+			    [
 					[2689,1508],
 			    	[2755,1569],
 			    	[2788,1590],
