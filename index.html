@@ -76,6 +76,8 @@
 			var nationZoom = -2;
 			var regionMinZoom = -1;
 			var poiMinZoom = 1;
+			var topLeft = [0,0];
+			var bottomRight = [4811,6428];
 
 			function sideNavClick(t, e){
 				if(e.ctrlKey){
@@ -92,7 +94,7 @@
 
 			var isCtrlKeyPressed = false;
 			var isAltKeyPressed = false;
-			var bounds = [[0,0], [4811,6428]];
+			var bounds = [topLeft, bottomRight];
 			var image = L.imageOverlay('images/main_bw.png', bounds).addTo(map);
 
 			var geojson = new L.geoJson();
@@ -278,10 +280,10 @@
 			}
 
 			function getBounds(coordinates){
-				var minLat = Infinity;
-				var maxLat = -Infinity;
-				var minLng = Infinity;
-				var maxLng = -Infinity;
+				var minLat = topLeft[1];
+				var maxLat = bottomRight[1];
+				var minLng = topleft[0];
+				var maxLng = bottomRight[1];
 
 				for (var i = 0; i < coordinates.length; i++)  {
 					minLat = coordinates[i][1] < minLat ? coordinates[i][1] : minLat;
