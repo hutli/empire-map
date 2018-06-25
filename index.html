@@ -152,7 +152,7 @@
 			function highlightFeature(e) {
 				if(!ignoreMouseOut){
 				    var layer = e.target;
-				    if(layer.feature.geometry.type == "Polygon"){
+				    if(layer.feature.geometry.type == "Polygon" || layer.feature.geometry.type == "MultiPolygon"){
 					    layer.setStyle({
 					        weight: 5,
 					        color: '#666',
