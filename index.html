@@ -279,13 +279,13 @@
 
 			function getBounds(coordinates){
 				var minLat = Infinity;
-				var maxlat = -Infinity;
+				var maxLat = -Infinity;
 				var minLng = Infinity;
-				var maxlng = -Infinity;
+				var maxLng = -Infinity;
 
 				for (var i = 0; i < coordinates.length; i++)  {
 					minLat = coordinates[i][1] < minLat ? coordinates[i][1] : minLat;
-					maxlat = coordinates[i][1] > maxlat ? coordinates[i][1] : maxlat;
+					maxLat = coordinates[i][1] > maxLat ? coordinates[i][1] : maxLat;
 					minLng = coordinates[i][0] < minLng ? coordinates[i][1] : minLng;
 					maxLng = coordinates[i][0] < maxLng ? coordinates[i][1] : maxLng;
 				}
