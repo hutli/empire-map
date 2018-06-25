@@ -103,7 +103,7 @@
 			    if (this.readyState == 4 && this.status == 200) {
 			        nationsData = JSON.parse(this.responseText);
 			        var astolatBounds = [[2000,2000], [2000,2000]];
-					var astolatImage = L.imageOverlay('images/astolat.png').addTo(map);
+					var astolatImage = L.imageOverlay('images/astolat.png', astolatBounds).addTo(map);
 			        createLayerFromZoom(nationsData);
 			    }
 			};
