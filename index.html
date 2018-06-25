@@ -108,13 +108,24 @@
 			xmlhttp.open("GET", "data/geodata.json", true);
 			xmlhttp.send();
 
-			function createMap(data){
+			function createGeoJsonLayer(data){
 				map.removeLayer(geojson);
 
 				geojson = L.geoJson(data, {
 				    style: style,
 				    onEachFeature: onEachFeature
 				}).addTo(map);
+			}
+
+			var imageLayers = new Array();
+			function createImageLayers(data){
+				for(var i in imageLayers){
+					map.removeLayer(imageLayers[i]);
+				}
+
+				for(var i in data){
+					imageLayers.push(data[i].addTo(map));
+				}
 			}
 
 			function style(feature) {
@@ -261,7 +272,7 @@
 
 
 					featureBuffer = new Array();
-					createMap(geoJsonLayerData);
+					createGeoJsonLayer(geoJsonLayerData);
 				}
 			}
 
