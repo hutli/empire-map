@@ -542,6 +542,24 @@
 						    	[3971,914],
 						    	[3851,833]
 						    ]]}
+						},
+						{
+						    "type": "Feature",
+						    "properties": {
+						        "name": "Bastion",
+			        			"type": "region",
+			        			"colour": "#696969",
+						        "url": "https://www.profounddecisions.co.uk/empire-wiki/Bastion"
+						    },
+						    "geometry":{"type":"Polygon","coordinates":[[
+						    	[3716,1454],
+						    	[4078,1719],
+
+						    	[4335,1134],
+						    	[4089,1199],
+						    	[3892,1316],
+						    	[3756,1327]
+						    ]]}
 						}
 					]}
 			    },
