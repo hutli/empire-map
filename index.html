@@ -114,8 +114,8 @@
 				map.removeLayer(geojson);
 
 				geojson = L.geoJson(data, {
-				    style: style,
-				    onEachFeature: onEachFeature
+				    style: geoJsonFeatureStyle,
+				    onEachFeature: onEachGeoJsonFeature
 				}).addTo(map);
 			}
 
@@ -126,13 +126,40 @@
 				}
 
 				for(var i in data){
+					data.style = imageLayerStyle;
 					imageLayers.push(data[i].addTo(map));
 				}
 			}
 
-			function style(feature) {
+			function imageLayerStyle(layer) {
+				var returnObj = {
+			        weight: 1,
+			        opacity: 1,
+			        color: 'black',
+			        dashArray: '3'
+			    };
+
+				return returnObj; 
+			}
+
+			function onEachGeoJsonFeature(feature, layer) {
+			    layer.on({
+			        mouseover: highlightFeature,
+			        mouseout: resetHighlight,
+			        click: featureClicked,
+			    });
+			}
+
+			function onEachImageLayer(layer) {
+			    layer.on({
+			        mouseover: highlightFeature,
+			        mouseout: resetHighlight,
+			        click: featureClicked,
+			    });
+			}
+
+			function geoJsonFeatureStyle(feature) {
 				var colour = feature.properties.colour;
-				var background = feature.properties.background;
 
 				var returnObj = {
 			        weight: 1,
@@ -141,10 +168,6 @@
 			        dashArray: '3',
 			        fillOpacity: 0.5
 			    };
-
-				/*if(background){
-					returnObj.image = "images/" + background;
-				} else*/ 
 				if(colour){
 					returnObj.fillColor = colour;
 				}
@@ -167,18 +190,18 @@
 				if(!ignoreMouseOut){
 				    var layer = e.target;
 				    if(layer.feature.geometry.type == "Polygon" || layer.feature.geometry.type == "MultiPolygon"){
+				    	var style = {
+				    		weight: 5,
+						    color: '#666',
+						    dashArray: ''
+				    	}
+
 				    	if(layer.feature.properties.background){
-							layer.setStyle({
-								fillOpacity: 0
-							})
+							style.fillOpacity = 0;
 				    	} else {
-						    layer.setStyle({
-						        weight: 5,
-						        color: '#666',
-						        dashArray: '',
-						        fillOpacity: 0.7
-						    });
+				    		style.fillOpacity = 0.7;
 						}
+						layer.setStyle(style);
 
 					    if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
 					        layer.bringToFront();
@@ -331,14 +354,6 @@
 				zoomstart: saveZoom,
 			    zoomend: function(e){createLayerFromZoom(nationsData);},
 			});
-
-			function onEachFeature(feature, layer) {
-			    layer.on({
-			        mouseover: highlightFeature,
-			        mouseout: resetHighlight,
-			        click: featureClicked,
-			    });
-			}
 
 			var info = L.control();
 
