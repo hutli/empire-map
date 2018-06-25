@@ -519,6 +519,21 @@
 						    	[3716,1454],
 						    	[3512,1396]
 						    ]]}
+						},
+						{
+						    "type": "Feature",
+						    "properties": {
+						        "name": "Necropolis",
+			        			"type": "region",
+			        			"colour": "#696969",
+						        "url": "https://www.profounddecisions.co.uk/empire-wiki/Necropolis"
+						    },
+						    "geometry":{"type":"Polygon","coordinates":[[
+						    	[3096,1195],
+						    	[3512,1396],
+						    	[3716,1454],
+						    	[3767,1467]
+						    ]]}
 						}
 					]}
 			    },
