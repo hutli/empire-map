@@ -1,90 +1,69 @@
-import { Component, OnInit, Output, EventEmitter, Input, OnDestroy } from '@angular/core';
-import { tileLayer, latLng, latLngBounds, circle, polygon, marker, Map, MapOptions, ZoomAnimEvent, Control, DomUtil, } from 'leaflet';
+import { Component } from '@angular/core';
+import { tileLayer, latLng, latLngBounds, circle, polygon, marker, Map, MapOptions, Control, DomUtil, LatLng, LeafletMouseEvent, CRS, LatLngBounds, } from 'leaflet';
 import 'leaflet-mouse-position';
-import { LeafletControlLayersChanges } from '@asymmetrik/ngx-leaflet';
 
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.scss']
 })
-export class MapComponent implements OnInit, OnDestroy {
-  @Output() map$: EventEmitter<Map> = new EventEmitter;
-  @Output() zoom$: EventEmitter<number> = new EventEmitter;
-  @Output() control$: EventEmitter<Control> = new EventEmitter;
-  @Input() options: MapOptions = {
+export class MapComponent {
+  minMapZoom = 0;
+  maxMapZoom = 5;
+
+  options: MapOptions = {
     layers: [
-      tileLayer('/assets/map/untiled.png', {
-        maxNativeZoom: -3,
-        minNativeZoom: -3,
-        minZoom: -3,
-        maxZoom: 10,
+      tileLayer('/assets/map/{z}/{x}/{y}.png', {
+        tms: true,
+        //minNativeZoom: this.minMapZoom,
+        //maxNativeZoom: this.maxMapZoom,
+        minZoom: this.minMapZoom,
+        maxZoom: this.maxMapZoom,
         noWrap: true,
-        tileSize: 800,
-        bounds: latLngBounds(latLng(0, 0), latLng(6428, 4811))
+        //bounds: latLngBounds(latLng(8192, 0), latLng(0, 8192)),
       }),
-      circle([46.95, -122], { radius: 5000 }),
-      polygon([[46.8, -121.85], [46.92, -121.92], [46.87, -121.8]]),
-      marker([46.879966, -121.726909])
+      //circle([0, 0], { radius: 50000 }),
+      //polygon([[46.8, -121.85], [46.92, -121.92], [46.87, -121.8]]),
+      //marker([46.879966, -121.726909])
     ],
-    zoom: 0,
-    center: latLng(0, 0)
+    minZoom: this.minMapZoom,
+    maxZoom: this.maxMapZoom,
+    //crs: CRS.Simple,
+    //maxBounds: new LatLngBounds(latLng(0, 8192, this.maxMapZoom), latLng(8192, 0, this.maxMapZoom)),
+    //zoom: 3,
+    //center: latLng(4096, -4096),
   }
-
-  public map: Map;
-  public zoom: number;
-
-  public mouseLocation: HTMLElement
 
   constructor() { }
 
-  ngOnInit(): void {
-
-  }
-
-  ngOnDestroy(): void {
-    this.map.clearAllEventListeners;
-    this.map.remove();
-  }
-
-
   onMapReady(map: Map) {
-    this.map = map;
-    this.map$.emit(map);
-    this.zoom = map.getZoom();
-    this.zoom$.emit(this.zoom);
-    this.map.addEventListener('click', function (ev) {
-      //alert("TEST!");
-      this.mouseLocation.innerText = "Updated";
-    })
+    var coordinateControl = new (Control.extend({
 
-    var customControl = Control.extend({
-      options: {
-        position: 'bottomleft'
+      onAdd: function () {
+        this._div = DomUtil.create('div', 'info');
+        this.update();
+        return this._div;
       },
 
-      onAdd: function (map) {
-        this.mouseLocation = DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom');
+      update: function (coords: LatLng) {
+        this._div.innerHTML = coords ? `${coords.lat.toFixed(2)} : ${coords.lng.toFixed(2)}` : coords;
+      },
+    }));
 
-        this.mouseLocation.style.backgroundColor = 'white';
-        this.mouseLocation.style.backgroundSize = "30px 30px";
-        this.mouseLocation.style.padding = '3px';
-        this.mouseLocation.title = 'Mouse location';
-        this.mouseLocation.innerText = "Content!";
+    var mapBounds = new LatLngBounds(
+      map.unproject([0, 8192], this.maxMapZoom),
+      map.unproject([8192, 0], this.maxMapZoom));
 
-        return this.mouseLocation;
-      }
-    });
+    map.fitBounds(mapBounds);
 
-    this.map.addControl(new customControl());
-  }
+    coordinateControl.setPosition('bottomleft');
 
-  onControlReady(control: Control) {
-    alert("Control ready!");
-  }
+    map.addControl(coordinateControl);
 
-  onMapZoomEnd(e: ZoomAnimEvent) {
-    this.zoom = e.target.getZoom();
-    this.zoom$.emit(this.zoom);
+    const onMouseMove = function (e: LeafletMouseEvent) {
+      coordinateControl.update(e.latlng);
+    }
+
+    map.on('mousemove', onMouseMove, this);
   }
 }
