@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { tileLayer, latLng, latLngBounds, circle, polygon, marker, Map, MapOptions, Control, DomUtil, LatLng, LeafletMouseEvent, CRS, LatLngBounds, } from 'leaflet';
+import { tileLayer, latLng, latLngBounds, circle, polygon, marker, Map, MapOptions, Control, DomUtil, LatLng, LeafletMouseEvent, CRS, LatLngBounds, geoJSON, } from 'leaflet';
 import 'leaflet-mouse-position';
 
 @Component({
@@ -30,13 +30,17 @@ export class MapComponent {
     maxZoom: this.maxMapZoom,
     //crs: CRS.Simple,
     //maxBounds: new LatLngBounds(latLng(0, 8192, this.maxMapZoom), latLng(8192, 0, this.maxMapZoom)),
-    //zoom: 3,
+    zoom: 2,
     //center: latLng(4096, -4096),
   }
 
   constructor() { }
 
   onMapReady(map: Map) {
+    let xmlHttp = new XMLHttpRequest();
+    xmlHttp.open("GET", "/assets/map/geodata.json", false);
+    xmlHttp.send(null);
+
     var coordinateControl = new (Control.extend({
 
       onAdd: function () {
@@ -59,6 +63,8 @@ export class MapComponent {
     coordinateControl.setPosition('bottomleft');
 
     map.addControl(coordinateControl);
+
+    geoJSON(JSON.parse(xmlHttp.responseText)).addTo(map);
 
     const onMouseMove = function (e: LeafletMouseEvent) {
       coordinateControl.update(e.latlng);
