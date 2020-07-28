@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { tileLayer, latLng, latLngBounds, circle, polygon, marker, Map, MapOptions, Control, DomUtil, LatLng, LeafletMouseEvent, CRS, LatLngBounds, geoJSON, } from 'leaflet';
+import { tileLayer, latLng, latLngBounds, circle, polygon, marker, Map, MapOptions, Control, DomUtil, LatLng, LeafletMouseEvent, CRS, LatLngBounds, geoJSON, imageOverlay, } from 'leaflet';
 import 'leaflet-mouse-position';
 
 @Component({
@@ -13,14 +13,16 @@ export class MapComponent {
 
   options: MapOptions = {
     layers: [
-      tileLayer('/assets/map/{z}/{x}/{y}.png', {
-        tms: true,
+      //imageOverlay("/assets/map/untiled-resized.jpg", [[0, 0], [8192, 8192]])
+      tileLayer('/assets/map/tiles/{z}/{x}/{y}.png', {
+        //tms: true,
         //minNativeZoom: this.minMapZoom,
         //maxNativeZoom: this.maxMapZoom,
         minZoom: this.minMapZoom,
         maxZoom: this.maxMapZoom,
         noWrap: true,
-        //bounds: latLngBounds(latLng(8192, 0), latLng(0, 8192)),
+
+        //bounds: [[-8192, -8192], [8192, 8192]],
       }),
       //circle([0, 0], { radius: 50000 }),
       //polygon([[46.8, -121.85], [46.92, -121.92], [46.87, -121.8]]),
@@ -28,10 +30,11 @@ export class MapComponent {
     ],
     minZoom: this.minMapZoom,
     maxZoom: this.maxMapZoom,
-    //crs: CRS.Simple,
+    crs: CRS.Simple,
     //maxBounds: new LatLngBounds(latLng(0, 8192, this.maxMapZoom), latLng(8192, 0, this.maxMapZoom)),
     zoom: 2,
-    //center: latLng(4096, -4096),
+    center: [0, 0],
+    //maxBounds: [[-8192, -8192], [8192, 8192]]
   }
 
   constructor() { }
@@ -54,11 +57,11 @@ export class MapComponent {
       },
     }));
 
-    var mapBounds = new LatLngBounds(
+    /*var mapBounds = new LatLngBounds(
       map.unproject([0, 8192], this.maxMapZoom),
-      map.unproject([8192, 0], this.maxMapZoom));
+      map.unproject([8192, 0], this.maxMapZoom));*/
 
-    map.fitBounds(mapBounds);
+    //map.fitBounds(mapBounds);
 
     coordinateControl.setPosition('bottomleft');
 
