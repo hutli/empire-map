@@ -1,36 +1,44 @@
 import json
+import re
 
 import requests
 from bs4 import BeautifulSoup
+from requests.packages.urllib3.exceptions import InsecureRequestWarning
+from tqdm import tqdm
+
+requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
 
 def update_descriptions(file_name):
     with open(f"www/assets/map/{file_name}.json") as f:
         data = json.loads(f.read())
 
-    for i, region in enumerate(data["features"]):
-        url = region["properties"]["url"]
+    for i, feature in tqdm(
+        list(enumerate(data["features"])), desc=f'Processing "{file_name}"'
+    ):
+        url = feature["properties"]["url"]
         page = requests.get(url, verify=False).text
-
-        if (
-            "description-id" in region["properties"]
-            and f'id="{region["properties"]["description-id"]}"' in page
-        ):
-            description = page.split(
-                f'id="{region["properties"]["description-id"]}"', 1
-            )[1]
-        elif f'id="Overview"' in page:
-            description = page.split(f'id="Overview"', 1)[1]
-        else:
-            raise (f'{region["properties"]["url"]}')
-
-        hlevel = (
-            region["properties"]["hlevel"] if "hlevel" in region["properties"] else 2
+        data["features"][i]["properties"]["name"] = (
+            url.rsplit("/", 1)[-1].rsplit("#", 1)[-1].replace("_", " ")
         )
-        description = description.split(f"</h{hlevel}>", 1)[1]
-        for j in range(1, hlevel + 1):
-            description = description.split(f"<h{j}>", 1)[0]
 
+        if "#" in url:
+            description_id = url.split("#", 1)[1]
+            data["features"][i]["properties"]["description-id"] = description_id
+            hlevel, description = page.split(f'id="{description_id}"', 1)
+            hlevel = hlevel.rsplit("<", 1)[1].split(" ", 1)[0]
+            description = description.split(f"</{hlevel}>", 1)[1]
+        elif f'id="Overview"' in page:
+            hlevel, description = page.split(f'id="Overview"', 1)
+            hlevel = hlevel.rsplit("<", 1)[1].split(" ", 1)[0]
+            description = description.split(f"</{hlevel}>", 1)[1]
+        elif f'id="mw-content-text"' in page:
+            description = page.split(f'id="mw-content-text"', 1)[1].split(">", 1)[1]
+            hlevel = "h2"
+        else:
+            raise Exception(f'{feature["properties"]["url"]}')
+
+        description = description.split(f"<{hlevel}", 1)[0]
         description = (
             description.strip()
             .replace("\n", "")
@@ -45,5 +53,6 @@ def update_descriptions(file_name):
         f.write(json.dumps(data, indent=4))
 
 
+update_descriptions("nations")
 update_descriptions("regions")
 update_descriptions("poi")
