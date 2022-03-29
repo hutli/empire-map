@@ -18,7 +18,9 @@
     integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
     crossorigin=""
   />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.css">
   <link rel="stylesheet" href="/css/leaflet-search.css" />
+  <link rel="stylesheet" href="/css/leaflet-menu.css"></link>
   <link rel="stylesheet" href="/css/popup.css" />
   <link rel="stylesheet" href="/css/main.css" />
 </head>
@@ -30,44 +32,70 @@
     <div id="sidebar-content" class="sidebar-content"></div>
   </div>
   <div class="popup" id="popup">
-    <button class="popup-close-button" onclick="hidePopup('popup')">&#x2715</button>
+    <button class="popup-close-button" onclick="hidePopup('popup')">
+      &#x2715;
+    </button>
     <h2>Contribute</h2>
-    <p>
-      Thank you for wanting to contribute to "visitanvil.com"! Currently, two
-      main contribution methods exist; "Point of Interest" and area, they can be
-      selected by clicking the buttons below.
-    </p>
-    <p>
-      A "Point of Interest" is a single location on the map, like a mine or a
-      town. These are displayed as markers. A "Point of Interest" is the easiest
-      to submit. After you have filled out the information about the location,
-      you select a single point on the map and you are done.
-    </p>
-    <p>
-      An area is shown as coloured polygons on the map and represents areas such
-      as regions or nations. After filling in the information about the area,
-      you will create a polygon by clicking its corners <i>in order</i> around
-      the map. If you hold in "control" while clicking, it will snap to the
-      nearest corner of an existing area. Be careful; there is no undo button
-      yet!
-    </p>
-    <p>
-      All contributions are sent over email to the admin. The website will open
-      your email client with an email ready to send when you finish your
-      contribution. This email contains all information needed by the admin, but
-      feel free to add messages or anything you think is missing.
-    </p>
-    <p>
-      If you have found an error on the current map or have a good idea, please
-      email <a href="mailto:admin@visitanvil.com">admin@visitanvil.com</a>.
-    </p>
-    <div class="center">
-      <button class="action-button" onclick="startInteractiveContribution()">
-        Point of Interest
-      </button>
-      <button class="action-button" onclick="startInteractiveContribution()">
-        Area
-      </button>
+    <div class="popup-content">
+      <p>
+        Thank you for wanting to contribute to "visitanvil.com"! Currently, two
+        main contribution methods exist; "Point of Interest" and "Area"
+        (explained below). All submissions should have a direct link to a Empire
+        WiKi page since I can then automatically extract information such the
+        locations name, description etc.
+      </p>
+      <p>
+        Submitting a sub-header on a wikipedia article is also completely fine,
+        just remember to include the sub-headers ID in the url (nearly always
+        just the headers name with underscores instead of spaces), for instance
+        the link to "The Red Blade Memorial" in Skarsind is
+        <a
+          href="https://www.profounddecisions.co.uk/empire-wiki/Skarsind#The_Red_Blade_Memorial"
+          target="_blank"
+          >https://www.profounddecisions.co.uk/empire-wiki/Skarsind#The_Red_Blade_Memorial</a
+        >. You will be prompted for the link; please check it before submitting.
+      </p>
+      <p>
+        A "Point of Interest" is a single location on the map, like a mine or a
+        town. These are displayed as markers. A "Point of Interest" is the
+        easiest to submit. After entering the Empire WiKi link, you just select
+        a single point on the map (clicking again replaces your choise, so just
+        keep clicking until you are satisfied) and you are done.
+      </p>
+      <p>
+        An area is shown as coloured polygons on the map and represents areas
+        such as regions or nations. After entering the Empire WiKi link, you
+        will create a polygon by clicking its corners <i>in order</i> around the
+        map. If you hold in "control" while clicking, it will snap to the
+        nearest corner of an existing area. Be careful; there is no undo button
+        (yet)!
+      </p>
+      <p>
+        When you are done "drawing on the map" just click the contribution
+        button on the left (the one you clicked to get this popup) again to
+        submit. The website will open your email client with an email ready to
+        send. This email contains all information I need, but feel free to
+        add/extend the message or anything you think is missing.
+      </p>
+      <p>
+        If you have found an error on the current map or have a good idea,
+        please email
+        <a href="mailto:admin@visitanvil.com">admin@visitanvil.com</a>.
+      </p>
+      <div class="center">
+        <button
+          class="action-button"
+          onclick='startInteractiveContribution("point-of-interest")'
+        >
+          Point of Interest
+        </button>
+        <button
+          class="action-button"
+          onclick='startInteractiveContribution("area")'
+        >
+          Area
+        </button>
+      </div>
     </div>
   </div>
   <script
@@ -75,7 +103,9 @@
     integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
     crossorigin=""
   ></script>
+  <script src="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.js"></script>
   <script src="/js/leaflet-search.js"></script>
+  <script src="/js/leaflet-menu.js"></script>
   <script src="/js/set-interactive.js"></script>
   <script src="/js/main.js"></script>
 </body>

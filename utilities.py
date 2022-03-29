@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 
 
 def update_descriptions(file_name):
-    with open(f"pure/assets/map/{file_name}.json") as f:
+    with open(f"www/assets/map/{file_name}.json") as f:
         data = json.loads(f.read())
 
     for i, region in enumerate(data["features"]):
@@ -28,7 +28,7 @@ def update_descriptions(file_name):
             region["properties"]["hlevel"] if "hlevel" in region["properties"] else 2
         )
         description = description.split(f"</h{hlevel}>", 1)[1]
-        for j in range(1, hlevel):
+        for j in range(1, hlevel + 1):
             description = description.split(f"<h{j}>", 1)[0]
 
         description = (
@@ -41,7 +41,7 @@ def update_descriptions(file_name):
         )
         data["features"][i]["properties"]["description"] = description
 
-    with open(f"pure/assets/map/{file_name}.json", "w") as f:
+    with open(f"www/assets/map/{file_name}.json", "w") as f:
         f.write(json.dumps(data, indent=4))
 
 

@@ -11,7 +11,7 @@ let bwTileLayer = L.tileLayer("/assets/map/tiles-bw/{z}/{x}/{y}.png", {
   maxZoom: 9,
   noWrap: true,
 });
-map.addLayer(colorTileLayer);
+map.addLayer(bwTileLayer);
 
 let geoJsonCoords = [];
 
@@ -41,8 +41,17 @@ function hidePopup(id) {
   document.getElementById(id).style.display = "none";
 }
 
-function startInteractiveContribution() {
+let wikiArticle = "";
+let contributionType = "";
+
+function startInteractiveContribution(contribution) {
+  wikiArticle = prompt(
+    "Please enter the Empire WiKi URL for the location. If you are submitting a location of a subheader of an article please include the ID in the URL.",
+    ""
+  );
   hidePopup("popup");
+
+  contributionType = contribution;
   contributeButton.style.backgroundColor = "#ff0000";
   contributeButton.onclick = submit;
   regionsLayer.setStyle({ fillOpacity: 0 });
@@ -169,9 +178,46 @@ nationsRequest.onreadystatechange = function () {
                   nationsLayer.resetStyle(layer);
                 });
               });
-
             map.addControl(searchControl);
+
             map.removeLayer(poiLayer); // Search control automatically adds its layers
+
+            var menu = L.leafletMenu(map, {
+              items: {
+                AlertCenterLocation: {
+                  onClick: function () {
+                    alert(map.getCenter().toString());
+                  },
+                },
+              },
+            });
+            var menuButton = L.easyButton({
+              states: [
+                {
+                  stateName: "show-menu",
+                  icon: "fa fa-tasks",
+                  color: "black",
+                  title: "Show Menu",
+                  onClick: function (btn, map) {
+                    menu.options.button = btn;
+                    menu.show();
+                    btn.state("hide-menu");
+                  },
+                },
+                {
+                  stateName: "hide-menu",
+                  icon: "fa fa-tasks",
+                  color: "black",
+                  title: "Hide Menu",
+                  onClick: function (btn, map) {
+                    menu.hide();
+                    btn.state("show-menu");
+                  },
+                },
+              ],
+              id: "styles-menu",
+            });
+            map.addControl(menuButton);
 
             let toggleColorControl = L.Control.extend({
               options: {
@@ -180,7 +226,7 @@ nationsRequest.onreadystatechange = function () {
 
               onAdd: function (map) {
                 toggleColorButton = L.DomUtil.create("div", "above-below");
-                toggleColorButton.innerHTML = `<div class="center">Colors</div><label class="switch"><input type="checkbox" checked onchange="toggleMapColor(this.checked)"><span class="slider round"></span></label>`;
+                toggleColorButton.innerHTML = `<div class="center">Colors</div><label class="switch"><input type="checkbox" onchange="toggleMapColor(this.checked)"><span class="slider round"></span></label>`;
 
                 let wrapper = L.DomUtil.create("div");
                 wrapper.style.position = "relative";
@@ -189,7 +235,6 @@ nationsRequest.onreadystatechange = function () {
                 return wrapper;
               },
             });
-
             map.addControl(new toggleColorControl());
 
             let toggleRegionsControl = L.Control.extend({
@@ -235,6 +280,28 @@ nationsRequest.onreadystatechange = function () {
             });
 
             map.addControl(new contributeControl());
+
+            let githubControl = L.Control.extend({
+              options: {
+                position: "topleft",
+              },
+
+              onAdd: function (map) {
+                githubButton = L.DomUtil.create("button", "github-button");
+
+                githubButton.onclick = (e) => {
+                  window.open("https://github.com/hutli/empire-map", "_blank");
+                };
+
+                let wrapper = L.DomUtil.create("div");
+                wrapper.style.position = "relative";
+                wrapper.appendChild(githubButton);
+
+                return wrapper;
+              },
+            });
+
+            map.addControl(new githubControl());
           }
         };
         poiRequest.send(null);
@@ -265,6 +332,7 @@ map.addControl(coordinateControl);
 
 let submissionCoords = [];
 let submissionPolygon = L.polygon(submissionCoords);
+let submissionMarker = undefined;
 map.addLayer(submissionPolygon);
 
 const onMouseMove = function (e) {
@@ -278,26 +346,30 @@ function coordsToGeoJson(coords) {
 const onMouseClick = function (e) {
   let lng = Number(e.latlng.lng.toFixed(2));
   let lat = Number(e.latlng.lat.toFixed(2));
-  if (e.originalEvent.ctrlKey) {
-    let closest = [null, Infinity];
-    for (let [x, y] of geoJsonCoords) {
-      let distance = Math.sqrt(Math.pow(lng - x, 2) + Math.pow(lat - y, 2));
-      if (distance < closest[1]) {
-        closest = [[x, y], distance];
-      }
+  if (contributionType == "point-of-interest") {
+    if (submissionMarker) {
+      map.removeLayer(submissionMarker);
     }
-    [lng, lat] = closest[0];
+    submissionMarker = L.marker([lat, lng]);
+    map.addLayer(submissionMarker);
+  } else {
+    if (e.originalEvent.ctrlKey) {
+      let closest = [null, Infinity];
+      for (let [x, y] of geoJsonCoords) {
+        let distance = Math.sqrt(Math.pow(lng - x, 2) + Math.pow(lat - y, 2));
+        if (distance < closest[1]) {
+          closest = [[x, y], distance];
+        }
+      }
+      [lng, lat] = closest[0];
+    }
+
+    submissionCoords.push([lat, lng]);
+
+    map.removeLayer(submissionPolygon);
+    submissionPolygon = L.polygon(submissionCoords);
+    map.addLayer(submissionPolygon);
   }
-
-  submissionCoords.push([lat, lng]);
-
-  map.removeLayer(submissionPolygon);
-  submissionPolygon = L.polygon(submissionCoords);
-  map.addLayer(submissionPolygon);
-
-  let fmtCoords = coordsToGeoJson(submissionCoords);
-  navigator.clipboard.writeText(fmtCoords);
-  console.log(fmtCoords);
 };
 
 function onMapZoom() {
@@ -314,20 +386,43 @@ map.on("popupclose", closeNav, this);
 map.on("zoomend", onMapZoom);
 
 function submit() {
+  contributeButton.onclick = (e) => {
+    document.getElementById("popup").style.display = "block";
+  };
   contributeButton.style.backgroundColor = "#ffffff";
   regionsLayer.setStyle({ fillOpacity: 0.1 });
   regionsLayer.setInteractive(true);
   map.off("click");
+  console.log(submissionMarker);
+  let geometryGeoJson = { geometry: { type: "", coordinates: [] } };
 
-  let title = "The Test Nation";
-  let subject = `${title} GeoJson Submission`;
-  let description = "For centuries I have been testing...";
+  if (submissionPolygon) {
+    map.removeLayer(submissionPolygon);
+    geometryGeoJson.geometry.type = "Polygon";
+    geometryGeoJson.geometry.coordinates = [coordsToGeoJson(submissionCoords)];
+    submissionCoords = [];
+    submissionPolygon = L.polygon([]);
+  }
+  if (submissionMarker) {
+    map.removeLayer(submissionMarker);
+
+    geometryGeoJson.geometry.type = "Point";
+    geometryGeoJson.geometry.coordinates = [
+      submissionMarker._latlng.lng,
+      submissionMarker._latlng.lat,
+    ];
+    submissionMarker = undefined;
+  }
+
+  let subject = `${contributionType} GeoJson Submission`;
   let body = `Dear "${
     window.location.hostname
-  }" admin,\n\nI have a new are to submit for the "${
+  }" admin,\n\nI have a "${contributionType}" to submit for the "${
     window.location.hostname
-  }" website!\n\nArea name: ${title}\nDescription: ${description}\nCoordinates: ${coordsToGeoJson(
-    submissionCoords
+  }" website!\n\n-------------------------\nEmpire WiKi Link:\n${wikiArticle}\n\nGeoJson:\n${JSON.stringify(
+    geometryGeoJson,
+    null,
+    2
   )}`;
   window.open(
     `mailto:${ADMIN_EMIL}?subject=${encodeURIComponent(
