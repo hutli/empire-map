@@ -18,18 +18,107 @@
     integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
     crossorigin=""
   />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.css">
   <link rel="stylesheet" href="/css/leaflet-search.css" />
-  <link rel="stylesheet" href="/css/leaflet-menu.css"></link>
+  <link rel="stylesheet" href="/css/leaflet-sidebar.css" />
   <link rel="stylesheet" href="/css/popup.css" />
   <link rel="stylesheet" href="/css/main.css" />
 </head>
 <body>
-  <div id="map" class="map-sidebar-closed hide-point-layer"></div>
-  <div id="sidebar" class="sidebar">
-    <button id="sidebar-closebtn" onclick="closeNav()">x</button>
-    <h1 id="sidebar-header" class="sidebar-header">Loading...</h1>
-    <div id="sidebar-content" class="sidebar-content"></div>
+  <div id="sidebar" class="sidebar collapsed">
+    <!-- Nav tabs -->
+    <div class="sidebar-tabs">
+      <ul role="tablist">
+        <li>
+          <a href="#layers" role="tab" class="burger-button"
+            ><i class="fa fa-bars"></i
+          ></a>
+        </li>
+      </ul>
+
+      <ul role="tablist">
+        <li>
+          <a
+            href="https://github.com/hutli/empire-map"
+            role="tab"
+            target="_blank"
+            class="github-button"
+          ></a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Tab panes -->
+    <div class="sidebar-content">
+      <div class="sidebar-pane" id="layers">
+        <h1 class="sidebar-header">
+          Layers
+          <span class="sidebar-close"><i class="fa fa-caret-left"></i></span>
+        </h1>
+        <div class="layer">
+          <div class="layer-title">Terrain Colors</div>
+          <label class="switch"
+            ><input
+              type="checkbox"
+              onchange="toggleMapColor(this.checked)" /><span
+              class="slider round"
+            ></span
+          ></label>
+        </div>
+        <div class="layer">
+          <div class="layer-title">Terrain Opacity</div>
+          <input
+            type="range"
+            value="1"
+            min="0"
+            max="1"
+            step="0.05"
+            oninput="changeTerrainOpacity(this.value)"
+            onchange="changeTerrainOpacity(this.value)"
+          />
+        </div>
+        <div class="layer">
+          <div class="layer-title">Nation Borders</div>
+          <label class="switch"
+            ><input
+              type="checkbox"
+              checked
+              onchange="toggleNationBorders(this.checked)" /><span
+              class="slider round"
+            ></span
+          ></label>
+        </div>
+        <div class="layer">
+          <div class="layer-title">Region Borders</div>
+          <label class="switch"
+            ><input
+              type="checkbox"
+              checked
+              onchange="toggleRegionBorders(this.checked)" /><span
+              class="slider round"
+            ></span
+          ></label>
+        </div>
+        <div class="layer">
+          <div class="layer-title">Region Fill Opacity</div>
+          <input
+            type="range"
+            value="0.25"
+            min="0"
+            max="1"
+            step="0.05"
+            oninput="changeRegionFill(this.value)"
+            onchange="changeRegionFill(this.value)"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="map" class="map-infobar-closed hide-point-layer"></div>
+  <div id="infobar" class="infobar">
+    <button id="infobar-closebtn" onclick="closeNav()">x</button>
+    <h1 id="infobar-header" class="infobar-header">Loading...</h1>
+    <div id="infobar-content" class="infobar-content"></div>
   </div>
   <div class="popup" id="popup">
     <button class="popup-close-button" onclick="hidePopup('popup')">
@@ -40,15 +129,16 @@
       <p>
         Thank you for wanting to contribute to "visitanvil.com"! Currently, two
         main contribution methods exist; "Point of Interest" and "Area"
-        (explained below). All submissions should have a direct link to a Empire
-        WiKi page since I can then automatically extract information such the
-        locations name, description etc.
+        (explained below). All submissions should have a direct link to an
+        Empire Wikipedia page so I can automatically extract information such as
+        the location's name, description, etc.
       </p>
       <p>
-        Submitting a sub-header on a wikipedia article is also completely fine,
-        just remember to include the sub-headers ID in the url (nearly always
-        just the headers name with underscores instead of spaces), for instance
-        the link to "The Red Blade Memorial" in Skarsind is
+        Submitting a sub-header of an Empire Wikipedia article as a location is
+        also completely fine; just remember to include the sub-headers ID in the
+        URL. Sub-headers are denoted with a "#" at the end of the link and are
+        nearly always the header's name with underscores instead of spaces. For
+        instance, the link to "The Red Blade Memorial" in Skarsind is
         <a
           href="https://www.profounddecisions.co.uk/empire-wiki/Skarsind#The_Red_Blade_Memorial"
           target="_blank"
@@ -58,24 +148,24 @@
       <p>
         A "Point of Interest" is a single location on the map, like a mine or a
         town. These are displayed as markers. A "Point of Interest" is the
-        easiest to submit. After entering the Empire WiKi link, you just select
-        a single point on the map (clicking again replaces your choise, so just
-        keep clicking until you are satisfied) and you are done.
+        easiest to submit. After entering the Empire Wikipedia link, you just
+        have to select a point on the map and you are done. Clicking again
+        replaces your choice, so keep clicking until you are satisfied.
       </p>
       <p>
-        An area is shown as coloured polygons on the map and represents areas
-        such as regions or nations. After entering the Empire WiKi link, you
-        will create a polygon by clicking its corners <i>in order</i> around the
-        map. If you hold in "control" while clicking, it will snap to the
+        An "Area" is shown as coloured polygons on the map and represents areas
+        such as regions or nations. After entering the Empire Wikipedia link,
+        you will create a polygon by clicking its corners <i>in order</i> around
+        the map. If you hold down "control" while clicking, it will snap to the
         nearest corner of an existing area. Be careful; there is no undo button
         (yet)!
       </p>
       <p>
-        When you are done "drawing on the map" just click the contribution
-        button on the left (the one you clicked to get this popup) again to
-        submit. The website will open your email client with an email ready to
-        send. This email contains all information I need, but feel free to
-        add/extend the message or anything you think is missing.
+        When you are done "drawing on the map", click the contribution button on
+        the left (the one you clicked to get this popup) again to submit. The
+        website will open your email client with an email ready to send. This
+        email contains all information I need, but feel free to add/extend the
+        message or anything you think is missing.
       </p>
       <p>
         If you have found an error on the current map or have a good idea,
@@ -105,7 +195,7 @@
   ></script>
   <script src="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.js"></script>
   <script src="/js/leaflet-search.js"></script>
-  <script src="/js/leaflet-menu.js"></script>
+  <script src="/js/leaflet-sidebar.js"></script>
   <script src="/js/set-interactive.js"></script>
   <script src="/js/main.js"></script>
 </body>

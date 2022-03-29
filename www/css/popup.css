@@ -10,7 +10,7 @@
   -ms-transform: translateY(-50%) translateX(-50%);
   transform: translateY(-50%) translateX(-50%);
   background: #fff;
-  z-index: 1000;
+  z-index: 4000;
 }
 
 .popup h2 {

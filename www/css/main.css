@@ -5,7 +5,39 @@ body {
   background: white;
   height: 100vh;
   cursor: default;
-  transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the infobar */
+}
+
+.sidebar {
+  margin-top: 164px;
+  margin-bottom: 26px;
+}
+.sidebar-header {
+  height: 30px;
+  line-height: 30px;
+  margin-bottom: 10px;
+}
+.sidebar.collapsed {
+  width: 30px;
+}
+.sidebar-tabs {
+  width: 30px;
+}
+.sidebar-left .sidebar-content {
+  left: 30px;
+}
+.sidebar-tabs > ul > li {
+  height: 30px;
+  width: 30px;
+}
+.layer {
+  display: flex;
+  flex-direction: row;
+}
+.layer-title {
+  flex: auto;
+  text-align: left;
+  line-height: 30px;
 }
 
 #submit {
@@ -14,41 +46,42 @@ body {
   bottom: 20px;
   left: 20px;
 }
-/* The sidebar menu */
-.sidebar {
+/* The infobar menu */
+.infobar {
   height: 100vh;
   width: 40vw; /* 0 width - change this with JavaScript */
   position: fixed; /* Stay in place */
-  z-index: 1; /* Stay on top */
+  z-index: 3000; /* Stay on top */
   top: 0;
   right: -40vw;
   background-color: #111; /* Black*/
   color: white;
   overflow-x: hidden; /* Disable horizontal scroll */
   padding-top: 60px; /* Place content 60px from the top */
-  transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the infobar */
 }
-.sidebar a {
+.infobar a {
   color: lightblue;
 }
 
-.map-sidebar-closed {
+.map-infobar-closed {
   width: 100vw;
 }
-.map-sidebar-open {
+.map-infobar-open {
   width: 60vw;
 }
-.sidebar-open {
+.infobar-open {
   right: 0;
 }
 
-.sidebar-header {
+.infobar-header {
   margin: 0 20px 20px 30px;
 }
 
-.sidebar-content {
-  margin: 0 50px 40px 50px;
-  overflow: scroll;
+.infobar-content {
+  margin: 0 30px 20px 30px;
+  padding: 0 20px 20px 20px;
+  overflow-y: scroll;
   height: calc(100vh - 60px - 43px - 20px - 40px);
 }
 
@@ -75,22 +108,19 @@ body {
 }
 
 .github-button {
-  border: 2px solid rgba(0, 0, 0, 0.2);
-  display: block;
-  width: 34px;
-  height: 34px;
-  background: url("/../images/GitHub-Mark-32px.png") #fff;
+  background-image: url("/../images/GitHub-Mark-32px.png");
   background-repeat: no-repeat;
   background-size: auto 26px;
   background-position: center 2px;
-  border-radius: 4px;
-  cursor: pointer;
 }
-.github-button:hover {
-  background-color: #f4f4f4;
+.burger-button {
+  background-image: url("/../images/burger.png");
+  background-repeat: no-repeat;
+  background-size: auto 26px;
+  background-position: center 2px;
 }
 
-#sidebar-closebtn {
+#infobar-closebtn {
   float: right;
   margin-right: 40px;
   font-size: xx-large;
@@ -201,33 +231,42 @@ input:checked + .slider:before {
 }
 
 @media screen and (max-width: 1000px) {
-  .sidebar {
+  .infobar {
     width: 60vw;
     right: -60vw;
   }
-  .map-sidebar-closed {
+  .map-infobar-closed {
     width: 100vw;
   }
-  .map-sidebar-open {
+  .map-infobar-open {
     width: 40vw;
   }
-  .sidebar-open {
+  .infobar-open {
     right: 0;
   }
 }
 
-@media screen and (max-width: 600px) {
-  .map-sidebar-open {
+@media screen and (max-width: 768px) {
+  .sidebar {
+    width: calc(100vw - 20px);
+    border: 2px solid rgba(0, 0, 0, 0.2);
+  }
+  .sidebar-left {
+    left: 10px;
+    margin-top: 174px;
+    margin-bottom: 36px;
+  }
+  .map-infobar-open {
     width: 0vw;
   }
-  .sidebar {
+  .infobar {
     width: 100vw;
     right: -100vw;
   }
-  .sidebar-open {
+  .infobar-open {
     right: 0;
   }
-  .sidebar-content {
+  .infobar-content {
     height: calc(100vh - 60px - 87px - 20px - 40px);
   }
 }

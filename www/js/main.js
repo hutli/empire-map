@@ -4,14 +4,16 @@ const ADMIN_EMIL = "admin@visitanvil.com";
 let colorTileLayer = L.tileLayer("/assets/map/tiles-color/{z}/{x}/{y}.png", {
   minZoom: 0,
   maxZoom: 9,
+  opacity: 1,
   noWrap: true,
 });
 let bwTileLayer = L.tileLayer("/assets/map/tiles-bw/{z}/{x}/{y}.png", {
   minZoom: 0,
   maxZoom: 9,
+  opacity: 1,
   noWrap: true,
 });
-map.addLayer(bwTileLayer);
+map.addLayer(colorTileLayer);
 
 let geoJsonCoords = [];
 
@@ -46,20 +48,25 @@ let contributionType = "";
 
 function startInteractiveContribution(contribution) {
   wikiArticle = prompt(
-    "Please enter the Empire WiKi URL for the location. If you are submitting a location of a subheader of an article please include the ID in the URL.",
+    "Please enter the Empire WiKi URL for the location. If you are submitting the location of a sub-header of an article please include the ID in the URL.",
     ""
   );
   hidePopup("popup");
-
-  contributionType = contribution;
-  contributeButton.style.backgroundColor = "#ff0000";
-  contributeButton.onclick = submit;
-  regionsLayer.setStyle({ fillOpacity: 0 });
-  regionsLayer.setInteractive(false);
-  setTimeout(function () {
-    // Stupid, but else the click on the button counts as the first click on the map
-    map.on("click", onMouseClick, this);
-  }, 1);
+  if (wikiArticle.includes("profounddecisions.co.uk/empire-wiki/")) {
+    contributionType = contribution;
+    contributeButton.style.backgroundColor = "#ff0000";
+    contributeButton.onclick = submit;
+    regionsLayer.setStyle({ fillOpacity: 0 });
+    regionsLayer.setInteractive(false);
+    setTimeout(function () {
+      // Stupid, but else the click on the button counts as the first click on the map
+      map.on("click", onMouseClick, this);
+    }, 1);
+  } else {
+    alert(
+      "Hmm, that link does not look like an Empire Wikipedia link. Please make sure that you have copied the link directly from the Empire Wikipedia website."
+    );
+  }
 }
 
 function toggleMapColor(colors) {
@@ -72,12 +79,29 @@ function toggleMapColor(colors) {
   }
 }
 
-function toggleRegions(regions) {
-  if (regions) {
-    regionsLayer.setStyle({ fillOpacity: 0.1 });
+function changeTerrainOpacity(value) {
+  colorTileLayer.setOpacity(value);
+  bwTileLayer.setOpacity(value);
+}
+
+function toggleNationBorders(enabled) {
+  if (enabled) {
+    nationsLayer.setStyle({ opacity: 1 });
   } else {
-    regionsLayer.setStyle({ fillOpacity: 0 });
+    nationsLayer.setStyle({ opacity: 0 });
   }
+}
+
+function toggleRegionBorders(enabled) {
+  if (enabled) {
+    regionsLayer.setStyle({ opacity: 0.5 });
+  } else {
+    regionsLayer.setStyle({ opacity: 0 });
+  }
+}
+
+function changeRegionFill(value) {
+  regionsLayer.setStyle({ fillOpacity: value });
 }
 
 let contributeButton = undefined;
@@ -111,6 +135,7 @@ nationsRequest.onreadystatechange = function () {
                   opacity: 1,
                   weight: 3,
                   fillOpacity: 0,
+                  interactive: false,
                 };
               },
               onEachFeature: function (feature, marker) {
@@ -125,7 +150,7 @@ nationsRequest.onreadystatechange = function () {
                   opacity: 0.5,
                   weight: 1,
                   fillColor: feature.properties.color,
-                  fillOpacity: 0.1,
+                  fillOpacity: 0.25,
                 };
               },
               onEachFeature: function (feature, marker) {
@@ -162,7 +187,11 @@ nationsRequest.onreadystatechange = function () {
             searchControl
               .on("search:locationfound", function (e) {
                 if (e.layer.setStyle) {
-                  e.layer.setStyle({ fillColor: "#3f0", color: "#0f0" });
+                  e.layer.setStyle({
+                    fillColor: "#3f0",
+                    color: "#0f0",
+                    fillOpacity: 0.25,
+                  });
                 }
                 if (e.layer._popup) {
                   e.layer.openPopup();
@@ -181,80 +210,6 @@ nationsRequest.onreadystatechange = function () {
             map.addControl(searchControl);
 
             map.removeLayer(poiLayer); // Search control automatically adds its layers
-
-            var menu = L.leafletMenu(map, {
-              items: {
-                AlertCenterLocation: {
-                  onClick: function () {
-                    alert(map.getCenter().toString());
-                  },
-                },
-              },
-            });
-            var menuButton = L.easyButton({
-              states: [
-                {
-                  stateName: "show-menu",
-                  icon: "fa fa-tasks",
-                  color: "black",
-                  title: "Show Menu",
-                  onClick: function (btn, map) {
-                    menu.options.button = btn;
-                    menu.show();
-                    btn.state("hide-menu");
-                  },
-                },
-                {
-                  stateName: "hide-menu",
-                  icon: "fa fa-tasks",
-                  color: "black",
-                  title: "Hide Menu",
-                  onClick: function (btn, map) {
-                    menu.hide();
-                    btn.state("show-menu");
-                  },
-                },
-              ],
-              id: "styles-menu",
-            });
-            map.addControl(menuButton);
-
-            let toggleColorControl = L.Control.extend({
-              options: {
-                position: "topleft",
-              },
-
-              onAdd: function (map) {
-                toggleColorButton = L.DomUtil.create("div", "above-below");
-                toggleColorButton.innerHTML = `<div class="center">Colors</div><label class="switch"><input type="checkbox" onchange="toggleMapColor(this.checked)"><span class="slider round"></span></label>`;
-
-                let wrapper = L.DomUtil.create("div");
-                wrapper.style.position = "relative";
-                wrapper.appendChild(toggleColorButton);
-
-                return wrapper;
-              },
-            });
-            map.addControl(new toggleColorControl());
-
-            let toggleRegionsControl = L.Control.extend({
-              options: {
-                position: "topleft",
-              },
-
-              onAdd: function (map) {
-                toggleRegionsButton = L.DomUtil.create("div", "above-below");
-                toggleRegionsButton.innerHTML = `<div class="center">Regions</div><label class="switch"><input type="checkbox" checked onchange="toggleRegions(this.checked)"><span class="slider round"></span></label>`;
-
-                let wrapper = L.DomUtil.create("div");
-                wrapper.style.position = "relative";
-                wrapper.appendChild(toggleRegionsButton);
-
-                return wrapper;
-              },
-            });
-
-            map.addControl(new toggleRegionsControl());
 
             let contributeControl = L.Control.extend({
               options: {
@@ -281,27 +236,10 @@ nationsRequest.onreadystatechange = function () {
 
             map.addControl(new contributeControl());
 
-            let githubControl = L.Control.extend({
-              options: {
-                position: "topleft",
-              },
-
-              onAdd: function (map) {
-                githubButton = L.DomUtil.create("button", "github-button");
-
-                githubButton.onclick = (e) => {
-                  window.open("https://github.com/hutli/empire-map", "_blank");
-                };
-
-                let wrapper = L.DomUtil.create("div");
-                wrapper.style.position = "relative";
-                wrapper.appendChild(githubButton);
-
-                return wrapper;
-              },
+            let sidebar = L.control.sidebar("sidebar", {
+              position: "left",
             });
-
-            map.addControl(new githubControl());
+            map.addControl(sidebar);
           }
         };
         poiRequest.send(null);
@@ -390,7 +328,7 @@ function submit() {
     document.getElementById("popup").style.display = "block";
   };
   contributeButton.style.backgroundColor = "#ffffff";
-  regionsLayer.setStyle({ fillOpacity: 0.1 });
+  regionsLayer.setStyle({ fillOpacity: 0.25 });
   regionsLayer.setInteractive(true);
   map.off("click");
   console.log(submissionMarker);
@@ -447,13 +385,13 @@ function openNav(e) {
   }
 
   console.log(`Opening Nav`);
-  document.getElementById("map").classList.remove("map-sidebar-closed");
-  document.getElementById("map").classList.add("map-sidebar-open");
+  document.getElementById("map").classList.remove("map-infobar-closed");
+  document.getElementById("map").classList.add("map-infobar-open");
 
   //document.getElementById("map").style.width = "60vw";
-  document.getElementById("sidebar").classList.add("sidebar-open");
-  document.getElementById("sidebar-header").innerText = properties.name;
-  document.getElementById("sidebar-content").innerHTML =
+  document.getElementById("infobar").classList.add("infobar-open");
+  document.getElementById("infobar-header").innerText = properties.name;
+  document.getElementById("infobar-content").innerHTML =
     properties.description +
     (properties.url
       ? `<br/><br/>Read more: <a href=${properties.url} target="_blank">${properties.url}</a>`
@@ -463,9 +401,9 @@ function openNav(e) {
 function closeNav() {
   poiIsOpen = false;
   onMapZoom();
-  document.getElementById("map").classList.remove("map-sidebar-open");
-  document.getElementById("map").classList.add("map-sidebar-closed");
+  document.getElementById("map").classList.remove("map-infobar-open");
+  document.getElementById("map").classList.add("map-infobar-closed");
 
   //document.getElementById("map").style.width = "100vw";
-  document.getElementById("sidebar").classList.remove("sidebar-open");
+  document.getElementById("infobar").classList.remove("infobar-open");
 }
