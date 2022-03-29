@@ -21,9 +21,13 @@ def update_descriptions(file_name):
         data["features"][i]["properties"]["name"] = (
             url.rsplit("/", 1)[-1].rsplit("#", 1)[-1].replace("_", " ")
         )
-
-        if "#" in url:
+        description_id = None
+        if "description-id" in feature["properties"]:
+            description_id = feature["properties"]["description-id"]
+        elif "#" in url:
             description_id = url.split("#", 1)[1]
+
+        if description_id:
             data["features"][i]["properties"]["description-id"] = description_id
             hlevel, description = page.split(f'id="{description_id}"', 1)
             hlevel = hlevel.rsplit("<", 1)[1].split(" ", 1)[0]
