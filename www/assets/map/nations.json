@@ -1,0 +1,157 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Wintermark",
+        "color": "#00adee",
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Wintermark",
+        "description": ""
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-25.64, 55.1],
+            [-25.71, 50.87],
+            [-25.92, 49.15],
+            [-36.02, 38.14],
+            [-30.07, 36.11],
+            [-31.08, 33.2],
+            [-25.26, 31.16],
+            [-24.68, 24.47],
+            [-29.97, 21.49],
+            [-29.53, 18.4],
+            [-19.53, 13.97],
+            [-6.44, 13.26],
+            [-5.68, 7.82],
+            [-8.66, -5.27],
+            [-39.42, -7.67],
+            [-42.63, -10.06],
+            [-45.53, -11.82],
+            [-47.24, -14.43],
+            [-68.51, -15.37],
+            [-76.86, -7.89],
+            [-76.86, -7.89],
+            [-80.64, -0.66],
+            [-92.48, 10.14],
+            [-101.78, 18.04],
+            [-99.78, 38.48],
+            [-93.3, 51.37],
+            [-69.04, 57.11]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "The Brass Coast",
+        "color": "#f6921e",
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/The_Brass_Coast",
+        "description": "The Freeborn of the Brass Coast are travellers, traders, lovers and poets. They are exuberant and flamboyant; when they laugh their humour is infectious and without spite, when they love they do so with a passion that is without guile and when they\u2019re angry, their wrath is like a summer storm \u2013 terrible to behold but swift in passing. To be Freeborn is to be driven by a hunger for life, to see the world, to taste every delicacy, sample every wine and tell every tale. Success is measured in wealth, family and influence, not out of greed, but for the joy success brings.<br/><br/>Founded by exiles from ancient Highguard, the families of the Brass Coast organise themselves into three tribes, each inspired by the example of one of the Founders of their nation. They prize individual freedom and responsibility and although they are capable of serving a cause, they have little respect for authority. Pompous or self-important individuals, especially those who think that titles and positions have made them important, are ridiculed on the Coast. Respect is earned, it cannot be bought or appointed.<br/><br/>While others see them as outspoken and brazen, their honesty is without arrogance, for to aggrandise the self is vulgar, while to praise the deeds of another is an art. Their tales are bawdy enough for a common tavern and grand enough for a lordly court alike and can fill a room with laughter, tears or gasps of horror.<br/><br/>Their wagons and ships cross the world bringing exotic goods that command the finest prices. They are particularly renowned for their corsairs, who operate out of the Bay of Catazar. These daring privateers risk everything ensuring that the Empire's enemies are unable to threaten her shores and earning a fortune in gold in the process. It is a dangerous life but one that perfectly suits the Freeborn passion for high adventure."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-29.44, -45.03],
+            [-27.69, -48.34],
+            [-23.23, -50.29],
+            [-14.85, -53.79],
+            [-6.61, -56.07],
+            [6.86, -67.07],
+            [-15.03, -71.73],
+            [-22.26, -78.37],
+            [-55.31, -78.18],
+            [-77.48, -75.23],
+            [-101.91, -75.67],
+            [-110.41, -72.95],
+            [-102.04, -67.64],
+            [-92.31, -58.3],
+            [-91.25, -52.11],
+            [-79.32, -45.75],
+            [-62.58, -44.87],
+            [-58.8, -44.86],
+            [-46.65, -45.27],
+            [-40.3, -44.53]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "The Marches",
+        "color": "#228B22",
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/The_Marches",
+        "description": "For centuries, the Marcher Households have followed the beat of the Empire's drums. Aided by the Landskeepers' magic and inspired by the faithful of the monasteries, the Marcher armies have been built from the strength of the yeomen's arms, the courage of their hearts, and the knowledge that they fight for the green fields of home. Stubborn as stone, they give ground grudgingly, and even if they are forced to retreat they are not defeated: they will return.<br/><br/>The Marches are the guts of the Empire. They may not be pretty, but they are vital. They fought a war of independence long ago and they will die, one and all, before they give up their freedoms. None stands above another but that their neighbours put them there. Everything they have they have taken with blood and sweat, every season, their prosperity dragged from the soft earth with every harvest. Nature is their servant, bound and shackled with looming menhirs and iron ploughshares, a hound tamed and set to lie before their doors.<br/><br/>They understand sacrifice - not the easy sacrifice of blood for the harvest, but the hard sacrifice of lives spent day after day working for the future.<br/><br/>The Marches is the sleeping giant of Empire. Enemy boots churn up the rich soil, as the dog days of summer give way to the cold dawn of autumn \u2013 and to war."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-104.15, -1.1],
+            [-80.64, -0.66],
+            [-76.86, -7.89],
+            [-68.51, -15.37],
+            [-47.24, -14.43],
+            [-45.53, -11.82],
+            [-42.63, -10.06],
+            [-39.42, -7.67],
+            [-8.66, -5.27],
+            [-9.45, -12.47],
+            [-3.47, -18.65],
+            [-4.22, -28.65],
+            [-13.84, -27.84],
+            [-16.66, -34.74],
+            [-22.98, -36.32],
+            [-23.91, -41.61],
+            [-29.44, -45.03],
+            [-40.3, -44.53],
+            [-45.92, -40.21],
+            [-54.49, -39.44],
+            [-62.97, -34.99],
+            [-87.36, -28.42],
+            [-101.56, -19.15]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Imperial Orcs",
+        "color": "#1ba3bb",
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Imperial_Orcs",
+        "description": "The Empire is an empire of humanity, but the Imperial Orcs are not human and never will be. Orcs are creatures of two worlds, guided by the whisper of those who have gone before in their souls, driven by a lust for battle that burns in their blood. While the barbarian orcs embrace these urges, the Imperial Orcs strive to temper their primal instincts with military discipline. So many choose the life of the professional soldier serving in the Imperial armies that Imperial Orc culture has a profoundly martial nature.<br/><br/>Yet two generations ago the Imperial Orcs were slaves. First they won their freedom by strength and indomitable will, forcing the Empire to recognise the injustice it perpetrated against them. Reluctantly the Empire gave them freedom - but nothing more. They were recognized as the tenth nation of the Empire, but they had no land to call their own. In the decades that followed they spent blood and tears fighting the Empire wars, always pursuing the promise of a home where they might put down roots. This long march to war ended recently when they were granted the territory of Skarsind. Now the Orcs have face an entirely new challenge - to build a nation worthy of their ancestors, worthy of their descendants.<br/><br/>Like battle and the voices of the ancestors, loyalty is part of the orc soul. The barbarian orcs feel a powerful instinctive loyalty towards their nation; they need to feel as if they are part of something larger than themselves. When they lacked a land of their own, the Imperial Orcs strove to make the Empire their nation. Now they have their own land, some are openly questioning what must come next. Should they strive to make Skarsind the greatest territory in the Empire or seek out new territories to conquer? Their efforts have won them recognition and a place in the great councils of the Empire, but they remain the smallest nation. They will need more before they can stand among the other nations of the Empire as equals.<br/><br/>Orcs know they have only one life to live; they strive to burn brightly and leave a better world for their children to inherit."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-5.68, 7.82],
+            [-6.44, 13.26],
+            [5.97, 15.63],
+            [9.09, 20.97],
+            [-0.89, 24.21],
+            [-1.76, 32.51],
+            [-16.45, 35.87],
+            [-24.27, 33.67],
+            [-25.26, 31.16],
+            [-31.08, 33.2],
+            [-30.07, 36.11],
+            [-36.02, 38.14],
+            [-25.92, 49.15],
+            [-25.71, 50.87],
+            [2.47, 48.14],
+            [19.31, 33.43],
+            [18.19, 11.22],
+            [11.73, 6.53]
+          ]
+        ]
+      }
+    }
+  ]
+}

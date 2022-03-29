@@ -1,0 +1,217 @@
+body {
+  margin: 0;
+}
+#map {
+  background: white;
+  height: 100vh;
+  cursor: default;
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
+}
+
+#submit {
+  z-index: 100;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+}
+/* The sidebar menu */
+.sidebar {
+  height: 100vh;
+  width: 40vw; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Stay on top */
+  top: 0;
+  right: -40vw;
+  background-color: #111; /* Black*/
+  color: white;
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 60px; /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
+}
+.sidebar a {
+  color: lightblue;
+}
+
+.map-sidebar-closed {
+  width: 100vw;
+}
+.map-sidebar-open {
+  width: 60vw;
+}
+.sidebar-open {
+  right: 0;
+}
+
+.sidebar-header {
+  margin: 0 20px 20px 30px;
+}
+
+.sidebar-content {
+  margin: 0 50px 40px 50px;
+  overflow: scroll;
+  height: calc(100vh - 60px - 43px - 20px - 40px);
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+  transition: margin-left 0.5s; /* If you want a transition effect */
+  padding: 20px;
+}
+
+.contribute-button {
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  display: block;
+  width: 34px;
+  height: 34px;
+  background: url("/../images/sular.png") #fff;
+  background-repeat: no-repeat;
+  background-size: auto 26px;
+  background-position: center 2px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.contribute-button:hover {
+  background-color: #f4f4f4;
+}
+
+#sidebar-closebtn {
+  float: right;
+  margin-right: 40px;
+  font-size: xx-large;
+  margin-top: -20px;
+  background-color: #111;
+  color: white;
+}
+.hide-point-layer .point-layer {
+  display: none;
+}
+
+.popup-close-button {
+  font-size: 40px;
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  position: absolute;
+  right: -10px;
+  top: -10px;
+}
+.popup-close-button:hover {
+  cursor: pointer;
+  background-color: #f4f4f4;
+}
+
+.action-button {
+  font-size: large;
+  padding: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
+  border-radius: 8px;
+}
+.action-button:hover {
+  cursor: pointer;
+  background-color: #f4f4f4;
+}
+
+/* Toggle Button */
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #2196f3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196f3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+.above-below {
+  display: flex;
+  flex-direction: column;
+}
+.center {
+  font-size: large;
+  text-align: center;
+}
+
+@media screen and (max-width: 1000px) {
+  .sidebar {
+    width: 60vw;
+    right: -60vw;
+  }
+  .map-sidebar-closed {
+    width: 100vw;
+  }
+  .map-sidebar-open {
+    width: 40vw;
+  }
+  .sidebar-open {
+    right: 0;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .map-sidebar-open {
+    width: 0vw;
+  }
+  .sidebar {
+    width: 100vw;
+    right: -100vw;
+  }
+  .sidebar-open {
+    right: 0;
+  }
+  .sidebar-content {
+    height: calc(100vh - 60px - 87px - 20px - 40px);
+  }
+}

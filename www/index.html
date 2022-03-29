@@ -1,0 +1,81 @@
+<head>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, user-scalable=0"
+  />
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#333333" />
+  <meta name="msapplication-TileColor" content="#b91d47" />
+  <meta name="theme-color" content="#333333" />
+
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin=""
+  />
+  <link rel="stylesheet" href="/css/leaflet-search.css" />
+  <link rel="stylesheet" href="/css/popup.css" />
+  <link rel="stylesheet" href="/css/main.css" />
+</head>
+<body>
+  <div id="map" class="map-sidebar-closed hide-point-layer"></div>
+  <div id="sidebar" class="sidebar">
+    <button id="sidebar-closebtn" onclick="closeNav()">x</button>
+    <h1 id="sidebar-header" class="sidebar-header">Loading...</h1>
+    <div id="sidebar-content" class="sidebar-content"></div>
+  </div>
+  <div class="popup" id="popup">
+    <button class="popup-close-button" onclick="hidePopup('popup')">&#x2715</button>
+    <h2>Contribute</h2>
+    <p>
+      Thank you for wanting to contribute to "visitanvil.com"! Currently, two
+      main contribution methods exist; "Point of Interest" and area, they can be
+      selected by clicking the buttons below.
+    </p>
+    <p>
+      A "Point of Interest" is a single location on the map, like a mine or a
+      town. These are displayed as markers. A "Point of Interest" is the easiest
+      to submit. After you have filled out the information about the location,
+      you select a single point on the map and you are done.
+    </p>
+    <p>
+      An area is shown as coloured polygons on the map and represents areas such
+      as regions or nations. After filling in the information about the area,
+      you will create a polygon by clicking its corners <i>in order</i> around
+      the map. If you hold in "control" while clicking, it will snap to the
+      nearest corner of an existing area. Be careful; there is no undo button
+      yet!
+    </p>
+    <p>
+      All contributions are sent over email to the admin. The website will open
+      your email client with an email ready to send when you finish your
+      contribution. This email contains all information needed by the admin, but
+      feel free to add messages or anything you think is missing.
+    </p>
+    <p>
+      If you have found an error on the current map or have a good idea, please
+      email <a href="mailto:admin@visitanvil.com">admin@visitanvil.com</a>.
+    </p>
+    <div class="center">
+      <button class="action-button" onclick="startInteractiveContribution()">
+        Point of Interest
+      </button>
+      <button class="action-button" onclick="startInteractiveContribution()">
+        Area
+      </button>
+    </div>
+  </div>
+  <script
+    src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""
+  ></script>
+  <script src="/js/leaflet-search.js"></script>
+  <script src="/js/set-interactive.js"></script>
+  <script src="/js/main.js"></script>
+</body>
