@@ -1,5 +1,5 @@
 let map = L.map("map").setView([0, 0], 2);
-const ADMIN_EMIL = "admin@visitanvil.com";
+const ADMIN_EMIL = "admin@empirelarpmap.com";
 map.attributionControl.addAttribution(
   `Tiles &copy; <a href="mailto:${ADMIN_EMIL}">Jens</a> &mdash; Source: <a href="https://www.profounddecisions.co.uk/">Profound Decisions</a>`
 );
