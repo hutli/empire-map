@@ -5,7 +5,7 @@ const GEOJSON_DATA_BASE_URL = "https://empirelarpmap.com/";
 let map = L.map("map").setView([0, 0], 2);
 
 map.attributionControl.addAttribution(
-  `Tiles &copy; <a href="mailto:${ADMIN_EMIL}">Jens</a> &mdash; Source: <a href="https://www.profounddecisions.co.uk/">Profound Decisions</a>`
+  `Tiles from <a href="mailto:${ADMIN_EMIL}">Jens</a> &mdash; Source: <a href="https://www.profounddecisions.co.uk/">Profound Decisions</a>`
 );
 
 let nations_color_map = {
@@ -189,7 +189,7 @@ nationsRequest.onreadystatechange = function () {
                   color: "#000000",
                   opacity: 0.5,
                   weight: 1,
-                  fillColor: feature.properties.color,
+                  fillColor: nations_color_map[feature.properties.nation],
                   fillOpacity: 0.25,
                 };
               },
