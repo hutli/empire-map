@@ -1,12 +1,10 @@
 # Empire LARP Map
 
-The `www` folder simply contains a static website with `index.html` as the index file. You can just host contents of the `www` directory with your favorite web server (like `nginx`). The website will work but will not contain the correct fonts, please refer to building [Fonts](#Fonts).
+Empire LARP Map is just a static website. You can host the `www` directory contents with your favourite web server (like `nginx`). The website will work but will not contain the correct fonts; please refer to building [Fonts](#Fonts).
 
-Hosting the website "as-is" will result in you using https://empirelarpmap.com/ as tileing and GeoJSON data server. To host these files yourself you have to build them and change the constants `TILE_SERVER_BASE_URL` and `GEOJSON_DATA_BASE_URL` in `main.js` accordingly.
+Hosting the website "as-is" will result in you using https://empirelarpmap.com/ as tiling and GeoJSON data server. To host these files yourself, you have to build them and change the constants `TILE_SERVER_BASE_URL` and `GEOJSON_DATA_BASE_URL` in `main.js` accordingly.
 
 # Building
-
-Building assumes that `python` refers to a Python 3 binary `pip` refers to a Pip 3 binary. If this is not the case you are probably using Ubuntu/Debian and I recommend installing `python-is-python3`.
 
 ## Docker
 
@@ -20,9 +18,13 @@ This will expose a completely self-hosted the website on port `1457`.
 
 ⚠️ WARNING: Building does take several hours! ⚠️
 
+## Build it Yourself
+
+The following steps assume that `python` refers to a Python 3 binary and that `pip` refers to a Pip 3 binary. If this is not the case, you are probably using Ubuntu/Debian, and I recommend installing `python-is-python3`.
+
 ## Fonts
 
-The one thing you will probably want to build if hosting outside of docker is the fonts used. The fonts are nothing special, they are really just fonts from https://fonts.googleapis.com/, but since Empire LARP Map is Cookie-Free Safe-Space™ we cannot include them directly. This is because CSS-files included from https://fonts.googleapis.com requests https://fonts.gstatic.com for the actual font files (which, as you can imagine, is far from cookie-free).
+The one thing you will probably want to build if hosting outside of docker is the fonts used. The fonts are nothing special; they are really just fonts from https://fonts.googleapis.com/, but since Empire LARP Map is Cookie-Free Safe-Space™, we cannot include them directly. This is because CSS files from https://fonts.googleapis.com request https://fonts.gstatic.com for the actual font files, which, as you can imagine, is far from cookie-free.
 
 ![meme](/meme.png?raw=true "meme")
 
@@ -35,7 +37,7 @@ python utilities.py degoogle-css -c www/css/fonts.css -d www/fonts -r fonts -u "
 
 ## GeoJSON
 
-The GeoJSON files included in the `data` dir has not yet been populated with data from the Empire LARP Wiki. I could probably include GeoJSON files already populated in this repo, but since the Empire LARP Wiki is constantly updated, it is always a good idea to regularly repopulate these files. To do so:
+The GeoJSON files included in the `data`-dir have not yet been populated with the Empire LARP Wiki data. I could probably include GeoJSON files already populated in this repo. Still, since the Empire LARP Wiki is constantly updated, it is always a good idea to regularly repopulate these files. To do so:
 
 ```bash
 pip install -r requirements.txt
@@ -48,11 +50,11 @@ Remember to change the constant `GEOJSON_DATA_BASE_URL` in `main.js`!
 
 ## Tiles
 
-Building the tiles for the tileing server is no doubt the biggest part of the building process.
+Building the tiles for the tiling server is undoubtedly the most time-consuming part of the building process.
 
-⚠️ It takes several hours and and will use several GB of harddisk space ⚠️
+⚠️ It takes several hours and will use several GB of harddisk space ⚠️
 
-You first need to install GDAL on your computer. On Ubuntu this is done so:
+You first need to install GDAL on your computer. On Ubuntu, this is done so:
 
 ```bash
 sudo apt install software-properties-common -y
@@ -61,10 +63,10 @@ sudo apt update -y
 sudo apt install gdal-bin libgdal-dev -y
 ```
 
-Next you can build the tiles. The following script assumes that `wget` is installed as it unfortunately have to download the raw image files from https://empirelarpmap.com. This is because they are too large for me to include in this GitHub repo with my free account.
+You can now build the tiles. The following script assumes that `wget` is installed as it, unfortunately, has to download the raw image files from https://empirelarpmap.com. They are too large for me to include in this GitHub repo with my free account.
 
 ```bash
 ./build-tiles.sh
 ```
 
-Lastly, remember to change the constant `TILE_SERVER_BASE_URL` in `main.js`!
+Lastly, change the constant `TILE_SERVER_BASE_URL` in `main.js`!
