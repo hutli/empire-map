@@ -22,7 +22,9 @@ This will expose a completely self-hosted the website on port `1457`.
 
 ## Fonts
 
-The one thing you will probably want to build if hosting outside of docker is the fonts used. The fonts are nothing special, they are really just fonts from https://fonts.googleapis.com/, but since Empire LARP Map is cookie-free we cannot include them directly. This is because CSS-files included from https://fonts.googleapis.com requests https://fonts.gstatic.com for the actual font files (which, as you can imagine, is far from cookie-free).
+The one thing you will probably want to build if hosting outside of docker is the fonts used. The fonts are nothing special, they are really just fonts from https://fonts.googleapis.com/, but since Empire LARP Map is Cookie-Free Safe-Space™ we cannot include them directly. This is because CSS-files included from https://fonts.googleapis.com requests https://fonts.gstatic.com for the actual font files (which, as you can imagine, is far from cookie-free).
+
+![meme](/meme.png?raw=true "meme")
 
 To build/download the fonts:
 
