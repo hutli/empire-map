@@ -479,7 +479,8 @@
       this._tooltip.currentSelection = -1; //inizialized for _handleArrowSelect()
 
       if (this.options.tooltipLimit) {
-        for (let key in records) { //fill tooltip
+        for (let key in records) {
+          //fill tooltip
           if (this._countertips === this.options.tooltipLimit) break;
 
           this._countertips++;
