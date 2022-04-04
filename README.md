@@ -37,7 +37,7 @@ python utilities.py degoogle-css -c www/css/fonts.css -d www/fonts -r fonts -u "
 
 ## GeoJSON
 
-The GeoJSON files included in the `data`-dir have not yet been populated with the Empire LARP Wiki data. I could probably at this point include GeoJSON files already populated in this repo with not problem. However, to future-proof the project and not eventually end up with a *giant* JSON file containing the entire Empire Wiki (which my free GitHub account cannot bare) they only include just enough data to automatically populate from Empire LARP Wiki. Furthermore, since the Empire LARP Wiki is constantly updated, it is always a good idea to regularly repopulate these files anyway. To do so:
+The GeoJSON files included in the `data`-dir have not yet been populated with the Empire LARP Wiki data. I could probably at this point include GeoJSON files already populated, in this repo without any problem. However, to future-proof the project and not eventually end up with a *giant* JSON file containing the entire Empire Wiki (which my free GitHub account cannot bare) they only include just enough data to automatically populate from Empire LARP Wiki. Furthermore, since the Empire LARP Wiki is constantly updated, it is always a good idea to regularly repopulate these files anyway. To do so:
 
 ```bash
 pip install -r requirements.txt
