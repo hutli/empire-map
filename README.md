@@ -11,7 +11,7 @@ Hosting the website "as-is" will result in you using https://empirelarpmap.com/ 
 The easiest way to build everything is through docker.
 
 ```bash
-docker-compose up
+docker-compose up --build
 ```
 
 This will expose a completely self-hosted the website on port `1457`.
@@ -37,7 +37,7 @@ python utilities.py degoogle-css -c www/css/fonts.css -d www/fonts -r fonts -u "
 
 ## GeoJSON
 
-The GeoJSON files included in the `data`-dir have not yet been populated with the Empire LARP Wiki data. I could probably, at this point, include GeoJSON files already populated in this repo without any problem. However, to not eventually end up with a *giant* JSON file containing the entire Empire Wiki they include just enough data to be automatically populated from Empire LARP Wiki. Furthermore, since the Empire LARP Wiki is constantly updated, it is always a good idea to regularly repopulate these files anyway. To do so:
+The GeoJSON files included in the `data`-dir have not yet been populated with the Empire LARP Wiki data. I could probably, at this point, include GeoJSON files already populated in this repo without any problem. However, to not eventually end up with a _giant_ JSON file containing the entire Empire Wiki they include just enough data to be automatically populated from Empire LARP Wiki. Furthermore, since the Empire LARP Wiki is constantly updated, it is always a good idea to regularly repopulate these files anyway. To do so:
 
 ```bash
 pip install -r requirements.txt
