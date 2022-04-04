@@ -1,0 +1,38 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Anvil",
+        "nation": "The Empire"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [40.23, -29.61]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Bregasland#Rushring",
+        "nation": "The Marches"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-87.76, -21.25]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Mournwold#The_ruins_of_Overton",
+        "nation": "The Marches"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-27.59, -39.93]
+      }
+    }
+  ]
+}

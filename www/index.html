@@ -20,6 +20,7 @@
   />
   <link rel="stylesheet" href="/css/leaflet-search.css" />
   <link rel="stylesheet" href="/css/leaflet-sidebar.css" />
+  <link rel="stylesheet" href="/css/fonts.css" />
   <link rel="stylesheet" href="/css/popup.css" />
   <link rel="stylesheet" href="/css/main.css" />
 </head>
@@ -55,7 +56,8 @@
           <span class="sidebar-close"><i class="fa fa-caret-left"></i></span>
         </h1>
         <div class="layer">
-          <div class="layer-title">Terrain Colors</div>
+          <h3 class="layer-title">Terrain Colour</h3>
+          <h3 id="terrain-colors-display" class="toggle-display">ON</h3>
           <label class="switch"
             ><input
               type="checkbox"
@@ -66,10 +68,11 @@
           ></label>
         </div>
         <div class="layer">
-          <div class="layer-title">Terrain Opacity</div>
+          <h3 class="layer-title">Terrain Opacity</h3>
+          <h3 id="terrain-opacity-display" class="slider-display">0.70</h3>
           <input
             type="range"
-            value="1"
+            value="0.7"
             min="0"
             max="1"
             step="0.05"
@@ -78,7 +81,8 @@
           />
         </div>
         <div class="layer">
-          <div class="layer-title">Nation Borders</div>
+          <h3 class="layer-title">Nation Borders</h3>
+          <h3 id="nation-borders-display" class="toggle-display">ON</h3>
           <label class="switch"
             ><input
               type="checkbox"
@@ -89,7 +93,8 @@
           ></label>
         </div>
         <div class="layer">
-          <div class="layer-title">Region Borders</div>
+          <h3 class="layer-title">Region Borders</h3>
+          <h3 id="region-borders-display" class="toggle-display">ON</h3>
           <label class="switch"
             ><input
               type="checkbox"
@@ -100,7 +105,8 @@
           ></label>
         </div>
         <div class="layer">
-          <div class="layer-title">Region Fill Opacity</div>
+          <h3 class="layer-title">Region Fill Opacity</h3>
+          <h3 id="region-fill-display" class="slider-display">0.25</h3>
           <input
             type="range"
             value="0.25"

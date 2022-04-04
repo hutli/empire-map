@@ -1,21 +1,45 @@
-let map = L.map("map").setView([0, 0], 2);
 const ADMIN_EMIL = "admin@empirelarpmap.com";
+const TILE_SERVER_BASE_URL = "https://empirelarpmap.com/";
+const GEOJSON_DATA_BASE_URL = "https://empirelarpmap.com/";
+
+let map = L.map("map").setView([0, 0], 2);
+
 map.attributionControl.addAttribution(
   `Tiles &copy; <a href="mailto:${ADMIN_EMIL}">Jens</a> &mdash; Source: <a href="https://www.profounddecisions.co.uk/">Profound Decisions</a>`
 );
 
-let colorTileLayer = L.tileLayer("/assets/map/tiles-color/{z}/{x}/{y}.png", {
-  minZoom: 0,
-  maxZoom: 9,
-  opacity: 1,
-  noWrap: true,
-});
-let bwTileLayer = L.tileLayer("/assets/map/tiles-bw/{z}/{x}/{y}.png", {
-  minZoom: 0,
-  maxZoom: 9,
-  opacity: 1,
-  noWrap: true,
-});
+let nations_color_map = {
+  Navarr: "#006838",
+  Dawn: "#be1e2d",
+  Wintermark: "#00adee",
+  "The Brass Coast": "#f6921e",
+  Urizen: "#90278e",
+  Highguard: "#cccccc",
+  "The League": "#ffff00",
+  Varushka: "#a87c4f",
+  "The Marches": "#228B22",
+  "Imperial Orcs": "#1ba3bb",
+  Lost: "#000000",
+};
+
+let colorTileLayer = L.tileLayer(
+  `${TILE_SERVER_BASE_URL}assets/map/tiles-color/{z}/{x}/{y}.png`,
+  {
+    minZoom: 0,
+    maxZoom: 9,
+    opacity: 1,
+    noWrap: true,
+  }
+);
+let bwTileLayer = L.tileLayer(
+  `${TILE_SERVER_BASE_URL}assets/map/tiles-bw/{z}/{x}/{y}.png`,
+  {
+    minZoom: 0,
+    maxZoom: 9,
+    opacity: 1,
+    noWrap: true,
+  }
+);
 map.addLayer(colorTileLayer);
 
 let geoJsonCoords = [];
@@ -74,36 +98,46 @@ function startInteractiveContribution(contribution) {
 
 function toggleMapColor(colors) {
   if (colors) {
+    document.getElementById("terrain-colors-display").innerText = "ON";
     map.removeLayer(bwTileLayer);
     map.addLayer(colorTileLayer);
   } else {
+    document.getElementById("terrain-colors-display").innerText = "OFF";
     map.removeLayer(colorTileLayer);
     map.addLayer(bwTileLayer);
   }
 }
 
 function changeTerrainOpacity(value) {
+  document.getElementById("terrain-opacity-display").innerText =
+    Number(value).toFixed(2);
   colorTileLayer.setOpacity(value);
   bwTileLayer.setOpacity(value);
 }
 
 function toggleNationBorders(enabled) {
   if (enabled) {
+    document.getElementById("nation-borders-display").innerText = "ON";
     nationsLayer.setStyle({ opacity: 1 });
   } else {
+    document.getElementById("nation-borders-display").innerText = "OFF";
     nationsLayer.setStyle({ opacity: 0 });
   }
 }
 
 function toggleRegionBorders(enabled) {
   if (enabled) {
+    document.getElementById("region-borders-display").innerText = "ON";
     regionsLayer.setStyle({ opacity: 0.5 });
   } else {
+    document.getElementById("region-borders-display").innerText = "OFF";
     regionsLayer.setStyle({ opacity: 0 });
   }
 }
 
 function changeRegionFill(value) {
+  document.getElementById("region-fill-display").innerText =
+    Number(value).toFixed(2);
   regionsLayer.setStyle({ fillOpacity: value });
 }
 
@@ -114,15 +148,18 @@ let poiLayer = undefined;
 let poiIsOpen = false;
 
 let nationsRequest = new XMLHttpRequest();
-nationsRequest.open("GET", "/assets/map/nations.json");
+nationsRequest.open("GET", `${GEOJSON_DATA_BASE_URL}assets/map/nations.json`);
 nationsRequest.onreadystatechange = function () {
   if (this.readyState == 4 && this.status == 200) {
     let regionsRequest = new XMLHttpRequest();
-    regionsRequest.open("GET", "/assets/map/regions.json");
+    regionsRequest.open(
+      "GET",
+      `${GEOJSON_DATA_BASE_URL}assets/map/regions.json`
+    );
     regionsRequest.onreadystatechange = function () {
       if (this.readyState == 4 && this.status == 200) {
         let poiRequest = new XMLHttpRequest();
-        poiRequest.open("GET", "/assets/map/poi.json");
+        poiRequest.open("GET", `${GEOJSON_DATA_BASE_URL}assets/map/poi.json`);
         poiRequest.onreadystatechange = function () {
           if (this.readyState == 4 && this.status == 200) {
             let nationsData = JSON.parse(nationsRequest.responseText);
@@ -134,7 +171,7 @@ nationsRequest.onreadystatechange = function () {
             nationsLayer = new L.GeoJSON(nationsData, {
               style: function (feature) {
                 return {
-                  color: feature.properties.color,
+                  color: nations_color_map[feature.properties.nation],
                   opacity: 1,
                   weight: 3,
                   fillOpacity: 0,

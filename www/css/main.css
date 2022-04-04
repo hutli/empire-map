@@ -1,6 +1,12 @@
 body {
+  font-family: "Raleway", sans-serif;
   margin: 0;
 }
+h1 h2 h3 h4 h5 h6 {
+  font-family: "Raleway", sans-serif;
+  /*font-family: "Lora", serif;*/
+}
+
 #map {
   background: white;
   height: 100vh;
@@ -31,13 +37,28 @@ body {
   width: 30px;
 }
 .layer {
+  margin-top: 5px;
+  margin-bottom: 5px;
   display: flex;
   flex-direction: row;
 }
 .layer-title {
+  margin: 0;
+  font-weight: normal;
   flex: auto;
   text-align: left;
   line-height: 30px;
+}
+
+.slider-display {
+  font-weight: normal;
+  margin: auto 5px auto 0;
+  line-height: 100%;
+}
+.toggle-display {
+  font-weight: normal;
+  margin: auto 5px auto 0;
+  line-height: 100%;
 }
 
 #submit {

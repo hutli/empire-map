@@ -1,0 +1,7 @@
+version: "3"
+
+services:
+  empire-larp-map:
+    build: .
+    ports:
+      - 1457:80
