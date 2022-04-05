@@ -38,6 +38,7 @@ RUN ./build-fonts.sh
 FROM nginx:latest
 WORKDIR /www/
 
-COPY nginx.conf /etc/nginx/
-COPY www/ /www/
 COPY --from=app /app/www/ /www/
+COPY www/ /www/
+COPY mime.types /etc/nginx/
+COPY nginx.conf /etc/nginx/
