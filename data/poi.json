@@ -33,6 +33,163 @@
         "type": "Point",
         "coordinates": [-27.59, -39.93]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Semmerholm#The_Pits_of_Brychel",
+        "nation": "Dawn"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [67.08, -4.88]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Semmerholm#Rucastle",
+        "nation": "Dawn"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [53.42, -4.19]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Great_Pits_of_Ennerlund",
+        "nation": "The League"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [95.21, -4.4]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Brilliant_Shore",
+        "nation": "Imperial Orcs"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [8.96, 28.77]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Crow's Ridge",
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Skarsind#Crow.E2.80.99s_Ridge",
+        "nation": "Imperial Orcs"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-21.12, 44.04]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Hercynia#The_Gate_of_Summer",
+        "nation": "Navarr"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-0.64, 20.65]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Hahnmark#The_Fingers",
+        "nation": "Wintermark"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-10.57, 11.39]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Hahnmark#Kalpaheim",
+        "nation": "Wintermark"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-23.87, 8.28]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "The Mines of Gulhule",
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Foreman_of_the_Mines_of_Gulhule",
+        "nation": "Imperial Orcs"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [1.1, 39.66]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Skarsind#Skogei_Glens",
+        "nation": "Imperial Orcs"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-6.09, 39.59]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Broc%C3%A9liande#The_Broch",
+        "nation": "Dawn"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [51.72, -25.68]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Astolat#Laroc",
+        "nation": "Dawn"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [38.98, -11.87]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Astolat#Oldheart",
+        "nation": "Dawn"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [17.93, -11.46]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Syrene's Wisdom",
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Syrene%27s_Wisdom",
+        "nation": "Highguard"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [29.33, -32.69]
+      }
     }
   ]
 }

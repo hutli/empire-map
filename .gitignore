@@ -48,3 +48,4 @@ Thumbs.db
 /www/assets/map/untiled*.png
 /www/fonts/
 /www/css/fonts.css
+/www/assets/map/*.json
