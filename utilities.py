@@ -40,9 +40,12 @@ def populate_json(input_json, output_json):
     ):
         url = feature["properties"]["url"]
         page = requests.get(url, verify=False).text
-        data["features"][i]["properties"]["name"] = (
-            url.rsplit("/", 1)[-1].rsplit("#", 1)[-1].replace("_", " ")
-        )
+
+        if "name" not in feature["properties"]:
+            data["features"][i]["properties"]["name"] = (
+                url.rsplit("/", 1)[-1].rsplit("#", 1)[-1].replace("_", " ")
+            )
+
         description_id = None
         if "description-id" in feature["properties"]:
             description_id = feature["properties"]["description-id"]
