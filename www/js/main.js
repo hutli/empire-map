@@ -9,16 +9,16 @@ map.attributionControl.addAttribution(
 );
 
 let nations_color_map = {
-  Navarr: "#006838",
-  Dawn: "#be1e2d",
-  Wintermark: "#00adee",
-  "The Brass Coast": "#f6921e",
-  Urizen: "#90278e",
-  Highguard: "#cccccc",
-  "The League": "#ffff00",
-  Varushka: "#a87c4f",
-  "The Marches": "#228B22",
-  "Imperial Orcs": "#1ba3bb",
+  "The League": "#fff100",
+  "The Brass Coast": "#ff8c00",
+  Dawn: "#e81123",
+  Urizen: "#ec008c",
+  Varushka: "#68217a",
+  Highguard: "#00188f",
+  Wintermark: "#00bcf2",
+  "Imperial Orcs": "#00b294",
+  "The Marches": "#009e49",
+  Navarr: "#bad80a",
   Lost: "#000000",
 };
 
@@ -371,8 +371,15 @@ function submit() {
   regionsLayer.setStyle({ fillOpacity: 0.25 });
   regionsLayer.setInteractive(true);
   map.off("click");
-  console.log(submissionMarker);
-  let geometryGeoJson = { geometry: { type: "", coordinates: [] } };
+
+  let geometryGeoJson = {
+    type: "Feature",
+    properties: {
+      url: wikiArticle,
+      nation: "",
+    },
+    geometry: { type: "", coordinates: [] },
+  };
 
   if (submissionPolygon) {
     map.removeLayer(submissionPolygon);
@@ -397,7 +404,7 @@ function submit() {
     window.location.hostname
   }" admin,\n\nI have a "${contributionType}" to submit for the "${
     window.location.hostname
-  }" website!\n\n-------------------------\nEmpire WiKi Link:\n${wikiArticle}\n\nGeoJson:\n${JSON.stringify(
+  }" website!\n\n-------------------------\n\n${JSON.stringify(
     geometryGeoJson,
     null,
     2
