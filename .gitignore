@@ -44,8 +44,11 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
-/www/assets/map/tiles*
-/www/assets/map/untiled*.png
-/www/fonts/
-/www/css/fonts.css
-/www/assets/map/*.json
+www/assets/map/tiles*
+www/assets/map/untiled*.png
+www/fonts/
+www/css/fonts.css
+www/assets/map/*.json
+region-maps/
+look-and-feel-palettes/
+palette.png
