@@ -15,8 +15,7 @@
     {
       "type": "Feature",
       "properties": {
-        "url": "https://www.profounddecisions.co.uk/empire-wiki/Bregasland#Rushring",
-        "nation": "The Marches"
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Bregasland#Rushring"
       },
       "geometry": {
         "type": "Point",
@@ -26,8 +25,7 @@
     {
       "type": "Feature",
       "properties": {
-        "url": "https://www.profounddecisions.co.uk/empire-wiki/Mournwold#The_ruins_of_Overton",
-        "nation": "The Marches"
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Mournwold#The_ruins_of_Overton"
       },
       "geometry": {
         "type": "Point",
@@ -37,8 +35,7 @@
     {
       "type": "Feature",
       "properties": {
-        "url": "https://www.profounddecisions.co.uk/empire-wiki/Semmerholm#The_Pits_of_Brychel",
-        "nation": "Dawn"
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Semmerholm#The_Pits_of_Brychel"
       },
       "geometry": {
         "type": "Point",
@@ -48,8 +45,7 @@
     {
       "type": "Feature",
       "properties": {
-        "url": "https://www.profounddecisions.co.uk/empire-wiki/Semmerholm#Rucastle",
-        "nation": "Dawn"
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Semmerholm#Rucastle"
       },
       "geometry": {
         "type": "Point",
@@ -59,8 +55,7 @@
     {
       "type": "Feature",
       "properties": {
-        "url": "https://www.profounddecisions.co.uk/empire-wiki/Great_Pits_of_Ennerlund",
-        "nation": "The League"
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Great_Pits_of_Ennerlund"
       },
       "geometry": {
         "type": "Point",
@@ -70,8 +65,7 @@
     {
       "type": "Feature",
       "properties": {
-        "url": "https://www.profounddecisions.co.uk/empire-wiki/Brilliant_Shore",
-        "nation": "Imperial Orcs"
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Brilliant_Shore"
       },
       "geometry": {
         "type": "Point",
@@ -82,8 +76,7 @@
       "type": "Feature",
       "properties": {
         "name": "Crow's Ridge",
-        "url": "https://www.profounddecisions.co.uk/empire-wiki/Skarsind#Crow.E2.80.99s_Ridge",
-        "nation": "Imperial Orcs"
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Skarsind#Crow.E2.80.99s_Ridge"
       },
       "geometry": {
         "type": "Point",
@@ -93,8 +86,7 @@
     {
       "type": "Feature",
       "properties": {
-        "url": "https://www.profounddecisions.co.uk/empire-wiki/Hercynia#The_Gate_of_Summer",
-        "nation": "Navarr"
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Hercynia#The_Gate_of_Summer"
       },
       "geometry": {
         "type": "Point",
@@ -104,8 +96,7 @@
     {
       "type": "Feature",
       "properties": {
-        "url": "https://www.profounddecisions.co.uk/empire-wiki/Hahnmark#The_Fingers",
-        "nation": "Wintermark"
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Hahnmark#The_Fingers"
       },
       "geometry": {
         "type": "Point",
@@ -115,8 +106,7 @@
     {
       "type": "Feature",
       "properties": {
-        "url": "https://www.profounddecisions.co.uk/empire-wiki/Hahnmark#Kalpaheim",
-        "nation": "Wintermark"
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Hahnmark#Kalpaheim"
       },
       "geometry": {
         "type": "Point",
@@ -127,19 +117,17 @@
       "type": "Feature",
       "properties": {
         "name": "The Mines of Gulhule",
-        "url": "https://www.profounddecisions.co.uk/empire-wiki/Foreman_of_the_Mines_of_Gulhule",
-        "nation": "Imperial Orcs"
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Foreman_of_the_Mines_of_Gulhule"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [1.1, 39.66]
+        "coordinates": [1.1, 40.5]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "url": "https://www.profounddecisions.co.uk/empire-wiki/Skarsind#Skogei_Glens",
-        "nation": "Imperial Orcs"
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Skarsind#Skogei_Glens"
       },
       "geometry": {
         "type": "Point",
@@ -149,8 +137,7 @@
     {
       "type": "Feature",
       "properties": {
-        "url": "https://www.profounddecisions.co.uk/empire-wiki/Broc%C3%A9liande#The_Broch",
-        "nation": "Dawn"
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Broc%C3%A9liande#The_Broch"
       },
       "geometry": {
         "type": "Point",
@@ -160,8 +147,7 @@
     {
       "type": "Feature",
       "properties": {
-        "url": "https://www.profounddecisions.co.uk/empire-wiki/Astolat#Laroc",
-        "nation": "Dawn"
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Astolat#Laroc"
       },
       "geometry": {
         "type": "Point",
@@ -171,8 +157,7 @@
     {
       "type": "Feature",
       "properties": {
-        "url": "https://www.profounddecisions.co.uk/empire-wiki/Astolat#Oldheart",
-        "nation": "Dawn"
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Astolat#Oldheart"
       },
       "geometry": {
         "type": "Point",
@@ -183,12 +168,201 @@
       "type": "Feature",
       "properties": {
         "name": "Syrene's Wisdom",
-        "url": "https://www.profounddecisions.co.uk/empire-wiki/Syrene%27s_Wisdom",
-        "nation": "Highguard"
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Syrene%27s_Wisdom"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [29.33, -32.69]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Arratan_Gamble"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-6.99, -42.07]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Fortress_of_Salt"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [17.62, 8.49]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Miekarova#The_Painted_Caves"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [26.81, 47.99]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Heartwood_of_the_Great_Vale"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-5.89, 25.44]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Sutton_Stone_Quarries"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-23.55, -24.33]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Upwold#Tower_March"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-9.71, -24.73]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Zenith#Arch_of_the_Sky"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [94.92, -57.8]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Hunt_of_Alderei_the_Fair"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [69.15, 45.51]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Skarsind#Gildenheim"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [4.65, 24.14]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Penumbral_Watcher#Tower_of_Light_and_Shadow"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [46.98, -65.62]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Spiral#Ruins_of_Fort_Mezudan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [86, -72.91]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Legacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [96.66, -69.49]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Morrow#The_Weave"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [79.69, -57.89]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Great_Forest_at_Reikos"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [78.09, -34.13]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Eternal_Shafts_of_Time"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [23.51, 12.51]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Karov#The_Weeping_Stone"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [21.45, 28.59]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Scorrero_Nets"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-42.12, -71.21]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Weirwater_Vales"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [53.68, 15.77]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Crawling_Depths"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [100.04, 21.58]
       }
     }
   ]
