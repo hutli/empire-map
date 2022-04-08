@@ -6,9 +6,33 @@ import click_pathlib
 import requests
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
 from requests.structures import CaseInsensitiveDict
+from shapely import geometry
 from tqdm import tqdm
 
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
+
+
+def extract_body(page, header_id, include_header=False, hlevel=None):
+    id_tag = f'id="{header_id}"'
+    before_id, after_id = page.split(id_tag, 1)
+    if not hlevel:
+        hlevel = "h" + before_id.rsplit("<h", 1)[1].split(" ", 1)[0].split(">", 1)[0]
+
+    hsplit = f"<{hlevel}"
+    if not include_header:
+        body = after_id.split("</h", 1)[-1].split(">", 1)[-1]
+        return body.split(hsplit, 1)[0]
+    else:
+        body = "<h" + before_id.rsplit("<h", 1)[-1] + id_tag + after_id
+        return hsplit.join(body.split(hsplit, 2)[:2])
+
+
+def find_nation(x, y, nations):
+    for nation_name, nation_geometry in nations:
+        for nation_polygon in nation_geometry:
+            if geometry.Point(x, y).within(geometry.Polygon(nation_polygon)):
+                return nation_name
+    return "Non-imperial"
 
 
 @click.group()
@@ -31,9 +55,24 @@ def cli():
     type=click_pathlib.Path(dir_okay=False, resolve_path=True),
     help="Path to save populated JSON to",
 )
-def populate_json(input_json, output_json):
+@click.option(
+    "--nation-json",
+    "-n",
+    default=None,
+    type=click_pathlib.Path(dir_okay=False, resolve_path=True),
+    help="JSON containing GeoJSON of nations (to populate location nations)",
+)
+def populate_json(input_json, output_json, nation_json):
     with open(input_json) as f:
         data = json.loads(f.read())
+
+    nations = None
+    if nation_json:
+        with open(nation_json) as f:
+            nations = [
+                (f["properties"]["nation"], f["geometry"]["coordinates"])
+                for f in json.loads(f.read())["features"]
+            ]
 
     for i, feature in tqdm(
         list(enumerate(data["features"])), desc=f'Processing "{input_json.stem}"'
@@ -46,6 +85,14 @@ def populate_json(input_json, output_json):
                 url.rsplit("/", 1)[-1].rsplit("#", 1)[-1].replace("_", " ")
             )
 
+        if (
+            nations
+            and feature["geometry"]["type"] == "Point"
+            and "nation" not in feature["properties"]
+        ):
+            x, y = feature["geometry"]["coordinates"]
+            data["features"][i]["properties"]["nation"] = find_nation(x, y, nations)
+
         description_id = None
         if "description-id" in feature["properties"]:
             description_id = feature["properties"]["description-id"]
@@ -54,20 +101,27 @@ def populate_json(input_json, output_json):
 
         if description_id:
             data["features"][i]["properties"]["description-id"] = description_id
-            hlevel, description = page.split(f'id="{description_id}"', 1)
-            hlevel = hlevel.rsplit("<", 1)[1].split(" ", 1)[0]
-            description = description.split(f"</{hlevel}>", 1)[1]
+            description = extract_body(page, description_id)
         elif f'id="Overview"' in page:
-            hlevel, description = page.split(f'id="Overview"', 1)
-            hlevel = hlevel.rsplit("<", 1)[1].split(" ", 1)[0]
-            description = description.split(f"</{hlevel}>", 1)[1]
+            description = extract_body(page, "Overview")
         elif f'id="mw-content-text"' in page:
-            description = page.split(f'id="mw-content-text"', 1)[1].split(">", 1)[1]
-            hlevel = "h2"
+            description = (
+                page.split(f'id="mw-content-text"', 1)[1]
+                .split(">", 1)[1]
+                .split(f"<h2", 1)[0]
+            )
         else:
             raise Exception(f'{feature["properties"]["url"]}')
 
-        description = description.split(f"<{hlevel}", 1)[0]
+        if "extra-urls" in feature["properties"]:
+            for extra_url in feature["properties"]["extra-urls"]:
+                extra_page = requests.get(extra_url, verify=False).text
+                extra_id = extra_url.rsplit("/", 1)[-1].rsplit("#", 1)[-1]
+                description += extract_body(extra_page, extra_id, include_header=True)
+
+        if 'id="The_Resource"' in page:
+            description += extract_body(page, "The_Resource", include_header=True)
+
         description = (
             description.strip()
             .replace("\n", "")

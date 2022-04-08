@@ -1,4 +1,5 @@
 click
 click_pathlib
 requests
+shapely
 tqdm
