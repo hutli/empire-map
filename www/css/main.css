@@ -220,6 +220,41 @@ h1 h2 h3 h4 h5 h6 {
   transition: 0.4s;
 }
 
+.legend {
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  background-color: white;
+  transition: 0.5s;
+}
+.legend-row {
+  width: 172px;
+  display: flex;
+  flex-direction: row;
+  margin: 5px 4px 0px 4px;
+}
+.legend-title {
+  cursor: default;
+  margin: 0 5px 0 5px;
+  line-height: 20px;
+}
+.legend-color-box {
+  cursor: pointer;
+  width: 50px;
+}
+.legend-close-btn {
+  margin: 0;
+  line-height: 30px;
+  text-align: center;
+  cursor: pointer;
+}
+.legend-closed {
+  -webkit-transform: translateY(-290px);
+  -ms-transform: translateY(-290px);
+  transform: translateY(-290px);
+}
+.legend-closed > .legend-close-btn {
+  transform: rotate(180deg);
+}
+
 input:checked + .slider {
   background-color: #2196f3;
 }
@@ -268,6 +303,23 @@ input:checked + .slider:before {
 }
 
 @media screen and (max-width: 768px) {
+  .legend {
+    -webkit-transform: translateY(-290px);
+    -ms-transform: translateY(-290px);
+    transform: translateY(-290px);
+  }
+  .legend-close-btn {
+    transform: rotate(180deg);
+  }
+  .legend-closed {
+    -webkit-transform: translateY(0px);
+    -ms-transform: translateY(0px);
+    transform: translateY(0px);
+  }
+  .legend-closed > .legend-close-btn {
+    transform: rotate(0deg);
+  }
+
   .sidebar {
     width: calc(100vw - 20px);
     border: 2px solid rgba(0, 0, 0, 0.2);

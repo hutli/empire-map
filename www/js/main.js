@@ -9,17 +9,17 @@ map.attributionControl.addAttribution(
 );
 
 let nations_color_map = {
-  "The League": "#fff100",
-  "The Brass Coast": "#ff8c00",
-  Dawn: "#e81123",
-  Urizen: "#ec008c",
-  Varushka: "#68217a",
-  Highguard: "#00188f",
-  Wintermark: "#00bcf2",
-  "Imperial Orcs": "#00b294",
-  "The Marches": "#009e49",
-  Navarr: "#bad80a",
-  Lost: "#000000",
+  Dawn: "#dc133d",
+  Highguard: "#aaaaaa",
+  "Imperial Orcs": "#1ba3bb",
+  Navarr: "#097c63",
+  "The Brass Coast": "#f1822e",
+  "The League": "#fff413",
+  "The Marches": "#79c640",
+  Urizen: "#9b2377",
+  Varushka: "#a77946",
+  Wintermark: "#269dd7",
+  "Region Lost": "#000000",
 };
 
 let colorTileLayer = L.tileLayer(
@@ -139,6 +139,18 @@ function changeRegionFill(value) {
   document.getElementById("region-fill-display").innerText =
     Number(value).toFixed(2);
   regionsLayer.setStyle({ fillOpacity: value });
+}
+
+function toggleLegend() {
+  let legend = document.getElementsByClassName("legend")[0];
+  legend.classList.toggle("legend-closed");
+  if (
+    document.defaultView.getComputedStyle(
+      document.getElementsByClassName("legend")[0]
+    )["transform"] == "matrix(1, 0, 0, 1, 0, 0)"
+  ) {
+    hideColorPicker();
+  }
 }
 
 let contributeButton = undefined;
@@ -280,6 +292,49 @@ nationsRequest.onreadystatechange = function () {
               position: "left",
             });
             map.addControl(sidebar);
+
+            let legend = L.control({ position: "topright" });
+
+            legend.onAdd = function (map) {
+              let div = L.DomUtil.create("div", "legend");
+              L.DomEvent.disableClickPropagation(div);
+
+              div.innerHTML =
+                Object.entries(nations_color_map).reduce(
+                  (agg, e) =>
+                    `${agg}<div class="legend-row"><div id="legend-color-box-${e[0]
+                      .toLowerCase()
+                      .replace(
+                        " ",
+                        "-"
+                      )}" class="legend-color-box" style="background-color: ${
+                      e[1]
+                    };" onclick="showColorPicker('${
+                      e[0]
+                    }')"></div><h3 class="legend-title">${e[0]}</h3></div>`,
+                  ""
+                ) +
+                '<h2 class="legend-close-btn" onclick="toggleLegend()">&#9650;</h2>';
+              return div;
+            };
+
+            map.addControl(legend);
+
+            let colorPicker = L.control({ position: "topright" });
+
+            colorPicker.onAdd = function (map) {
+              let div = L.DomUtil.create(
+                "div",
+                "color-picker color-picker-closed"
+              );
+              L.DomEvent.disableClickPropagation(div);
+
+              div.innerHTML = `<button class="color-picker-close-btn" onclick="hideColorPicker()">&#x2715;</button><canvas id="color-block" height="150" width="150"></canvas><canvas id="color-strip" height="150" width="30"></canvas><h3 id="color-picker-code-display">#000000</h3>`;
+
+              return div;
+            };
+            map.addControl(colorPicker);
+            initColorPicker();
           }
         };
         poiRequest.send(null);
