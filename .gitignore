@@ -49,6 +49,6 @@ www/assets/map/untiled*.png
 www/fonts/
 www/css/fonts.css
 www/assets/map/*.json
-region-maps/
+territory-maps/
 look-and-feel-palettes/
 palette.png

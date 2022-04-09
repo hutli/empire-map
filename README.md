@@ -42,7 +42,7 @@ The GeoJSON files included in the `data`-dir have not yet been populated with th
 ```bash
 pip install -r requirements.txt
 python utilities.py populate-json -i data/nations.json -o www/assets/map/nations.json
-python utilities.py populate-json -i data/regions.json -o www/assets/map/regions.json
+python utilities.py populate-json -i data/territories.json -o www/assets/map/territories.json
 python utilities.py populate-json -i data/poi.json -o www/assets/map/poi.json -n data/nations.json
 ```
 

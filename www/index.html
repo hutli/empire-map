@@ -118,28 +118,28 @@
           ></label>
         </div>
         <div class="layer">
-          <h3 class="layer-title">Region Borders</h3>
-          <h3 id="region-borders-display" class="toggle-display">ON</h3>
+          <h3 class="layer-title">Territory Borders</h3>
+          <h3 id="territory-borders-display" class="toggle-display">ON</h3>
           <label class="switch"
             ><input
               type="checkbox"
               checked
-              onchange="toggleRegionBorders(this.checked)" /><span
+              onchange="toggleTerritoryBorders(this.checked)" /><span
               class="slider round"
             ></span
           ></label>
         </div>
         <div class="layer">
-          <h3 class="layer-title">Region Fill Opacity</h3>
-          <h3 id="region-fill-display" class="slider-display">0.25</h3>
+          <h3 class="layer-title">Territory Fill Opacity</h3>
+          <h3 id="territory-fill-display" class="slider-display">0.25</h3>
           <input
             type="range"
             value="0.25"
             min="0"
             max="1"
             step="0.05"
-            oninput="changeRegionFill(this.value)"
-            onchange="changeRegionFill(this.value)"
+            oninput="changeTerritoryFill(this.value)"
+            onchange="changeTerritoryFill(this.value)"
           />
         </div>
       </div>
@@ -186,11 +186,11 @@
       </p>
       <p>
         An "Area" is shown as coloured polygons on the map and represents areas
-        such as regions or nations. After entering the Empire Wikipedia link,
-        you will create a polygon by clicking its corners <i>in order</i> around
-        the map. If you hold down "control" while clicking, it will snap to the
-        nearest corner of an existing area. Be careful; there is no undo button
-        (yet)!
+        such as territories or nations. After entering the Empire Wikipedia
+        link, you will create a polygon by clicking its corners
+        <i>in order</i> around the map. If you hold down "control" while
+        clicking, it will snap to the nearest corner of an existing area. Be
+        careful; there is no undo button (yet)!
       </p>
       <p>
         When you are done "drawing on the map", click the contribution button on

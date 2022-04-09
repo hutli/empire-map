@@ -19,7 +19,7 @@ let nations_color_map = {
   Urizen: "#9b2377",
   Varushka: "#a77946",
   Wintermark: "#269dd7",
-  "Region Lost": "#000000",
+  "Territory Lost": "#000000",
 };
 
 let colorTileLayer = L.tileLayer(
@@ -83,8 +83,8 @@ function startInteractiveContribution(contribution) {
     contributionType = contribution;
     contributeButton.style.backgroundColor = "#ff0000";
     contributeButton.onclick = submit;
-    regionsLayer.setStyle({ fillOpacity: 0 });
-    regionsLayer.setInteractive(false);
+    territoriesLayer.setStyle({ fillOpacity: 0 });
+    territoriesLayer.setInteractive(false);
     setTimeout(function () {
       // Stupid, but else the click on the button counts as the first click on the map
       map.on("click", onMouseClick, this);
@@ -125,20 +125,20 @@ function toggleNationBorders(enabled) {
   }
 }
 
-function toggleRegionBorders(enabled) {
+function toggleTerritoryBorders(enabled) {
   if (enabled) {
-    document.getElementById("region-borders-display").innerText = "ON";
-    regionsLayer.setStyle({ opacity: 0.5 });
+    document.getElementById("territory-borders-display").innerText = "ON";
+    territoriesLayer.setStyle({ opacity: 0.5 });
   } else {
-    document.getElementById("region-borders-display").innerText = "OFF";
-    regionsLayer.setStyle({ opacity: 0 });
+    document.getElementById("territory-borders-display").innerText = "OFF";
+    territoriesLayer.setStyle({ opacity: 0 });
   }
 }
 
-function changeRegionFill(value) {
-  document.getElementById("region-fill-display").innerText =
+function changeTerritoryFill(value) {
+  document.getElementById("territory-fill-display").innerText =
     Number(value).toFixed(2);
-  regionsLayer.setStyle({ fillOpacity: value });
+  territoriesLayer.setStyle({ fillOpacity: value });
 }
 
 function toggleLegend() {
@@ -155,7 +155,7 @@ function toggleLegend() {
 
 let contributeButton = undefined;
 let nationsLayer = undefined;
-let regionsLayer = undefined;
+let territoriesLayer = undefined;
 let poiLayer = undefined;
 let poiIsOpen = false;
 
@@ -163,22 +163,24 @@ let nationsRequest = new XMLHttpRequest();
 nationsRequest.open("GET", `${GEOJSON_DATA_BASE_URL}assets/map/nations.json`);
 nationsRequest.onreadystatechange = function () {
   if (this.readyState == 4 && this.status == 200) {
-    let regionsRequest = new XMLHttpRequest();
-    regionsRequest.open(
+    let territoriesRequest = new XMLHttpRequest();
+    territoriesRequest.open(
       "GET",
-      `${GEOJSON_DATA_BASE_URL}assets/map/regions.json`
+      `${GEOJSON_DATA_BASE_URL}assets/map/territories.json`
     );
-    regionsRequest.onreadystatechange = function () {
+    territoriesRequest.onreadystatechange = function () {
       if (this.readyState == 4 && this.status == 200) {
         let poiRequest = new XMLHttpRequest();
         poiRequest.open("GET", `${GEOJSON_DATA_BASE_URL}assets/map/poi.json`);
         poiRequest.onreadystatechange = function () {
           if (this.readyState == 4 && this.status == 200) {
             let nationsData = JSON.parse(nationsRequest.responseText);
-            let regionsData = JSON.parse(regionsRequest.responseText);
+            let territoriesData = JSON.parse(territoriesRequest.responseText);
             let poiData = JSON.parse(poiRequest.responseText);
 
-            geoJsonCoords = reduceToCoords(objFind(regionsData, "coordinates"));
+            geoJsonCoords = reduceToCoords(
+              objFind(territoriesData, "coordinates")
+            );
 
             nationsLayer = new L.GeoJSON(nationsData, {
               style: function (feature) {
@@ -195,7 +197,7 @@ nationsRequest.onreadystatechange = function () {
               },
             });
 
-            regionsLayer = new L.GeoJSON(regionsData, {
+            territoriesLayer = new L.GeoJSON(territoriesData, {
               style: function (feature) {
                 return {
                   color: "#000000",
@@ -222,7 +224,7 @@ nationsRequest.onreadystatechange = function () {
 
             // ADD MAP CONTROLS
             let searchControl = new L.Control.Search({
-              layer: L.featureGroup([regionsLayer, nationsLayer, poiLayer]),
+              layer: L.featureGroup([territoriesLayer, nationsLayer, poiLayer]),
               propertyName: "name",
               marker: false,
               firstTipSubmit: true,
@@ -250,9 +252,9 @@ nationsRequest.onreadystatechange = function () {
                 }
               })
               .on("search:collapsed", function (e) {
-                regionsLayer.eachLayer(function (layer) {
+                territoriesLayer.eachLayer(function (layer) {
                   //restore feature color
-                  regionsLayer.resetStyle(layer);
+                  territoriesLayer.resetStyle(layer);
                 });
                 nationsLayer.eachLayer(function (layer) {
                   //restore feature color
@@ -340,7 +342,7 @@ nationsRequest.onreadystatechange = function () {
         poiRequest.send(null);
       }
     };
-    regionsRequest.send(null);
+    territoriesRequest.send(null);
   }
 };
 nationsRequest.send(null);
@@ -423,15 +425,14 @@ function submit() {
     document.getElementById("popup").style.display = "block";
   };
   contributeButton.style.backgroundColor = "#ffffff";
-  regionsLayer.setStyle({ fillOpacity: 0.25 });
-  regionsLayer.setInteractive(true);
+  territoriesLayer.setStyle({ fillOpacity: 0.25 });
+  territoriesLayer.setInteractive(true);
   map.off("click");
 
   let geometryGeoJson = {
     type: "Feature",
     properties: {
       url: wikiArticle,
-      nation: "",
     },
     geometry: { type: "", coordinates: [] },
   };

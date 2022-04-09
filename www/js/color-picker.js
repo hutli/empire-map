@@ -77,7 +77,7 @@ function changeColor(e) {
   document.getElementById(currentNationId).style.backgroundColor = rgbColor;
   document.getElementById("color-picker-code-display").innerText = rgbColor;
   nations_color_map[currentNation] = rgbColor;
-  regionsLayer.resetStyle();
+  territoriesLayer.resetStyle();
   nationsLayer.resetStyle();
 }
 
