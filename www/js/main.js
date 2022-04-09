@@ -152,11 +152,19 @@ function toggleLegend() {
     hideColorPicker();
   }
 }
+const fuzzyOptions = {
+  limit: 10, // don't return more results than you need!
+  allowTypo: false, // if you don't care about allowing typos
+  threshold: -10000, // don't return bad results
+  key: "name",
+};
 
 let contributeButton = undefined;
+
 let nationsLayer = undefined;
 let territoriesLayer = undefined;
 let poiLayer = undefined;
+
 let poiIsOpen = false;
 
 let nationsRequest = new XMLHttpRequest();
@@ -233,8 +241,22 @@ nationsRequest.onreadystatechange = function () {
                   latlng,
                   latlng.layer.feature.geometry.type == "Polygon"
                     ? map.getBoundsZoom(latlng.layer.getBounds())
-                    : 8
+                    : 7
                 );
+              },
+              filterData: function (text, records) {
+                return fuzzysort
+                  .go(
+                    text,
+                    Object.keys(records).map((k) => {
+                      return {
+                        name: k,
+                        D: records[k],
+                      };
+                    }),
+                    fuzzyOptions
+                  )
+                  .reduce((a, v) => ({ ...a, [v.obj.name]: v.obj.D }), {});
               },
             });
 
