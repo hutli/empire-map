@@ -102,7 +102,6 @@ let currentNationId = "";
 let currentNation = "";
 
 function initColorPicker() {
-  console.log("INIT!");
   colorBlock = document.getElementById("color-block");
   ctx1 = colorBlock.getContext("2d");
   width1 = colorBlock.width;
