@@ -364,6 +364,211 @@
         "type": "Point",
         "coordinates": [100.04, 21.58]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Scorrero_Nets"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-42.1, -71.27]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Feroz#The_Spice_Gardens_of_Feroz"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-68.42, -74.61]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Segura#Anduz"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-93.19, -73.43]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Great_Mine_of_Briante"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-60.07, -49.64]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Damatian_Cliffs"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-78, -52.35]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pride of Ikka's Tears",
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Pride_of_Ikka%27s_Tears"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-67.94, 52.63]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Stonefield_Ice_Caves"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-39.62, 45.66]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Brilliant_Star"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [73.39, -70.58]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Verthandi#Feyanksyothen"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [31.29, 58.72]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Verthandi#Wheel_of_Sighs"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [10.7, 61.94]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Golden_Trees_of_Seren"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [9.47, -14.04]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Sermersuaq#The_Grave_of_the_Giants"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-89.96, 49.22]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gulnar's Deeps",
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Hahnmark#Gulnar.E2.80.99s_Deeps"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-29.84, 16.55]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/380YE_Spring_Equinox_winds_of_war#Three_Swords"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-44.95, -9.69]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Canterspire_Circle"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [72.07, -57.63]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/The_Barrens#The_Fangs"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [128.85, -11.57]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Towers of the Dawn",
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/The_Barrens#Towers_of_the_Dawn_.28ruined.29"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [75.94, -11.95]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Madruga#Siroc"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-36.67, -70.64]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Kethry's Grove",
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Astolat#Kethry.E2.80.99s_Grove"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [34.41, -12.47]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Boar's Hollow",
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Astolat#Boar.E2.80.99s_Hollow"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [27.29, -2.46]
+      }
     }
   ]
 }
