@@ -569,6 +569,127 @@
         "type": "Point",
         "coordinates": [27.29, -2.46]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Vigilant_Swan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [61.13, -41.31]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Custodian_of_Glass_Point_Cove#Glass_Point_Cove"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [5.49, -53.62]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Calvos",
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Madruga#Calvos_Sound"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-18.02, -59.05]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Singing_Caves"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-32.43, -39.74]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Bregasland#Graven_Rock"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-68.33, -31.17]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Granites_of_Veltsgorsk"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [58.45, 51.08]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Thimble"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [110.48, -43.23]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Gardens_of_High_Chalcis"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [74.71, -42.69]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Temeschwar#Mellfort"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [6.37, -0.75]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Kallavesa#Rundhal"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-58.67, 3.07]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Kahraman#Fort_Braydon"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-38.74, -47.81]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Madruga#Atalaya"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-8.31, -68.79]
+      }
     }
   ]
 }
