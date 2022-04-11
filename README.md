@@ -8,7 +8,7 @@ Hosting the website "as-is" will result in you using https://empirelarpmap.com/ 
 
 ## Docker
 
-The easiest way to build everything is through docker, remember to change the [constants](#Constasts)!
+The easiest way to build everything is through docker, remember to change the [constants](#Constasts) before building!
 
 ```bash
 docker-compose up --build
