@@ -1,11 +1,17 @@
-const ADMIN_EMIL = "admin@empirelarpmap.com";
+const ADMIN_EMAIL = "admin@empirelarpmap.com";
 const TILE_SERVER_BASE_URL = "https://empirelarpmap.com/";
 const GEOJSON_DATA_BASE_URL = "https://empirelarpmap.com/";
+
+let contributionAdminEmailElement = document.getElementById(
+  "contribution-admin-email"
+);
+contributionAdminEmailElement.href = `mailto:${ADMIN_EMAIL}`;
+contributionAdminEmailElement.innerText = ADMIN_EMAIL;
 
 let map = L.map("map").setView([0, 0], 2);
 
 map.attributionControl.addAttribution(
-  `Tiles from <a href="mailto:${ADMIN_EMIL}">Jens</a> &mdash; Source: <a href="https://www.profounddecisions.co.uk/">Profound Decisions</a>`
+  `Tiles from <a href="mailto:${ADMIN_EMAIL}">Jens</a> &mdash; Source: <a href="https://www.profounddecisions.co.uk/">Profound Decisions</a>`
 );
 
 let nations_color_map = {
@@ -487,7 +493,7 @@ function submit() {
     2
   )}`;
   window.open(
-    `mailto:${ADMIN_EMIL}?subject=${encodeURIComponent(
+    `mailto:${ADMIN_EMAIL}?subject=${encodeURIComponent(
       subject
     )}&body=${encodeURIComponent(body)}`,
     "_blank"
