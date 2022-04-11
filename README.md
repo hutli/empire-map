@@ -2,19 +2,19 @@
 
 Empire LARP Map is just a static website. You can host the `www` directory contents with your favourite web server (like `nginx`). The website will work but will not contain the correct fonts; please refer to building [Fonts](#Fonts).
 
-Hosting the website "as-is" will result in you using https://empirelarpmap.com/ as tiling and GeoJSON data server. To host these files yourself, you have to build them and change the constants `TILE_SERVER_BASE_URL` and `GEOJSON_DATA_BASE_URL` in `main.js` accordingly.
+Hosting the website "as-is" will result in you using https://empirelarpmap.com/ as tiling and GeoJSON data server. To host these files yourself, you have to build them and change the [Constants](#Constants).
 
 # Building
 
 ## Docker
 
-The easiest way to build everything is through docker.
+The easiest way to build everything is through docker, remember to change the [constants](#Constasts)!
 
 ```bash
 docker-compose up --build
 ```
 
-This will expose a completely self-hosted the website on port `1457`.
+This will build everything and start an `nginx` docker image hosting it all on port `1457`. 
 
 ⚠️ WARNING: Building does take several hours! ⚠️
 
@@ -46,7 +46,7 @@ python utilities.py populate-json -i data/territories.json -o www/assets/map/ter
 python utilities.py populate-json -i data/poi.json -o www/assets/map/poi.json -n data/nations.json
 ```
 
-Remember to change the constant `GEOJSON_DATA_BASE_URL` in `main.js`!
+Remember to change the [constant](#Constants) `GEOJSON_DATA_BASE_URL` in `main.js`!
 
 ## Tiles
 
@@ -69,4 +69,11 @@ You can now build the tiles. The following script assumes that `wget` is install
 ./build-tiles.sh
 ```
 
-Lastly, change the constant `TILE_SERVER_BASE_URL` in `main.js`!
+Remember to change the [constant](#Constants) `TILE_SERVER_BASE_URL` in `main.js`!
+
+# Constants
+The two main constants you want to change if you are building and selfhosting Empire LARP Map. These are `TILE_SERVER_BASE_URL` and `GEOJSON_DATA_BASE_URL` which exists at the top of `main.js`. If you have follwed the build steps above and is either proxying the docker container directly, or hosting the whole `www` folder after everytihng is build, you can just change them both to `/` and it should work.
+
+The `ADMIN_EMIL` also exists at the top of `main.js` and should probably also be changed if you want to recieve contribution emails.
+
+Lastly, four `meta` tags exists in `index.html` which points to `https://empirelarpmap.com`. Change these to your website so social media cards and so on links correctly.
