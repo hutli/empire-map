@@ -72,8 +72,10 @@ You can now build the tiles. The following script assumes that `wget` is install
 Remember to change the [constant](#Constants) `TILE_SERVER_BASE_URL` in `main.js`!
 
 # Constants
-The two main constants you want to change if you are building and selfhosting Empire LARP Map. These are `TILE_SERVER_BASE_URL` and `GEOJSON_DATA_BASE_URL` which exists at the top of `main.js`. If you have follwed the build steps above and is either proxying the docker container directly, or hosting the whole `www` folder after everytihng is build, you can just change them both to `/` and it should work.
+If you are building and self-hosting the Empire LARP Map, you will want to at least change the two main constants, `TILE_SERVER_BASE_URL` and `GEOJSON_DATA_BASE_URL`, which exist at the top of `main.js`.
 
-The `ADMIN_EMIL` also exists at the top of `main.js` and should probably also be changed if you want to recieve contribution emails.
+If you are proxying the docker container directly or serving the `www` folder (after building everything), both constants can be set to `/`, and it should work.
 
-Lastly, four `meta` tags exists in `index.html` which points to `https://empirelarpmap.com`. Change these to your website so social media cards and so on links correctly.
+The `ADMIN_EMAIL` constant also exists at the top of `main.js`. It should probably also be changed if you want to receive contribution emails.
+
+Lastly, four `meta` tags exist at the top of `index.html`, which point to `https://empirelarpmap.com`. Change these to your websites domain, so social media cards etc., links correctly.
