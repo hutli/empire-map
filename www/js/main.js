@@ -152,12 +152,6 @@ function toggleLegend() {
     hideColorPicker();
   }
 }
-const fuzzyOptions = {
-  limit: 10, // don't return more results than you need!
-  allowTypo: false, // if you don't care about allowing typos
-  threshold: -10000, // don't return bad results
-  key: "name",
-};
 
 let contributeButton = undefined;
 
@@ -254,7 +248,12 @@ nationsRequest.onreadystatechange = function () {
                         D: records[k],
                       };
                     }),
-                    fuzzyOptions
+                    {
+                      limit: 10,
+                      allowTypo: true,
+                      threshold: -10000, // don't return bad results
+                      key: "name",
+                    }
                   )
                   .reduce((a, v) => ({ ...a, [v.obj.name]: v.obj.D }), {});
               },
