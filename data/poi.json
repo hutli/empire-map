@@ -690,6 +690,16 @@
         "type": "Point",
         "coordinates": [-8.31, -68.79]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/The_Barrens#Eaves_of_Peytaht"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [87.69, -20.22]
+      }
     }
   ]
 }
