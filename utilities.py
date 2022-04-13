@@ -6,7 +6,7 @@ import click_pathlib
 import requests
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
 from requests.structures import CaseInsensitiveDict
-from shapely import geometry
+from shapely import geometry, ops
 from tqdm import tqdm
 
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
@@ -75,7 +75,7 @@ def populate_json(input_json, output_json, nation_json):
             ]
 
     for i, feature in tqdm(
-        list(enumerate(data["features"])), desc=f'Processing "{input_json.stem}"'
+        list(enumerate(data["features"])), desc=f'Populating "{input_json.stem}"'
     ):
         url = feature["properties"]["url"]
         page = requests.get(url, verify=False).text
@@ -133,7 +133,84 @@ def populate_json(input_json, output_json, nation_json):
         data["features"][i]["properties"]["description"] = description
 
     with open(output_json, "w") as f:
-        f.write(json.dumps(data, indent=4))
+        f.write(json.dumps(data))
+
+
+@cli.command()
+@click.option(
+    "--territories-json",
+    "-t",
+    required=True,
+    type=click_pathlib.Path(exists=True, dir_okay=False, resolve_path=True),
+    help="JSON containing territories to build nations from",
+)
+@click.option(
+    "--nations-json",
+    "-n",
+    required=True,
+    type=click_pathlib.Path(dir_okay=False, resolve_path=True),
+    help="Path to save nations JSON file on",
+)
+def generate_nations_json(territories_json, nations_json):
+
+    # Extract and group all features by their nation
+    nation_features = {}
+    with open(territories_json) as f:
+        for territory in json.loads(f.read())["features"]:
+            nation = territory["properties"]["nation"]
+            if "lost" not in nation.lower():
+                if nation not in nation_features:
+                    nation_features[nation] = {
+                        "type": "Feature",
+                        "properties": {
+                            "url": f"https://www.profounddecisions.co.uk/empire-wiki/{nation.replace(' ', '_')}",
+                            "nation": nation,
+                        },
+                        "geometry": {"type": "Polygon", "coordinates": []},
+                    }
+                nation_features[nation]["geometry"]["coordinates"].extend(
+                    territory["geometry"]["coordinates"]
+                )
+
+    # Union all touching territories of the same nation
+    # This is done so the nation border does not "go through" the nation
+    to_union = {}
+    for nation, feature in tqdm(
+        nation_features.items(), desc="Creating nations from territories"
+    ):
+        geometries_touching = True
+        while geometries_touching:
+            geometries_touching = False
+            for i, coordinates in enumerate(feature["geometry"]["coordinates"]):
+                for c in coordinates:
+                    match = next(
+                        (
+                            oc
+                            for oc in feature["geometry"]["coordinates"]
+                            if coordinates != oc and c in oc
+                        ),
+                        None,
+                    )
+                    if match:
+                        feature["geometry"]["coordinates"][i] = [
+                            list(c)
+                            for c in ops.unary_union(
+                                [
+                                    geometry.Polygon(coordinates),
+                                    geometry.Polygon(match),
+                                ]
+                            ).exterior.coords
+                        ]
+                        feature["geometry"]["coordinates"].remove(match)
+                        geometries_touching = True
+                        break
+
+    final_json = {
+        "type": "FeatureCollection",
+        "features": list(nation_features.values()),
+    }
+    with open(nations_json, "w") as f:
+        f.write(json.dumps(final_json))
 
 
 def get_css_property(source, name, end=";"):

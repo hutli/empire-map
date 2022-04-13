@@ -53,3 +53,4 @@ www/assets/map/*.json
 territory-maps/
 look-and-feel-palettes/
 palette.png
+data/nations.json
