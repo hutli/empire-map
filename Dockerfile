@@ -26,7 +26,8 @@ RUN pip install -r requirements.txt
 COPY utilities.py /app/
 
 # BUILD GEOJSON
-COPY data/ /app/data/
+COPY data/territories.json /app/data/
+COPY data/poi.json /app/data/
 COPY build-geojson.sh /app/
 RUN ./build-geojson.sh
 

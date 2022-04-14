@@ -158,7 +158,7 @@ def generate_nations_json(territories_json, nations_json):
     with open(territories_json) as f:
         for territory in json.loads(f.read())["features"]:
             nation = territory["properties"]["nation"]
-            if "lost" not in nation.lower():
+            if "lost" not in nation.lower() and "non-imperial" not in nation.lower():
                 if nation not in nation_features:
                     nation_features[nation] = {
                         "type": "Feature",

@@ -8,7 +8,11 @@ let contributionAdminEmailElement = document.getElementById(
 contributionAdminEmailElement.href = `mailto:${ADMIN_EMAIL}`;
 contributionAdminEmailElement.innerText = ADMIN_EMAIL;
 
-let map = L.map("map").setView([0, 0], 2);
+let minSize = Math.min(window.innerHeight, window.innerWidth);
+
+let defaultZoomLevel = minSize > 1000 ? 3 : minSize > 600 ? 2 : 1;
+
+let map = L.map("map").setView([0, 0], defaultZoomLevel);
 
 map.attributionControl.addAttribution(
   `Tiles from <a href="mailto:${ADMIN_EMAIL}">Jens</a> &mdash; Source: <a href="https://www.profounddecisions.co.uk/">Profound Decisions</a>`
@@ -26,6 +30,7 @@ let nations_color_map = {
   Varushka: "#a77946",
   Wintermark: "#269dd7",
   "Territory Lost": "#000000",
+  "Non-imperial": "#ffffff",
 };
 
 let colorTileLayer = L.tileLayer(

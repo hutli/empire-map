@@ -247,9 +247,9 @@ h1 h2 h3 h4 h5 h6 {
   cursor: pointer;
 }
 .legend-closed {
-  -webkit-transform: translateY(-290px);
-  -ms-transform: translateY(-290px);
-  transform: translateY(-290px);
+  -webkit-transform: translateY(-310px);
+  -ms-transform: translateY(-310px);
+  transform: translateY(-310px);
 }
 .legend-closed > .legend-close-btn {
   transform: rotate(180deg);
@@ -304,9 +304,9 @@ input:checked + .slider:before {
 
 @media screen and (max-width: 768px) {
   .legend {
-    -webkit-transform: translateY(-290px);
-    -ms-transform: translateY(-290px);
-    transform: translateY(-290px);
+    -webkit-transform: translateY(-310px);
+    -ms-transform: translateY(-310px);
+    transform: translateY(-310px);
   }
   .legend-close-btn {
     transform: rotate(180deg);
