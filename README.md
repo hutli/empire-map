@@ -2,7 +2,7 @@
 
 Empire LARP Map is just a static website. You can host the `www` directory contents with your favourite web server (like `nginx`). The website will work but will not contain the correct fonts; please refer to building [Fonts](#Fonts).
 
-Hosting the website "as-is" will result in you using https://empirelarpmap.com/ as tiling and GeoJSON data server. To host these files yourself, you have to build them and change the [Constants](#Constants).
+Hosting the website "as-is" will result in clients visiting your website get the map tiles and GeoJSON files from https://empirelarpmap.com/. To host these files yourself, you have to build them and change the [Constants](#Constants).
 
 # Building
 
