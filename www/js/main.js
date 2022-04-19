@@ -1,6 +1,6 @@
-const ADMIN_EMAIL = "admin@empirelarpmap.com";
-const TILE_SERVER_BASE_URL = "https://empirelarpmap.com/";
-const GEOJSON_DATA_BASE_URL = "https://empirelarpmap.com/";
+const ADMIN_EMAIL = "admin@empirelrpmap.com";
+const TILE_SERVER_BASE_URL = "https://empirelrpmap.com/";
+const GEOJSON_DATA_BASE_URL = "https://empirelrpmap.com/";
 
 let contributionAdminEmailElement = document.getElementById(
   "contribution-admin-email"
@@ -11,11 +11,10 @@ contributionAdminEmailElement.innerText = ADMIN_EMAIL;
 let minSize = Math.min(window.innerHeight, window.innerWidth);
 
 let defaultZoomLevel = minSize > 1000 ? 3 : minSize > 600 ? 2 : 1;
-
 let map = L.map("map").setView([0, 0], defaultZoomLevel);
 
 map.attributionControl.addAttribution(
-  `Tiles from <a href="mailto:${ADMIN_EMAIL}">Jens</a> &mdash; Source: <a href="https://www.profounddecisions.co.uk/">Profound Decisions</a>`
+  `Tiles from <a href="mailto:${ADMIN_EMAIL}">hutli</a> &mdash; Source: <a href="https://www.profounddecisions.co.uk/">Profound Decisions</a>`
 );
 
 let nations_color_map = {
@@ -81,6 +80,43 @@ function hidePopup(id) {
   document.getElementById(id).style.display = "none";
 }
 
+let territoriesLayerActive = true;
+function activateTerritoriesLayer() {
+  // Checking before setting for performance
+  if (!territoriesLayerActive) {
+    territoriesLayer.setInteractive(true);
+    territoriesLayerActive = true;
+  }
+}
+function deactivateTerritoriesLayer() {
+  // Checking before setting for performance
+  if (territoriesLayerActive) {
+    territoriesLayer.setInteractive(false);
+    territoriesLayerActive = false;
+  }
+}
+
+let territoriesLayerOpaque = true;
+function darkenTerritoriesLayer() {
+  // Checking before setting for performance
+  if (!territoriesLayerOpaque) {
+    territoriesLayer.setStyle({
+      fillOpacity: document.getElementById("territory-fill-input").value,
+    });
+    territoriesLayerOpaque = true;
+  }
+}
+function lightenTerrotiresLayer() {
+  // Checking before setting for performance
+  if (territoriesLayerOpaque) {
+    territoriesLayer.setStyle({
+      fillOpacity:
+        Number(document.getElementById("territory-fill-input").value) * 0.5,
+    });
+    territoriesLayerOpaque = false;
+  }
+}
+
 let wikiArticle = "";
 let contributionType = "";
 
@@ -94,8 +130,8 @@ function startInteractiveContribution(contribution) {
     contributionType = contribution;
     contributeButton.style.backgroundColor = "#ff0000";
     contributeButton.onclick = submit;
-    territoriesLayer.setStyle({ fillOpacity: 0 });
-    territoriesLayer.setInteractive(false);
+    deactivateTerritoriesLayer();
+    lightenTerrotiresLayer();
     setTimeout(function () {
       // Stupid, but else the click on the button counts as the first click on the map
       map.on("click", onMouseClick, this);
@@ -164,6 +200,53 @@ function toggleLegend() {
   }
 }
 
+let markerIconRedDot = L.icon({
+  iconUrl: "../images/icons/marker-icon-red.png",
+  iconSize: [20, 20],
+  iconAnchor: [10, 10],
+});
+
+function isSmartphone() {
+  return window.matchMedia("only screen and (max-width: 760px)").matches;
+}
+
+function moveToLocation(latlng, title, map) {
+  map.setView(
+    latlng,
+    latlng.layer.feature.geometry.type == "Polygon"
+      ? map.getBoundsZoom(latlng.layer.getBounds())
+      : 7
+  );
+}
+
+function fuzzyFilterData(text, records) {
+  return fuzzysort
+    .go(
+      text,
+      Object.keys(records).map((k) => {
+        return {
+          name: k,
+          D: records[k],
+        };
+      }),
+      {
+        limit: 10,
+        allowTypo: true,
+        threshold: -10000, // don't return bad results
+        key: "name",
+      }
+    )
+    .reduce((a, v) => ({ ...a, [v.obj.name]: v.obj.D }), {});
+}
+
+function onLocationFound(e) {
+  if (e.layer._popup) {
+    e.layer.openPopup();
+  } else {
+    console.warn(`Layer for "${e.layer.feature.properties.name}" has no popup`);
+  }
+}
+
 let contributeButton = undefined;
 
 let nationsLayer = undefined;
@@ -217,7 +300,8 @@ nationsRequest.onreadystatechange = function () {
                   opacity: 0.5,
                   weight: 1,
                   fillColor: nations_color_map[feature.properties.nation],
-                  fillOpacity: 0.25,
+                  fillOpacity: document.getElementById("territory-fill-input")
+                    .value,
                 };
               },
               onEachFeature: function (feature, marker) {
@@ -229,73 +313,83 @@ nationsRequest.onreadystatechange = function () {
 
             poiLayer = new L.GeoJSON(poiData, {
               onEachFeature: function (feature, marker) {
+                if (feature.properties.icon == "RedDot") {
+                  marker.setIcon(markerIconRedDot);
+                }
                 marker.bindPopup(
                   `<h2>${feature.properties.name} (${feature.properties.nation})</h2>`
                 );
               },
             });
 
+            let all_layer = L.featureGroup([
+              territoriesLayer,
+              nationsLayer,
+              poiLayer,
+            ]);
+
             // ADD MAP CONTROLS
             let searchControl = new L.Control.Search({
-              layer: L.featureGroup([territoriesLayer, nationsLayer, poiLayer]),
+              layer: all_layer,
               propertyName: "name",
               marker: false,
               firstTipSubmit: true,
-              moveToLocation: function (latlng, title, map) {
-                map.setView(
-                  latlng,
-                  latlng.layer.feature.geometry.type == "Polygon"
-                    ? map.getBoundsZoom(latlng.layer.getBounds())
-                    : 7
-                );
-              },
-              filterData: function (text, records) {
-                return fuzzysort
-                  .go(
-                    text,
-                    Object.keys(records).map((k) => {
-                      return {
-                        name: k,
-                        D: records[k],
-                      };
-                    }),
-                    {
-                      limit: 10,
-                      allowTypo: true,
-                      threshold: -10000, // don't return bad results
-                      key: "name",
-                    }
-                  )
-                  .reduce((a, v) => ({ ...a, [v.obj.name]: v.obj.D }), {});
-              },
+              moveToLocation: moveToLocation,
+              filterData: fuzzyFilterData,
             });
 
-            searchControl
-              .on("search:locationfound", function (e) {
-                if (e.layer.setStyle) {
-                  e.layer.setStyle({
-                    fillColor: "#3f0",
-                    color: "#0f0",
-                    fillOpacity: 0.25,
-                  });
-                }
-                if (e.layer._popup) {
-                  e.layer.openPopup();
-                }
-              })
-              .on("search:collapsed", function (e) {
-                territoriesLayer.eachLayer(function (layer) {
-                  //restore feature color
-                  territoriesLayer.resetStyle(layer);
-                });
-                nationsLayer.eachLayer(function (layer) {
-                  //restore feature color
-                  nationsLayer.resetStyle(layer);
-                });
-              });
+            searchControl.on("search:locationfound", onLocationFound);
             map.addControl(searchControl);
 
-            map.removeLayer(poiLayer); // Search control automatically adds its layers
+            if (location.hash) {
+              let lookupStr = decodeURI(location.hash.slice(1));
+              let searchResults = fuzzyFilterData(
+                lookupStr,
+                Object.values(all_layer._layers).reduce(
+                  (a0, v0) => ({
+                    ...a0,
+                    ...Object.values(v0._layers).reduce(
+                      (a1, v1) => ({
+                        ...a1,
+                        [v1.feature.properties.name]: v1,
+                      }),
+                      {}
+                    ),
+                  }),
+                  {}
+                )
+              );
+              if (Object.entries(searchResults).length > 0) {
+                let searchResult = Object.values(searchResults)[0];
+                let isPolygon = searchResult.feature.geometry.type == "Polygon";
+                let center = isPolygon
+                  ? searchResult.getBounds().getCenter()
+                  : {
+                      lng: searchResult.feature.geometry.coordinates[0],
+                      lat: searchResult.feature.geometry.coordinates[1],
+                    };
+                searchResult = {
+                  layer: searchResult,
+                  ...center,
+                };
+                onLocationFound(searchResult);
+                moveToLocation(searchResult, undefined, map);
+                if (isPolygon) {
+                  map.removeLayer(poiLayer); // Search control automatically adds its layers
+                }
+              } else {
+                console.warn(
+                  `Search for "${lookupStr}" yeilded no results (link broken)`
+                );
+                map.removeLayer(poiLayer); // Search control automatically adds its layers
+              }
+            } else {
+              map.removeLayer(poiLayer); // Search control automatically adds its layers
+            }
+
+            if (isSmartphone()) {
+              deactivateTerritoriesLayer();
+            }
 
             let contributeControl = L.Control.extend({
               options: {
@@ -440,10 +534,21 @@ const onMouseClick = function (e) {
 };
 
 function onMapZoom() {
-  if (map.getZoom() >= 4 && !map.hasLayer(poiLayer)) {
+  let zoomLevel = map.getZoom();
+  if (zoomLevel >= 4 && !map.hasLayer(poiLayer)) {
     map.addLayer(poiLayer);
-  } else if (map.getZoom() < 4 && map.hasLayer(poiLayer) && !poiIsOpen) {
+  } else if (zoomLevel < 4 && map.hasLayer(poiLayer) && !poiIsOpen) {
     map.removeLayer(poiLayer);
+  }
+  if (zoomLevel < 4 && !isSmartphone()) {
+    activateTerritoriesLayer();
+  } else {
+    deactivateTerritoriesLayer();
+  }
+  if (zoomLevel >= 5) {
+    lightenTerrotiresLayer();
+  } else {
+    darkenTerritoriesLayer();
   }
 }
 
@@ -457,8 +562,8 @@ function submit() {
     document.getElementById("popup").style.display = "block";
   };
   contributeButton.style.backgroundColor = "#ffffff";
-  territoriesLayer.setStyle({ fillOpacity: 0.25 });
-  territoriesLayer.setInteractive(true);
+  activateTerritoriesLayer();
+  darkenTerritoriesLayer();
   map.off("click");
 
   let geometryGeoJson = {
@@ -512,18 +617,28 @@ const mapDiv = document.getElementById("map");
 resizeObserver.observe(mapDiv);
 
 function openNav(e) {
-  let feature = e.popup._source.feature;
+  let layer = e.popup._source;
+  if (layer.setStyle) {
+    layer.setStyle({
+      fillColor: "#3f0",
+      color: "#0f0",
+      fillOpacity: 0.25,
+    });
+  }
+  deactivateTerritoriesLayer();
+
+  let feature = layer.feature;
   let properties = feature.properties;
+
+  location.hash = `#${properties.name}`;
 
   if (feature.geometry.type == "Point") {
     poiIsOpen = true;
   }
 
-  console.log(`Opening Nav`);
   document.getElementById("map").classList.remove("map-infobar-closed");
   document.getElementById("map").classList.add("map-infobar-open");
 
-  //document.getElementById("map").style.width = "60vw";
   document.getElementById("infobar").classList.add("infobar-open");
   document.getElementById("infobar-header").innerText = properties.name;
   document.getElementById("infobar-content").innerHTML =
@@ -534,6 +649,18 @@ function openNav(e) {
 }
 
 function closeNav() {
+  territoriesLayer.eachLayer(function (layer) {
+    //restore feature color
+    if (territoriesLayerOpaque) {
+      territoriesLayer.resetStyle(layer);
+    }
+  });
+  nationsLayer.eachLayer(function (layer) {
+    //restore feature color
+    nationsLayer.resetStyle(layer);
+  });
+  activateTerritoriesLayer();
+
   poiIsOpen = false;
   onMapZoom();
   document.getElementById("map").classList.remove("map-infobar-open");

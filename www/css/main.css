@@ -7,6 +7,25 @@ h1 h2 h3 h4 h5 h6 {
   /*font-family: "Lora", serif;*/
 }
 
+/* SCROLL BAR STYLING */
+/* Works on Firefox */
+* {
+  scrollbar-width: 10px;
+  scrollbar-color: black #333333;
+}
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 10px;
+}
+*::-webkit-scrollbar-track {
+  background: #333333;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: black;
+  border-radius: 0px;
+  border: 1px solid #333333;
+}
+
 #map {
   background: white;
   height: 100vh;
@@ -70,16 +89,16 @@ h1 h2 h3 h4 h5 h6 {
 /* The infobar menu */
 .infobar {
   height: 100vh;
-  width: 40vw; /* 0 width - change this with JavaScript */
-  position: fixed; /* Stay in place */
-  z-index: 3000; /* Stay on top */
+  width: 1000px;
+  position: fixed;
+  z-index: 3000;
   top: 0;
-  right: -40vw;
+  right: -1000px;
   background-color: #111; /* Black*/
   color: white;
-  overflow-x: hidden; /* Disable horizontal scroll */
-  padding-top: 60px; /* Place content 60px from the top */
-  transition: 0.5s; /* 0.5 second transition effect to slide in the infobar */
+  overflow-x: hidden;
+  padding: 60px 0px 60px 0px;
+  transition: 0.5s;
 }
 .infobar a {
   color: lightblue;
@@ -89,21 +108,29 @@ h1 h2 h3 h4 h5 h6 {
   width: 100vw;
 }
 .map-infobar-open {
-  width: 60vw;
+  width: calc(100vw - 1000px);
 }
 .infobar-open {
   right: 0;
 }
 
 .infobar-header {
-  margin: 0 20px 20px 30px;
+  margin: 0 120px 30px 120px;
 }
 
 .infobar-content {
-  margin: 0 30px 20px 30px;
-  padding: 0 20px 20px 20px;
-  overflow-y: scroll;
+  font-size: larger;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  word-break: break-word;
+  margin: 0 120px 0px 120px;
+  padding: 0 20px 0px 20px;
+  overflow-y: auto;
   height: calc(100vh - 60px - 43px - 20px - 40px);
+}
+.infobar-content img {
+  object-fit: cover;
+  max-width: 100% !important;
 }
 
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
@@ -226,7 +253,7 @@ h1 h2 h3 h4 h5 h6 {
   transition: 0.5s;
 }
 .legend-row {
-  width: 172px;
+  width: 180px;
   display: flex;
   flex-direction: row;
   margin: 5px 4px 0px 4px;
@@ -237,6 +264,7 @@ h1 h2 h3 h4 h5 h6 {
   line-height: 20px;
 }
 .legend-color-box {
+  border: 1px solid black;
   cursor: pointer;
   width: 50px;
 }
@@ -247,9 +275,9 @@ h1 h2 h3 h4 h5 h6 {
   cursor: pointer;
 }
 .legend-closed {
-  -webkit-transform: translateY(-310px);
-  -ms-transform: translateY(-310px);
-  transform: translateY(-310px);
+  -webkit-transform: translateY(-312px);
+  -ms-transform: translateY(-312px);
+  transform: translateY(-312px);
 }
 .legend-closed > .legend-close-btn {
   transform: rotate(180deg);
@@ -286,27 +314,49 @@ input:checked + .slider:before {
   text-align: center;
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1600px) {
   .infobar {
-    width: 60vw;
-    right: -60vw;
+    width: 800px;
+    right: -800px;
   }
   .map-infobar-closed {
     width: 100vw;
   }
   .map-infobar-open {
-    width: 40vw;
+    width: calc(100vw - 800px);
+  }
+  .infobar-open {
+    right: 0;
+  }
+  .infobar-header {
+    margin: 0 80px 20px 80px;
+  }
+  .infobar-content {
+    margin: 0 80px 0px 80px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .infobar {
+    width: 600px;
+    right: -600px;
+  }
+  .map-infobar-closed {
+    width: 100vw;
+  }
+  .map-infobar-open {
+    width: calc(100vw - 600px);
   }
   .infobar-open {
     right: 0;
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 860px) {
   .legend {
-    -webkit-transform: translateY(-310px);
-    -ms-transform: translateY(-310px);
-    transform: translateY(-310px);
+    -webkit-transform: translateY(-312px);
+    -ms-transform: translateY(-312px);
+    transform: translateY(-312px);
   }
   .legend-close-btn {
     transform: rotate(180deg);
@@ -330,7 +380,7 @@ input:checked + .slider:before {
     margin-bottom: 36px;
   }
   .map-infobar-open {
-    width: 0vw;
+    width: 100vw;
   }
   .infobar {
     width: 100vw;
@@ -339,7 +389,20 @@ input:checked + .slider:before {
   .infobar-open {
     right: 0;
   }
+  .infobar-header {
+    margin: 0 60px 20px 60px;
+  }
   .infobar-content {
+    margin: 0 60px 0px 60px;
     height: calc(100vh - 60px - 87px - 20px - 40px);
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .infobar-header {
+    margin: 0 10px 20px 10px;
+  }
+  .infobar-content {
+    margin: 0 10px 0px 10px;
   }
 }
