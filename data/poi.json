@@ -121,7 +121,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [1.1, 40.5]
+        "coordinates": [1.14, 39.69]
       }
     },
     {
@@ -699,6 +699,143 @@
       "geometry": {
         "type": "Point",
         "coordinates": [87.69, -20.22]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Storm_Shaman",
+        "icon": "RedDot"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-28.87, 42.34]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Smith_of_Ashes",
+        "icon": "RedDot"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-14.59, 45.27]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "The Pit of Revelations",
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Marshal_of_the_Pit_of_Revelations",
+        "icon": "RedDot"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-10.17, 38.77]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Guardian_of_the_Cairn",
+        "icon": "RedDot"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-2.83, 46.44]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Skarsind#Krampushall",
+        "icon": "RedDot"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-24.59, 40.4]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "The Great Herd",
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Shepherd_of_the_Great_Herd",
+        "icon": "RedDot"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [9.71, 36.95]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Skarsind#The_Red_Blade_Memorial"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [7.38, 23.91]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Eastern Spring Farm",
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Farmer_of_Eastern_Spring_Farm",
+        "icon": "RedDot"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [15.56, 24.33]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Weigher_of_Worth#The_Halls_of_Worth",
+        "icon": "RedDot"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [13.23, 28.88]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Home of the Broken Shield",
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Broken_Shield_Guardian#House_of_the_Broken_Shield",
+        "icon": "RedDot"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-2.48, 11.82]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Torfast Trading Post",
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Bonesetter_of_Torfast_Trading_Post",
+        "icon": "RedDot"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [10.99, 10.73]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "The Weavers' Market",
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Four_Seasons%27_Boneweaver#The_Weavers.27_Market",
+        "icon": "RedDot"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [6.42, 36.21]
       }
     }
   ]
