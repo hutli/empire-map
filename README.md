@@ -1,8 +1,8 @@
-# Empire LARP Map
+# Empire LRP Map
 
-Empire LARP Map is just a static website. You can host the `www` directory contents with your favourite web server (like `nginx`). The website will work but will not contain the correct fonts; please refer to building [Fonts](#Fonts).
+Empire LRP Map is just a static website. You can host the `www` directory contents with your favourite web server (like `nginx`). The website will work but will not contain the correct fonts; please refer to building [Fonts](#Fonts).
 
-Hosting the website "as-is" means that clients visiting your website, will get the map tiles and GeoJSON files from https://empirelarpmap.com/. To host these files yourself, you have to build them and change the [Constants](#Constants).
+Hosting the website "as-is" means that clients visiting your website, will get the map tiles and GeoJSON files from https://empirelrpmap.com/. To host these files yourself, you have to build them and change the [Constants](#Constants).
 
 # Building
 
@@ -14,7 +14,7 @@ The easiest way to build everything is through docker, remember to change the [c
 docker-compose up --build
 ```
 
-This will build everything and start an `nginx` docker image hosting it all on port `1457`. 
+This will build everything and start an `nginx` docker image hosting it all on port `1457`.
 
 ⚠️ WARNING: Building does take several hours! ⚠️
 
@@ -24,7 +24,7 @@ The following steps assume that `python` refers to a Python 3 binary and that `p
 
 ## Fonts
 
-The one thing you will most likely want to build if hosting outside of docker are the fonts used. The fonts are nothing special; they are really just fonts from https://fonts.googleapis.com/, but since Empire LARP Map is Cookie-Free Safe-Space™, we cannot include them directly. This is because CSS files from https://fonts.googleapis.com request https://fonts.gstatic.com for the actual font files, which, as you can imagine, is far from cookie-free.
+The one thing you will most likely want to build if hosting outside of docker are the fonts used. The fonts are nothing special; they are really just fonts from https://fonts.googleapis.com/, but since Empire LRP Map is Cookie-Free Safe-Space™, we cannot include them directly. This is because CSS files from https://fonts.googleapis.com request https://fonts.gstatic.com for the actual font files, which, as you can imagine, is far from cookie-free.
 
 ![meme](/meme.png?raw=true "meme")
 
@@ -37,7 +37,7 @@ python utilities.py degoogle-css -c www/css/fonts.css -d www/fonts -r fonts -u "
 
 ## GeoJSON
 
-The GeoJSON files included in the `data`-dir have not yet been populated with the Empire LARP Wiki data. I could probably, at this point, include GeoJSON files already populated in this repo without any problem. However, to not eventually end up with a _giant_ JSON file containing the entire Empire Wiki they include just enough data to be automatically populated from Empire LARP Wiki. Furthermore, since the Empire LARP Wiki is constantly updated, it is always a good idea to regularly repopulate these files anyway. To do so:
+The GeoJSON files included in the `data`-dir have not yet been populated with the Empire LRP Wiki data. I could probably, at this point, include GeoJSON files already populated in this repo without any problem. However, to not eventually end up with a _giant_ JSON file containing the entire Empire Wiki they include just enough data to be automatically populated from Empire LRP Wiki. Furthermore, since the Empire LRP Wiki is constantly updated, it is always a good idea to regularly repopulate these files anyway. To do so:
 
 ```bash
 pip install -r requirements.txt
@@ -63,7 +63,7 @@ sudo apt update -y
 sudo apt install gdal-bin libgdal-dev -y
 ```
 
-You can now build the tiles. The following script assumes that `wget` is installed as it, unfortunately, has to download the raw image files from https://empirelarpmap.com. They are too large for me to include in this GitHub repo with my free account.
+You can now build the tiles. The following script assumes that `wget` is installed as it, unfortunately, has to download the raw image files from https://empirelrpmap.com. They are too large for me to include in this GitHub repo with my free account.
 
 ```bash
 ./build-tiles.sh
@@ -72,10 +72,11 @@ You can now build the tiles. The following script assumes that `wget` is install
 Remember to change the [constant](#Constants) `TILE_SERVER_BASE_URL` in `main.js`!
 
 # Constants
-If you are building and self-hosting the Empire LARP Map, you will want to at least change the two main constants, `TILE_SERVER_BASE_URL` and `GEOJSON_DATA_BASE_URL`, which exist at the top of `main.js`.
+
+If you are building and self-hosting the Empire LRP Map, you will want to at least change the two main constants, `TILE_SERVER_BASE_URL` and `GEOJSON_DATA_BASE_URL`, which exist at the top of `main.js`.
 
 If you are proxying the docker container directly or serving the `www` folder (after building everything), both constants can be set to `/`, and it should work.
 
 The `ADMIN_EMAIL` constant also exists at the top of `main.js`. It should probably also be changed if you want to receive contribution emails.
 
-Lastly, four `meta` tags exist at the top of `index.html`, which point to `https://empirelarpmap.com`. Change these to your websites domain, so social media cards etc., links correctly.
+Lastly, four `meta` tags exist at the top of `index.html`, which point to `https://empirelrpmap.com`. Change these to your websites domain, so social media cards etc., links correctly.

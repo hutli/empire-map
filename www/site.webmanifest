@@ -1,6 +1,6 @@
 {
-  "name": "Empire LARP Map",
-  "short_name": "Empire LARP Map",
+  "name": "Empire LRP Map",
+  "short_name": "Empire LRP Map",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",
@@ -15,6 +15,6 @@
   ],
   "theme_color": "#333333",
   "background_color": "#333333",
-  "start_url": "https://empirelarpmap.com",
+  "start_url": "https://empirelrpmap.com",
   "display": "standalone"
 }
