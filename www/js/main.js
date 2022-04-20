@@ -341,7 +341,8 @@ nationsRequest.onreadystatechange = function () {
             searchControl.on("search:locationfound", onLocationFound);
             map.addControl(searchControl);
 
-            if (location.hash) {
+            if (location.hash.length > 1) {
+              // More than just "#"
               let lookupStr = decodeURI(location.hash.slice(1));
               let searchResults = fuzzyFilterData(
                 lookupStr,
@@ -618,6 +619,9 @@ resizeObserver.observe(mapDiv);
 
 function openNav(e) {
   let layer = e.popup._source;
+  let feature = layer.feature;
+  let properties = feature.properties;
+
   if (layer.setStyle) {
     layer.setStyle({
       fillColor: "#3f0",
@@ -626,10 +630,6 @@ function openNav(e) {
     });
   }
   deactivateTerritoriesLayer();
-
-  let feature = layer.feature;
-  let properties = feature.properties;
-
   location.hash = `#${properties.name}`;
 
   if (feature.geometry.type == "Point") {
@@ -660,6 +660,7 @@ function closeNav() {
     nationsLayer.resetStyle(layer);
   });
   activateTerritoriesLayer();
+  location.hash = "";
 
   poiIsOpen = false;
   onMapZoom();
