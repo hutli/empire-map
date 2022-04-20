@@ -837,6 +837,228 @@
         "type": "Point",
         "coordinates": [6.42, 36.21]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Redoubt#Delving"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [70.31, -69.73]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Bastion#Sybela"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [41.88, -48.71]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Feroz#Isle_of_the_Osseini"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-24.81, -76.74]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Celesti_Lighthouse_Keeper#The_Celesti_Lighthouse"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-31.16, -72.1]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Segura#Anozel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-74.31, -70.36]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Liaven's Dance",
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Liathaven#Liaven.27s_Dance"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-50.08, -41.92]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Mournwold#Sarcombe"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-38.36, -41.93]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Mitwold#Forte_Fidelis"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-39.38, -25.8]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Mitwold#Hay"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-46.23, -26.88]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Mitwold#The_Maiden_Stone"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-43.46, -20.06]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Upwold#The_Woldstone"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-19.58, -14.5]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Upwold#The_Eastern_Guard"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-9.05, -15.2]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Upwold#Stockland"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-34.38, -17.31]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Casinea#The_Silent_Sentinel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [46.56, -35.25]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Reikos#The_Sign_of_Tamar"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [54.54, -35.8]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Reikos#High_Chalcis"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [80.09, -40.94]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Morrow#Sunspire"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [89.78, -50.96]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Karsk#The_Ruins_of_Isember"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [86.74, 29.89]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Weirwater#Culwich"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [71.89, 15.81]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Verthandi#Houses_of_Silence"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [53.39, 54.66]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Verthandi#Stone_Forest"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [52.73, 61.38]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Őrnhjorfal",
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Verthandi#.C5.90rnhjorfal"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [41.26, 61.29]
+      }
     }
   ]
 }
