@@ -1,5 +1,9 @@
+centerline
 click
 click_pathlib
-requests
+gdal
+httpx
+networkx
+numpy
 shapely
 tqdm

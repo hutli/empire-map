@@ -182,6 +182,16 @@ function toggleTerritoryBorders(enabled) {
   }
 }
 
+function toggleArmies(enabled) {
+  if (enabled) {
+    document.getElementById("armies-display").innerText = "ON";
+    map.addLayer(armiesLayer);
+  } else {
+    document.getElementById("armies-display").innerText = "OFF";
+    map.removeLayer(armiesLayer);
+  }
+}
+
 function changeTerritoryFill(value) {
   document.getElementById("territory-fill-display").innerText =
     Number(value).toFixed(2);
@@ -247,11 +257,32 @@ function onLocationFound(e) {
   }
 }
 
+function showTerritoryNames() {
+  console.log(`Showing territories layer (${map.getZoom()})`);
+  Object.values(territoriesLayer._layers).reduce((_, l) => {
+    let tooltip = l.getTooltip();
+    l.unbindTooltip().bindTooltip(tooltip, {
+      permanent: true,
+    });
+  });
+}
+
+function hideTerritoryNames() {
+  console.log(`Hiding territories layer (${map.getZoom()})`);
+  Object.values(territoriesLayer._layers).reduce((_, l) => {
+    let tooltip = l.getTooltip();
+    l.unbindTooltip().bindTooltip(tooltip, {
+      permanent: false,
+    });
+  });
+}
+
 let contributeButton = undefined;
 
 let nationsLayer = undefined;
 let territoriesLayer = undefined;
 let poiLayer = undefined;
+let armiesLayer = undefined;
 
 let poiIsOpen = false;
 
@@ -270,200 +301,237 @@ nationsRequest.onreadystatechange = function () {
         poiRequest.open("GET", `${GEOJSON_DATA_BASE_URL}assets/map/poi.json`);
         poiRequest.onreadystatechange = function () {
           if (this.readyState == 4 && this.status == 200) {
-            let nationsData = JSON.parse(nationsRequest.responseText);
-            let territoriesData = JSON.parse(territoriesRequest.responseText);
-            let poiData = JSON.parse(poiRequest.responseText);
-
-            geoJsonCoords = reduceToCoords(
-              objFind(territoriesData, "coordinates")
+            let armiesRequest = new XMLHttpRequest();
+            armiesRequest.open(
+              "GET",
+              `${GEOJSON_DATA_BASE_URL}assets/map/armies.json`
             );
-
-            nationsLayer = new L.GeoJSON(nationsData, {
-              style: function (feature) {
-                return {
-                  color: nations_color_map[feature.properties.nation],
-                  opacity: 1,
-                  weight: 3,
-                  fillOpacity: 0,
-                  interactive: false,
-                };
-              },
-              onEachFeature: function (feature, marker) {
-                marker.bindPopup(`<h2>${feature.properties.name}</h2>`);
-              },
-            });
-
-            territoriesLayer = new L.GeoJSON(territoriesData, {
-              style: function (feature) {
-                return {
-                  color: "#000000",
-                  opacity: 0.5,
-                  weight: 1,
-                  fillColor: nations_color_map[feature.properties.nation],
-                  fillOpacity: document.getElementById("territory-fill-input")
-                    .value,
-                };
-              },
-              onEachFeature: function (feature, marker) {
-                marker.bindPopup(
-                  `<h2>${feature.properties.name} (${feature.properties.nation})</h2>`
+            armiesRequest.onreadystatechange = function () {
+              if (this.readyState == 4 && this.status == 200) {
+                let nationsData = JSON.parse(nationsRequest.responseText);
+                let territoriesData = JSON.parse(
+                  territoriesRequest.responseText
                 );
-              },
-            });
+                let poiData = JSON.parse(poiRequest.responseText);
+                let armiesData = JSON.parse(armiesRequest.responseText);
 
-            poiLayer = new L.GeoJSON(poiData, {
-              onEachFeature: function (feature, marker) {
-                if (feature.properties.icon == "RedDot") {
-                  marker.setIcon(markerIconRedDot);
-                }
-                marker.bindPopup(
-                  `<h2>${feature.properties.name} (${feature.properties.nation})</h2>`
+                geoJsonCoords = reduceToCoords(
+                  objFind(territoriesData, "coordinates")
                 );
-              },
-            });
 
-            let all_layer = L.featureGroup([
-              territoriesLayer,
-              nationsLayer,
-              poiLayer,
-            ]);
+                nationsLayer = new L.GeoJSON(nationsData, {
+                  style: function (feature) {
+                    return {
+                      color: nations_color_map[feature.properties.nation],
+                      opacity: 1,
+                      weight: 3,
+                      fillOpacity: 0,
+                      interactive: false,
+                    };
+                  },
+                  onEachFeature: function (feature, marker) {
+                    marker.bindPopup(`<h2>${feature.properties.name}</h2>`);
+                  },
+                });
 
-            // ADD MAP CONTROLS
-            let searchControl = new L.Control.Search({
-              layer: all_layer,
-              propertyName: "name",
-              marker: false,
-              firstTipSubmit: true,
-              moveToLocation: moveToLocation,
-              filterData: fuzzyFilterData,
-            });
+                territoriesLayer = new L.GeoJSON(territoriesData, {
+                  style: function (feature) {
+                    return {
+                      color: "#000000",
+                      opacity: 0.5,
+                      weight: 1,
+                      fillColor: nations_color_map[feature.properties.nation],
+                      fillOpacity: document.getElementById(
+                        "territory-fill-input"
+                      ).value,
+                    };
+                  },
+                  onEachFeature: function (feature, marker) {
+                    let featureName = `${feature.properties.name} (${feature.properties.nation})`;
+                    marker.bindPopup(`<h2>${featureName}</h2>`);
+                    marker.bindTooltip(featureName, {
+                      permanent: false,
+                      direction: "center",
+                      className: "territories-tooltip",
+                    });
+                  },
+                });
 
-            searchControl.on("search:locationfound", onLocationFound);
-            map.addControl(searchControl);
+                poiLayer = new L.GeoJSON(poiData, {
+                  onEachFeature: function (feature, marker) {
+                    if (feature.properties.icon == "RedDot") {
+                      marker.setIcon(markerIconRedDot);
+                    }
+                    marker.bindPopup(
+                      `<h2>${feature.properties.name} (${feature.properties.nation})</h2>`
+                    );
+                  },
+                });
 
-            if (location.hash.length > 1) {
-              // More than just "#"
-              let lookupStr = decodeURI(location.hash.slice(1));
-              let searchResults = fuzzyFilterData(
-                lookupStr,
-                Object.values(all_layer._layers).reduce(
-                  (a0, v0) => ({
-                    ...a0,
-                    ...Object.values(v0._layers).reduce(
-                      (a1, v1) => ({
-                        ...a1,
-                        [v1.feature.properties.name]: v1,
+                armiesLayer = new L.GeoJSON(armiesData, {
+                  onEachFeature: function (feature, marker) {
+                    let icon = L.icon({
+                      iconUrl: `../${feature.properties.icon}`,
+                      iconSize: [50, 50],
+                      iconAnchor: [25, 25],
+                    });
+                    marker.setIcon(icon);
+                    marker.bindPopup(
+                      `<h2>${feature.properties.army} (${feature.properties.nation})</h2>`
+                    );
+                  },
+                });
+
+                let all_layer = L.featureGroup([
+                  territoriesLayer,
+                  nationsLayer,
+                  poiLayer,
+                  armiesLayer,
+                ]);
+
+                // ADD MAP CONTROLS
+                let searchControl = new L.Control.Search({
+                  layer: all_layer,
+                  propertyName: "name",
+                  marker: false,
+                  firstTipSubmit: true,
+                  moveToLocation: moveToLocation,
+                  filterData: fuzzyFilterData,
+                });
+
+                searchControl.on("search:locationfound", onLocationFound);
+                map.addControl(searchControl);
+
+                if (location.hash.length > 1) {
+                  // More than just "#"
+                  let lookupStr = decodeURI(location.hash.slice(1));
+                  let searchResults = fuzzyFilterData(
+                    lookupStr,
+                    Object.values(all_layer._layers).reduce(
+                      (a0, v0) => ({
+                        ...a0,
+                        ...Object.values(v0._layers).reduce(
+                          (a1, v1) => ({
+                            ...a1,
+                            [v1.feature.properties.name]: v1,
+                          }),
+                          {}
+                        ),
                       }),
                       {}
-                    ),
-                  }),
-                  {}
-                )
-              );
-              if (Object.entries(searchResults).length > 0) {
-                let searchResult = Object.values(searchResults)[0];
-                let isPolygon = searchResult.feature.geometry.type == "Polygon";
-                let center = isPolygon
-                  ? searchResult.getBounds().getCenter()
-                  : {
-                      lng: searchResult.feature.geometry.coordinates[0],
-                      lat: searchResult.feature.geometry.coordinates[1],
+                    )
+                  );
+                  if (Object.entries(searchResults).length > 0) {
+                    let searchResult = Object.values(searchResults)[0];
+                    let isPolygon =
+                      searchResult.feature.geometry.type == "Polygon";
+                    let center = isPolygon
+                      ? searchResult.getBounds().getCenter()
+                      : {
+                          lng: searchResult.feature.geometry.coordinates[0],
+                          lat: searchResult.feature.geometry.coordinates[1],
+                        };
+                    searchResult = {
+                      layer: searchResult,
+                      ...center,
                     };
-                searchResult = {
-                  layer: searchResult,
-                  ...center,
-                };
-                onLocationFound(searchResult);
-                moveToLocation(searchResult, undefined, map);
-                if (isPolygon) {
+                    onLocationFound(searchResult);
+                    moveToLocation(searchResult, undefined, map);
+                    if (isPolygon) {
+                      map.removeLayer(poiLayer); // Search control automatically adds its layers
+                      map.removeLayer(armiesLayer);
+                    }
+                  } else {
+                    console.warn(
+                      `Search for "${lookupStr}" yeilded no results (link broken)`
+                    );
+                    map.removeLayer(poiLayer); // Search control automatically adds its layers
+                    map.removeLayer(armiesLayer);
+                  }
+                } else {
                   map.removeLayer(poiLayer); // Search control automatically adds its layers
+                  map.removeLayer(armiesLayer);
                 }
-              } else {
-                console.warn(
-                  `Search for "${lookupStr}" yeilded no results (link broken)`
-                );
-                map.removeLayer(poiLayer); // Search control automatically adds its layers
-              }
-            } else {
-              map.removeLayer(poiLayer); // Search control automatically adds its layers
-            }
 
-            if (isSmartphone()) {
-              deactivateTerritoriesLayer();
-            }
+                if (isSmartphone()) {
+                  deactivateTerritoriesLayer();
+                }
 
-            let contributeControl = L.Control.extend({
-              options: {
-                position: "topleft",
-              },
+                let contributeControl = L.Control.extend({
+                  options: {
+                    position: "topleft",
+                  },
 
-              onAdd: function (map) {
-                contributeButton = L.DomUtil.create(
-                  "button",
-                  "contribute-button"
-                );
+                  onAdd: function (map) {
+                    contributeButton = L.DomUtil.create(
+                      "button",
+                      "contribute-button"
+                    );
 
-                contributeButton.onclick = (e) => {
-                  document.getElementById("popup").style.display = "block";
+                    contributeButton.onclick = (e) => {
+                      document.getElementById("popup").style.display = "block";
+                    };
+
+                    let wrapper = L.DomUtil.create("div");
+                    wrapper.style.position = "relative";
+                    wrapper.appendChild(contributeButton);
+
+                    return wrapper;
+                  },
+                });
+
+                map.addControl(new contributeControl());
+
+                let sidebar = L.control.sidebar("sidebar", {
+                  position: "left",
+                });
+                map.addControl(sidebar);
+
+                let legend = L.control({ position: "topright" });
+
+                legend.onAdd = function (map) {
+                  let div = L.DomUtil.create("div", "legend");
+                  L.DomEvent.disableClickPropagation(div);
+
+                  div.innerHTML =
+                    Object.entries(nations_color_map).reduce(
+                      (agg, e) =>
+                        `${agg}<div class="legend-row"><div id="legend-color-box-${e[0]
+                          .toLowerCase()
+                          .replace(
+                            " ",
+                            "-"
+                          )}" class="legend-color-box" style="background-color: ${
+                          e[1]
+                        };" onclick="showColorPicker('${
+                          e[0]
+                        }')"></div><h3 class="legend-title">${e[0]}</h3></div>`,
+                      ""
+                    ) +
+                    '<h2 class="legend-close-btn" onclick="toggleLegend()">&#9650;</h2>';
+                  return div;
                 };
 
-                let wrapper = L.DomUtil.create("div");
-                wrapper.style.position = "relative";
-                wrapper.appendChild(contributeButton);
+                map.addControl(legend);
 
-                return wrapper;
-              },
-            });
+                let colorPicker = L.control({ position: "topright" });
 
-            map.addControl(new contributeControl());
+                colorPicker.onAdd = function (map) {
+                  let div = L.DomUtil.create(
+                    "div",
+                    "color-picker color-picker-closed"
+                  );
+                  L.DomEvent.disableClickPropagation(div);
 
-            let sidebar = L.control.sidebar("sidebar", {
-              position: "left",
-            });
-            map.addControl(sidebar);
+                  div.innerHTML = `<button class="color-picker-close-btn" onclick="hideColorPicker()">&#x2715;</button><canvas id="color-block" height="150" width="150"></canvas><canvas id="color-strip" height="150" width="30"></canvas><h3 id="color-picker-code-display">#000000</h3>`;
 
-            let legend = L.control({ position: "topright" });
-
-            legend.onAdd = function (map) {
-              let div = L.DomUtil.create("div", "legend");
-              L.DomEvent.disableClickPropagation(div);
-
-              div.innerHTML =
-                Object.entries(nations_color_map).reduce(
-                  (agg, e) =>
-                    `${agg}<div class="legend-row"><div id="legend-color-box-${e[0]
-                      .toLowerCase()
-                      .replace(
-                        " ",
-                        "-"
-                      )}" class="legend-color-box" style="background-color: ${
-                      e[1]
-                    };" onclick="showColorPicker('${
-                      e[0]
-                    }')"></div><h3 class="legend-title">${e[0]}</h3></div>`,
-                  ""
-                ) +
-                '<h2 class="legend-close-btn" onclick="toggleLegend()">&#9650;</h2>';
-              return div;
+                  return div;
+                };
+                map.addControl(colorPicker);
+                initColorPicker();
+              }
             };
-
-            map.addControl(legend);
-
-            let colorPicker = L.control({ position: "topright" });
-
-            colorPicker.onAdd = function (map) {
-              let div = L.DomUtil.create(
-                "div",
-                "color-picker color-picker-closed"
-              );
-              L.DomEvent.disableClickPropagation(div);
-
-              div.innerHTML = `<button class="color-picker-close-btn" onclick="hideColorPicker()">&#x2715;</button><canvas id="color-block" height="150" width="150"></canvas><canvas id="color-strip" height="150" width="30"></canvas><h3 id="color-picker-code-display">#000000</h3>`;
-
-              return div;
-            };
-            map.addControl(colorPicker);
-            initColorPicker();
+            armiesRequest.send(null);
           }
         };
         poiRequest.send(null);
@@ -550,6 +618,12 @@ function onMapZoom() {
     lightenTerrotiresLayer();
   } else {
     darkenTerritoriesLayer();
+  }
+
+  if (zoomLevel >= 4 || (zoomLevel >= 3 && isSmartphone())) {
+    showTerritoryNames();
+  } else {
+    hideTerritoryNames();
   }
 }
 
@@ -659,7 +733,6 @@ function closeNav() {
     //restore feature color
     nationsLayer.resetStyle(layer);
   });
-  activateTerritoriesLayer();
   location.hash = "";
 
   poiIsOpen = false;
