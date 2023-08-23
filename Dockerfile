@@ -8,12 +8,12 @@ RUN mkdir www/css/
 RUN mkdir www/assets/
 RUN mkdir www/assets/map/
 
-# INSTALL GDAL
+# UPDATE apt-get
 RUN apt-get update -y
 RUN apt-get install software-properties-common apt-utils -y
 RUN add-apt-repository ppa:ubuntugis/ppa
 RUN apt-get update -y
-RUN apt-get install gdal-bin libgdal-dev git wget python3 python3-pip python-is-python3 -y
+RUN apt-get install gdal-bin libgdal-dev git wget python3 python3-pip python-is-python3 ffmpeg libsm6 libxext6 -y
 
 #     BUILD MAP TILES
 # ⚠️ TAKES A LONG TIME ⚠️
@@ -24,6 +24,10 @@ RUN ./build-tiles.sh
 COPY requirements.txt /app/
 RUN pip install -r requirements.txt
 COPY utilities.py /app/
+
+# CREATE DARKMODE TILES
+RUN mkdir /app/www/assets/map-dark
+RUN python /app/utilities.py invert -i /app/www/assets/map -o /app/www/assets/map-dark
 
 # BUILD GEOJSON
 COPY data/territories.json /app/data/
