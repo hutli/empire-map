@@ -32,25 +32,12 @@ let nations_color_map = {
   "Non-imperial": "#ffffff",
 };
 
-let colorTileLayer = L.tileLayer(
-  `${TILE_SERVER_BASE_URL}assets/map/tiles-color/{z}/{x}/{y}.png`,
-  {
-    minZoom: 0,
-    maxZoom: 9,
-    opacity: 1,
-    noWrap: true,
-  }
-);
-let bwTileLayer = L.tileLayer(
-  `${TILE_SERVER_BASE_URL}assets/map/tiles-bw/{z}/{x}/{y}.png`,
-  {
-    minZoom: 0,
-    maxZoom: 9,
-    opacity: 1,
-    noWrap: true,
-  }
-);
-map.addLayer(colorTileLayer);
+// Disabled while developing
+if (false && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+  toggleDarkMode(true);
+} else {
+  toggleDarkMode(false);
+}
 
 let geoJsonCoords = [];
 
@@ -190,6 +177,39 @@ function toggleArmies(enabled) {
     document.getElementById("armies-display").innerText = "OFF";
     map.removeLayer(armiesLayer);
   }
+}
+
+function toggleDarkMode(enabled) {
+  if (enabled) {
+    document.getElementById("dark-mode").innerText = "ON";
+    tileMapDir = "map-dark";
+  } else {
+    document.getElementById("dark-mode").innerText = "OFF";
+    tileMapDir = "map";
+  }
+
+  colorTileLayer = L.tileLayer(
+    `${TILE_SERVER_BASE_URL}assets/${tileMapDir}/tiles-color/{z}/{x}/{y}.png`,
+    {
+      minZoom: 0,
+      maxZoom: 9,
+      opacity: 1,
+      noWrap: true,
+    }
+  );
+  bwTileLayer = L.tileLayer(
+    `${TILE_SERVER_BASE_URL}assets/${tileMapDir}/tiles-bw/{z}/{x}/{y}.png`,
+    {
+      minZoom: 0,
+      maxZoom: 9,
+      opacity: 1,
+      noWrap: true,
+    }
+  );
+
+  toggleMapColor(
+    document.getElementById("terrain-colors-display-input").checked
+  );
 }
 
 function changeTerritoryFill(value) {
