@@ -4,18 +4,26 @@ from dataclasses import asdict, dataclass
 
 import click
 import click_pathlib
+import cv2
 import httpx
 import networkx as nx
 import numpy as np
 from centerline.geometry import Centerline
+from loguru import logger
 from shapely import geometry, ops
 from shapely.geometry import LineString, MultiPoint, Polygon
 from tqdm import tqdm
 
 
-def extract_body(page, header_id, include_header=False, hlevel=None):
+def extract_body(page, header_id, include_header=False, hlevel=None, url=None):
     id_tag = f'id="{header_id}"'
-    before_id, after_id = page.split(id_tag, 1)
+    try:
+        before_id, after_id = page.split(id_tag, 1)
+    except ValueError as e:
+        print()
+        print()
+        logger.error(f'Could not find id "{header_id}" in page {url}')
+        return None
     if not hlevel:
         hlevel = "h" + before_id.rsplit("<h", 1)[1].split(" ", 1)[0].split(">", 1)[0]
 
@@ -118,9 +126,15 @@ def populate_json(input_json, output_json, nation_json):
 
         if description_id:
             data["features"][i]["properties"]["description-id"] = description_id
-            description = extract_body(page, description_id)
+            if body := extract_body(page, description_id, url=url):
+                description = body
+            else:
+                continue
         elif f'id="Overview"' in page:
-            description = extract_body(page, "Overview")
+            if body := extract_body(page, "Overview", url=url):
+                description = body
+            else:
+                continue
         elif f'id="mw-content-text"' in page:
             description = (
                 page.split(f'id="mw-content-text"', 1)[1]
@@ -134,10 +148,14 @@ def populate_json(input_json, output_json, nation_json):
             for extra_url in feature["properties"]["extra-urls"]:
                 extra_page = httpx.get(extra_url, verify=False).text
                 extra_id = extra_url.rsplit("/", 1)[-1].rsplit("#", 1)[-1]
-                description += extract_body(extra_page, extra_id, include_header=True)
+                if body := extract_body(
+                    extra_page, extra_id, include_header=True, url=extra_url
+                ):
+                    description += body
 
         if 'id="The_Resource"' in page:
-            description += extract_body(page, "The_Resource", include_header=True)
+            if body := extract_body(page, "The_Resource", include_header=True, url=url):
+                description += body
 
         description = (
             description.strip()
@@ -169,7 +187,6 @@ def populate_json(input_json, output_json, nation_json):
     help="Path to save nations JSON file on",
 )
 def generate_nations_json(territories_json, nations_json):
-
     # Extract and group all features by their nation
     nation_features = {}
     with open(territories_json) as f:
@@ -306,10 +323,10 @@ def degoogle_css(url, fonts_dir, fonts_css, fonts_root_url):
 
 def find_longest_linestring(mls):
     graph = nx.Graph()
-    for m in mls.geoms:
-        [x, y] = list(m.coords)
-        graph.add_edge(x, y, weight=m.length)
-        graph.add_edge(y, x, weight=m.length)
+    for m in mls.geometry.geoms:
+        [from_coords, to_coords] = list(m.coords)
+        graph.add_edge(from_coords, to_coords, weight=m.length)
+        graph.add_edge(to_coords, from_coords, weight=m.length)
     ends = [x for x in graph.nodes() if graph.degree(x) <= 1]
 
     longest_path = (0, None, None)
@@ -410,6 +427,43 @@ def generate_armies_json(url, territories_json, armies_json):
                 )
     with open(armies_json, "w") as f:
         f.write(json.dumps(geojson))
+
+
+@cli.command()
+@click.option(
+    "--image-dir",
+    "-i",
+    required=True,
+    type=click_pathlib.Path(exists=True, file_okay=False),
+    help="Directory containing (and other directories with images) images to convert",
+)
+@click.option(
+    "--output-dir",
+    "-o",
+    required=True,
+    type=click_pathlib.Path(exists=True, file_okay=False),
+    help="Directory to save images to (same directory sturcture)",
+)
+def invert(image_dir, output_dir):
+    dirs = [image_dir]
+    images = []
+    while dirs:
+        for d in dirs:
+            for f in d.iterdir():
+                if f.is_dir():
+                    dirs.append(f)
+                else:
+                    images.append(f)
+            dirs.remove(d)
+
+    for image_file in tqdm(images):
+        path = output_dir / image_file.relative_to(image_dir)
+        path.parent.mkdir(parents=True, exist_ok=True)
+        image = cv2.imread(str(image_file))
+        image = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+        image[:, :, 2] = 255 - image[:, :, 2]
+        image = cv2.cvtColor(image, cv2.COLOR_HSV2BGR)
+        cv2.imwrite(str(path), image)
 
 
 if __name__ == "__main__":
