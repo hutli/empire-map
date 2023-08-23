@@ -54,3 +54,5 @@ territory-maps/
 look-and-feel-palettes/
 palette.png
 **/nations.json
+data/armies.json
+venv
