@@ -1,7 +1,7 @@
 centerline
 click
-click_pathlib
 gdal
+gdal2tiles
 httpx
 loguru
 networkx

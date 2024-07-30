@@ -1,5 +1,3 @@
-version: "3"
-
 services:
   empire-lrp-map:
     build: .

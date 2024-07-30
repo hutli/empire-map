@@ -1,9 +1,9 @@
 import json
+import pathlib
 import re
 from dataclasses import asdict, dataclass
 
 import click
-import click_pathlib
 import cv2
 import httpx
 import networkx as nx
@@ -70,24 +70,30 @@ def cli():
     "--input-json",
     "-i",
     required=True,
-    type=click_pathlib.Path(exists=True, dir_okay=False, resolve_path=True),
+    type=click.Path(exists=True, dir_okay=False, resolve_path=True),
     help="Raw JSON file to populate",
 )
 @click.option(
     "--output-json",
     "-o",
     required=True,
-    type=click_pathlib.Path(dir_okay=False, resolve_path=True),
+    type=click.Path(dir_okay=False, resolve_path=True),
     help="Path to save populated JSON to",
 )
 @click.option(
     "--nation-json",
     "-n",
     default=None,
-    type=click_pathlib.Path(dir_okay=False, resolve_path=True),
+    type=click.Path(dir_okay=False, resolve_path=True),
     help="JSON containing GeoJSON of nations (to populate location nations)",
 )
 def populate_json(input_json, output_json, nation_json):
+    input_json = pathlib.Path(input_json)
+    output_json = pathlib.Path(output_json)
+
+    if nation_json:
+        nation_json = pathlib.Path(nation_json)
+
     with open(input_json) as f:
         data = json.loads(f.read())
 
@@ -176,18 +182,23 @@ def populate_json(input_json, output_json, nation_json):
     "--territories-json",
     "-t",
     required=True,
-    type=click_pathlib.Path(exists=True, dir_okay=False, resolve_path=True),
+    type=click.Path(exists=True, dir_okay=False, resolve_path=True),
     help="JSON containing territories to build nations from",
 )
 @click.option(
     "--nations-json",
     "-n",
     required=True,
-    type=click_pathlib.Path(dir_okay=False, resolve_path=True),
+    type=click.Path(dir_okay=False, resolve_path=True),
     help="Path to save nations JSON file on",
 )
 def generate_nations_json(territories_json, nations_json):
     # Extract and group all features by their nation
+    print(territories_json)
+    print(nations_json)
+    territories_json = pathlib.Path(territories_json)
+    nations_json = pathlib.Path(nations_json)
+
     nation_features = {}
     with open(territories_json) as f:
         for territory in json.loads(f.read())["features"]:
@@ -263,14 +274,14 @@ def get_css_property(source, name, end=";"):
     "--fonts-css",
     "-c",
     required=True,
-    type=click_pathlib.Path(dir_okay=False, resolve_path=True),
+    type=click.Path(dir_okay=False, resolve_path=True),
     help="Path to css file to overwrite/create",
 )
 @click.option(
     "--fonts-dir",
     "-d",
     required=True,
-    type=click_pathlib.Path(exists=True, file_okay=False, resolve_path=True),
+    type=click.Path(exists=True, file_okay=False, resolve_path=True),
     help="Directory to place fonts",
 )
 @click.option(
@@ -281,16 +292,19 @@ def get_css_property(source, name, end=";"):
     help="Root URL for fonts (often at least partially the fonts dir path)",
 )
 def degoogle_css(url, fonts_dir, fonts_css, fonts_root_url):
+    fonts_dir = pathlib.Path(fonts_dir)
+    fonts_css = pathlib.Path(fonts_css)
+
     headers = {}
     headers["authority"] = "fonts.googleapis.com"
     headers["cache-control"] = "max-age=0"
     headers["upgrade-insecure-requests"] = "1"
-    headers[
-        "user-agent"
-    ] = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) QtWebEngine/5.15.3 Chrome/87.0.4280.144 Safari/537.36"
-    headers[
-        "accept"
-    ] = "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9"
+    headers["user-agent"] = (
+        "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) QtWebEngine/5.15.3 Chrome/87.0.4280.144 Safari/537.36"
+    )
+    headers["accept"] = (
+        "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9"
+    )
     headers["accept-language"] = "en-US,en;q=0.9"
     headers["dnt"] = "1"
     headers["sec-fetch-site"] = "none"
@@ -362,17 +376,20 @@ class Army:
     "--territories-json",
     "-t",
     required=True,
-    type=click_pathlib.Path(exists=True, dir_okay=False, resolve_path=True),
+    type=click.Path(exists=True, dir_okay=False, resolve_path=True),
     help="JSON containing territories to build nations from",
 )
 @click.option(
     "--armies-json",
     "-a",
     required=True,
-    type=click_pathlib.Path(dir_okay=False, resolve_path=True),
+    type=click.Path(dir_okay=False, resolve_path=True),
     help="Path to save armies JSON file on",
 )
 def generate_armies_json(url, territories_json, armies_json):
+    territories_json = pathlib.Path(territories_json)
+    armies_json = pathlib.Path(armies_json)
+
     with open(territories_json) as f:
         territories = json.loads(f.read())["features"]
 
@@ -385,6 +402,7 @@ def generate_armies_json(url, territories_json, armies_json):
             for a in armies
             if a.current_location.lower() == t["properties"]["name"].lower()
         ]
+        print(t["properties"]["name"].lower(), [a.army for a in armies_in_territory])
         if armies_in_territory:
             coordinates = [tuple(c) for c in t["geometry"]["coordinates"][0]]
             polygon = Polygon(coordinates)
@@ -434,17 +452,20 @@ def generate_armies_json(url, territories_json, armies_json):
     "--image-dir",
     "-i",
     required=True,
-    type=click_pathlib.Path(exists=True, file_okay=False),
+    type=click.Path(exists=True, file_okay=False),
     help="Directory containing (and other directories with images) images to convert",
 )
 @click.option(
     "--output-dir",
     "-o",
     required=True,
-    type=click_pathlib.Path(exists=True, file_okay=False),
+    type=click.Path(exists=True, file_okay=False),
     help="Directory to save images to (same directory sturcture)",
 )
 def invert(image_dir, output_dir):
+    image_dir = pathlib.Path(image_dir)
+    output_dir = pathlib.Path(output_dir)
+
     dirs = [image_dir]
     images = []
     while dirs:

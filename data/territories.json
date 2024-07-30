@@ -4,6 +4,7 @@
     {
       "type": "Feature",
       "properties": {
+        "name": "Skarsind",
         "url": "https://www.profounddecisions.co.uk/empire-wiki/Skarsind",
         "nation": "Imperial Orcs"
       },
@@ -36,6 +37,7 @@
     {
       "type": "Feature",
       "properties": {
+        "name": "Upwold",
         "url": "https://www.profounddecisions.co.uk/empire-wiki/Upwold",
         "nation": "The Marches",
         "description-id": "The_Silver_Chase"
@@ -62,6 +64,7 @@
     {
       "type": "Feature",
       "properties": {
+        "name": "Mitwold",
         "url": "https://www.profounddecisions.co.uk/empire-wiki/Mitwold",
         "nation": "The Marches",
         "description-id": "The_Pride_of_the_Marches"
@@ -89,6 +92,7 @@
     {
       "type": "Feature",
       "properties": {
+        "name": "Mournwold",
         "url": "https://www.profounddecisions.co.uk/empire-wiki/Mournwold",
         "nation": "The Marches",
         "description-id": "The_Mourn"
@@ -117,6 +121,7 @@
     {
       "type": "Feature",
       "properties": {
+        "name": "Bregasland",
         "url": "https://www.profounddecisions.co.uk/empire-wiki/Bregasland",
         "nation": "Territory Lost",
         "description-id": "The_Dour_Fens"
@@ -142,6 +147,7 @@
     {
       "type": "Feature",
       "properties": {
+        "name": "Hahnmark",
         "url": "https://www.profounddecisions.co.uk/empire-wiki/Hahnmark",
         "nation": "Wintermark"
       },
@@ -171,6 +177,7 @@
     {
       "type": "Feature",
       "properties": {
+        "name": "Kallavesa",
         "url": "https://www.profounddecisions.co.uk/empire-wiki/Kallavesa",
         "nation": "Wintermark"
       },
@@ -200,6 +207,7 @@
     {
       "type": "Feature",
       "properties": {
+        "name": "Sermersuaq",
         "url": "https://www.profounddecisions.co.uk/empire-wiki/Sermersuaq",
         "nation": "Wintermark"
       },
@@ -229,6 +237,7 @@
     {
       "type": "Feature",
       "properties": {
+        "name": "Miaren",
         "url": "https://www.profounddecisions.co.uk/empire-wiki/Miaren",
         "nation": "Navarr"
       },
@@ -256,6 +265,7 @@
     {
       "type": "Feature",
       "properties": {
+        "name": "Hercynia",
         "url": "https://www.profounddecisions.co.uk/empire-wiki/Hercynia",
         "nation": "Navarr"
       },
@@ -282,6 +292,7 @@
     {
       "type": "Feature",
       "properties": {
+        "name": "Therunin",
         "url": "https://www.profounddecisions.co.uk/empire-wiki/Therunin",
         "nation": "Navarr"
       },
@@ -309,6 +320,7 @@
     {
       "type": "Feature",
       "properties": {
+        "name": "Broc",
         "url": "https://www.profounddecisions.co.uk/empire-wiki/Broc\u00e9liande",
         "nation": "Navarr"
       },
@@ -333,6 +345,7 @@
     {
       "type": "Feature",
       "properties": {
+        "name": "Liathaven",
         "url": "https://www.profounddecisions.co.uk/empire-wiki/Liathaven",
         "nation": "Territory Lost"
       },
@@ -360,6 +373,7 @@
     {
       "type": "Feature",
       "properties": {
+        "name": "Astolat",
         "url": "https://www.profounddecisions.co.uk/empire-wiki/Astolat",
         "nation": "Dawn"
       },
@@ -385,6 +399,7 @@
     {
       "type": "Feature",
       "properties": {
+        "name": "Weirwater",
         "url": "https://www.profounddecisions.co.uk/empire-wiki/Weirwater",
         "nation": "Dawn"
       },
@@ -408,6 +423,7 @@
     {
       "type": "Feature",
       "properties": {
+        "name": "Semmerholm",
         "url": "https://www.profounddecisions.co.uk/empire-wiki/Semmerholm",
         "nation": "Dawn"
       },
@@ -436,6 +452,7 @@
     {
       "type": "Feature",
       "properties": {
+        "name": "Karov",
         "url": "https://www.profounddecisions.co.uk/empire-wiki/Karov",
         "nation": "Varushka"
       },
@@ -462,6 +479,7 @@
     {
       "type": "Feature",
       "properties": {
+        "name": "Miekarova",
         "url": "https://www.profounddecisions.co.uk/empire-wiki/Miekarova",
         "nation": "Varushka"
       },
@@ -487,6 +505,7 @@
     {
       "type": "Feature",
       "properties": {
+        "name": "Volodmartz",
         "url": "https://www.profounddecisions.co.uk/empire-wiki/Volodmartz",
         "nation": "Varushka"
       },
@@ -515,6 +534,7 @@
     {
       "type": "Feature",
       "properties": {
+        "name": "Karsk",
         "url": "https://www.profounddecisions.co.uk/empire-wiki/Karsk",
         "nation": "Varushka"
       },
@@ -542,6 +562,7 @@
     {
       "type": "Feature",
       "properties": {
+        "name": "Ossium",
         "url": "https://www.profounddecisions.co.uk/empire-wiki/Ossium",
         "nation": "Varushka"
       },
@@ -575,6 +596,7 @@
     {
       "type": "Feature",
       "properties": {
+        "name": "Bastion",
         "url": "https://www.profounddecisions.co.uk/empire-wiki/Bastion",
         "nation": "Highguard"
       },
@@ -602,6 +624,7 @@
     {
       "type": "Feature",
       "properties": {
+        "name": "Casinea",
         "url": "https://www.profounddecisions.co.uk/empire-wiki/Casinea",
         "nation": "Highguard"
       },
@@ -627,6 +650,7 @@
     {
       "type": "Feature",
       "properties": {
+        "name": "Necropolis",
         "url": "https://www.profounddecisions.co.uk/empire-wiki/Necropolis",
         "nation": "Highguard"
       },
@@ -654,6 +678,7 @@
     {
       "type": "Feature",
       "properties": {
+        "name": "Reikos",
         "url": "https://www.profounddecisions.co.uk/empire-wiki/Reikos",
         "nation": "Highguard"
       },
@@ -681,6 +706,7 @@
     {
       "type": "Feature",
       "properties": {
+        "name": "Tassato",
         "url": "https://www.profounddecisions.co.uk/empire-wiki/Tassato",
         "nation": "The League"
       },
@@ -707,6 +733,7 @@
     {
       "type": "Feature",
       "properties": {
+        "name": "Sarvos",
         "url": "https://www.profounddecisions.co.uk/empire-wiki/Sarvos",
         "nation": "The League"
       },
@@ -729,6 +756,7 @@
     {
       "type": "Feature",
       "properties": {
+        "name": "Temeschwar",
         "url": "https://www.profounddecisions.co.uk/empire-wiki/Temeschwar",
         "nation": "The League"
       },
@@ -752,6 +780,7 @@
     {
       "type": "Feature",
       "properties": {
+        "name": "Holberg",
         "url": "https://www.profounddecisions.co.uk/empire-wiki/Holberg",
         "nation": "The League"
       },
@@ -787,8 +816,9 @@
     {
       "type": "Feature",
       "properties": {
+        "name": "Madruga",
         "url": "https://www.profounddecisions.co.uk/empire-wiki/Madruga",
-        "nation": "The Brass Coast"
+        "nation": "Territory Lost"
       },
       "geometry": {
         "type": "Polygon",
@@ -817,8 +847,9 @@
     {
       "type": "Feature",
       "properties": {
+        "name": "Feroz",
         "url": "https://www.profounddecisions.co.uk/empire-wiki/Feroz",
-        "nation": "The Brass Coast"
+        "nation": "Territory Lost"
       },
       "geometry": {
         "type": "Polygon",
@@ -841,6 +872,7 @@
     {
       "type": "Feature",
       "properties": {
+        "name": "Kahraman",
         "url": "https://www.profounddecisions.co.uk/empire-wiki/Kahraman",
         "nation": "The Brass Coast"
       },
@@ -868,6 +900,7 @@
     {
       "type": "Feature",
       "properties": {
+        "name": "Segura",
         "url": "https://www.profounddecisions.co.uk/empire-wiki/Segura",
         "nation": "The Brass Coast"
       },
@@ -893,6 +926,7 @@
     {
       "type": "Feature",
       "properties": {
+        "name": "Morrow",
         "url": "https://www.profounddecisions.co.uk/empire-wiki/Morrow",
         "nation": "Urizen"
       },
@@ -922,6 +956,7 @@
     {
       "type": "Feature",
       "properties": {
+        "name": "Redoubt",
         "url": "https://www.profounddecisions.co.uk/empire-wiki/Redoubt",
         "nation": "Urizen"
       },
@@ -950,8 +985,9 @@
     {
       "type": "Feature",
       "properties": {
+        "name": "Zenith",
         "url": "https://www.profounddecisions.co.uk/empire-wiki/Zenith",
-        "nation": "Territory Lost"
+        "nation": "Urizen"
       },
       "geometry": {
         "type": "Polygon",
@@ -975,8 +1011,9 @@
     {
       "type": "Feature",
       "properties": {
+        "name": "Spiral",
         "url": "https://www.profounddecisions.co.uk/empire-wiki/Spiral",
-        "nation": "Territory Lost"
+        "nation": "The League"
       },
       "geometry": {
         "type": "Polygon",
@@ -996,8 +1033,9 @@
     {
       "type": "Feature",
       "properties": {
+        "name": "Verthandi",
         "url": "https://www.profounddecisions.co.uk/empire-wiki/Verthandi",
-        "nation": "Territory Lost"
+        "nation": "Non-imperial"
       },
       "geometry": {
         "type": "Polygon",
@@ -1035,6 +1073,7 @@
     {
       "type": "Feature",
       "properties": {
+        "name": "Otkodov",
         "url": "https://www.profounddecisions.co.uk/empire-wiki/Otkodov#Urdur",
         "nation": "Non-imperial"
       },
@@ -1099,6 +1138,7 @@
     {
       "type": "Feature",
       "properties": {
+        "name": "Otkodov",
         "url": "https://www.profounddecisions.co.uk/empire-wiki/Otkodov#Nithoggir",
         "nation": "Non-imperial"
       },
@@ -1141,6 +1181,7 @@
     {
       "type": "Feature",
       "properties": {
+        "name": "Hordalant",
         "url": "https://www.profounddecisions.co.uk/empire-wiki/Hordalant",
         "nation": "Non-imperial"
       },
@@ -1165,6 +1206,7 @@
     {
       "type": "Feature",
       "properties": {
+        "name": "Sarangrave",
         "url": "https://www.profounddecisions.co.uk/empire-wiki/Sarangrave",
         "nation": "Non-imperial"
       },
@@ -1186,8 +1228,9 @@
     {
       "type": "Feature",
       "properties": {
+        "name": "The Barrens",
         "url": "https://www.profounddecisions.co.uk/empire-wiki/The_Barrens",
-        "nation": "Non-imperial"
+        "nation": "Dawn"
       },
       "geometry": {
         "type": "Polygon",
@@ -1238,6 +1281,7 @@
     {
       "type": "Feature",
       "properties": {
+        "name": "Tsark",
         "url": "https://www.profounddecisions.co.uk/empire-wiki/Tsark",
         "nation": "Non-imperial"
       },

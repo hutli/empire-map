@@ -8,7 +8,7 @@ RUN mkdir www/css/
 RUN mkdir www/assets/
 RUN mkdir www/assets/map/
 
-# UPDATE apt-get
+# INSTALL SYSTEM DEPENDENCIES
 RUN apt-get update -y
 RUN apt-get install software-properties-common apt-utils -y
 RUN add-apt-repository ppa:ubuntugis/ppa
