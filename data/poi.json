@@ -157,7 +157,8 @@
     {
       "type": "Feature",
       "properties": {
-        "url": "https://www.profounddecisions.co.uk/empire-wiki/Astolat#Oldheart"
+        "name": "Oldheart",
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Astolat#Withy"
       },
       "geometry": {
         "type": "Point",
@@ -552,7 +553,7 @@
       "type": "Feature",
       "properties": {
         "name": "Kethry's Grove",
-        "url": "https://www.profounddecisions.co.uk/empire-wiki/Astolat#Kethry.E2.80.99s_Grove"
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Astolat#The_Chase"
       },
       "geometry": {
         "type": "Point",
@@ -563,7 +564,7 @@
       "type": "Feature",
       "properties": {
         "name": "Boar's Hollow",
-        "url": "https://www.profounddecisions.co.uk/empire-wiki/Astolat#Boar.E2.80.99s_Hollow"
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Astolat#Winterbourne"
       },
       "geometry": {
         "type": "Point",
@@ -674,7 +675,7 @@
     {
       "type": "Feature",
       "properties": {
-        "url": "https://www.profounddecisions.co.uk/empire-wiki/Kahraman#Fort_Braydon"
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Kahraman#Fort_Braydon_(destroyed)"
       },
       "geometry": {
         "type": "Point",
