@@ -123,7 +123,7 @@
       "properties": {
         "name": "Bregasland",
         "url": "https://www.profounddecisions.co.uk/empire-wiki/Bregasland",
-        "nation": "Territory Lost",
+        "nation": "The Marches",
         "description-id": "The_Dour_Fens"
       },
       "geometry": {
@@ -294,7 +294,7 @@
       "properties": {
         "name": "Therunin",
         "url": "https://www.profounddecisions.co.uk/empire-wiki/Therunin",
-        "nation": "Navarr"
+        "nation": "Territory Lost"
       },
       "geometry": {
         "type": "Polygon",
@@ -1021,8 +1021,9 @@
           [
             [78.73, -62.49],
             [106.68, -66.68],
-            [110.06, -73.53],
-            [87.96, -75.8],
+            [110.24, -73.67],
+            [110.2, -73.51],
+            [88.1, -75.8],
             [71.28, -75.16],
             [80.33, -71.63],
             [81.06, -67.27]
@@ -1035,7 +1036,7 @@
       "properties": {
         "name": "Verthandi",
         "url": "https://www.profounddecisions.co.uk/empire-wiki/Verthandi",
-        "nation": "Non-imperial"
+        "nation": "Thule"
       },
       "geometry": {
         "type": "Polygon",
@@ -1073,9 +1074,9 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "Otkodov",
+        "name": "Urdur",
         "url": "https://www.profounddecisions.co.uk/empire-wiki/Otkodov#Urdur",
-        "nation": "Non-imperial"
+        "nation": "Thule"
       },
       "geometry": {
         "type": "Polygon",
@@ -1106,7 +1107,7 @@
       "properties": {
         "name": "Sküld",
         "url": "https://www.profounddecisions.co.uk/empire-wiki/Otkodov#Sk.C3.BCld",
-        "nation": "Non-imperial"
+        "nation": "Thule"
       },
       "geometry": {
         "type": "Polygon",
@@ -1138,9 +1139,9 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "Otkodov",
+        "name": "Nithoggir",
         "url": "https://www.profounddecisions.co.uk/empire-wiki/Otkodov#Nithoggir",
-        "nation": "Non-imperial"
+        "nation": "Thule"
       },
       "geometry": {
         "type": "Polygon",
@@ -1183,7 +1184,7 @@
       "properties": {
         "name": "Hordalant",
         "url": "https://www.profounddecisions.co.uk/empire-wiki/Hordalant",
-        "nation": "Non-imperial"
+        "nation": "Jotun"
       },
       "geometry": {
         "type": "Polygon",
@@ -1208,7 +1209,7 @@
       "properties": {
         "name": "Sarangrave",
         "url": "https://www.profounddecisions.co.uk/empire-wiki/Sarangrave",
-        "nation": "Non-imperial"
+        "nation": "Druj"
       },
       "geometry": {
         "type": "Polygon",
@@ -1283,7 +1284,7 @@
       "properties": {
         "name": "Tsark",
         "url": "https://www.profounddecisions.co.uk/empire-wiki/Tsark",
-        "nation": "Non-imperial"
+        "nation": "The People of Tsark"
       },
       "geometry": {
         "type": "Polygon",
@@ -1293,9 +1294,35 @@
             [141.59, -69.27],
             [137.42, -72.07],
             [126.83, -73.02],
-            [110.06, -73.53],
+            [120.58, -72.85],
+            [110.24, -73.67],
+            [110.2, -73.51],
             [106.68, -66.68],
             [113.05, -61.03]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Mareave",
+        "url": "https://www.profounddecisions.co.uk/empire-wiki/Mareave",
+        "nation": "Imperial Orcs"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [88.1, -75.8],
+            [87.34, -77.13],
+            [101.19, -80.6],
+            [95.3, -82.53],
+            [99.08, -82.73],
+            [116.86, -82.16],
+            [120.58, -72.85],
+            [110.24, -73.67],
+            [110.2, -73.51]
           ]
         ]
       }
